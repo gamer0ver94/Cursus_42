@@ -1,0 +1,23 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/gameoverstation/Documents/Cursus42/Cursus42/push_swap'
+gcc -g -Wall -Werror -Wextra -ggdb3   -c -o main.o main.c
+ 
+gcc -g -Wall -Werror -Wextra -ggdb3   -c -o srcs/create_stack.o srcs/create_stack.c
+gcc -g -Wall -Werror -Wextra -ggdb3   -c -o srcs/print_list.o srcs/print_list.c
+gcc -g -Wall -Werror -Wextra -ggdb3   -c -o srcs/sort_verification.o srcs/sort_verification.c
+gcc -g -Wall -Werror -Wextra -ggdb3   -c -o srcs/error_handler.o srcs/error_handler.c
+gcc -g -Wall -Werror -Wextra -ggdb3   -c -o srcs/swap_rules.o srcs/swap_rules.c
+gcc -g -Wall -Werror -Wextra -ggdb3   -c -o srcs/push_rules.o srcs/push_rules.c
+gcc -g -Wall -Werror -Wextra -ggdb3   -c -o srcs/del_first_elem.o srcs/del_first_elem.c
+gcc -g -Wall -Werror -Wextra -ggdb3   -c -o srcs/rotate_rules.o srcs/rotate_rules.c
+gcc -g -Wall -Werror -Wextra -ggdb3   -c -o srcs/reverse_rules.o srcs/reverse_rules.c
+gcc -g -Wall -Werror -Wextra -ggdb3   -c -o srcs/sort_big_num.o srcs/sort_big_num.c
+ 
+gcc -g -Wall -Werror -Wextra -ggdb3   -c -o srcs/utility_func.o srcs/utility_func.c
+gcc -g -Wall -Werror -Wextra -ggdb3   -c -o srcs/sort_small_num.o srcs/sort_small_num.c
+make -C libft
+cp libft/libft.a .
+mv libft.a push_swap
+gcc -g -Wall -Werror -Wextra -ggdb3 -L libft main.o srcs/create_stack.o srcs/print_list.o srcs/sort_verification.o srcs/error_handler.o srcs/swap_rules.o srcs/push_rules.o srcs/del_first_elem.o srcs/rotate_rules.o srcs/reverse_rules.o srcs/sort_big_num.o srcs/utility_func.o srcs/sort_small_num.o -o push_swap -lft
+make: Leaving directory '/home/gameoverstation/Documents/Cursus42/Cursus42/push_swap'
+ 

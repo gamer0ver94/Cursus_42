@@ -1,0 +1,502 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'main.o', needed by 'so_long'.  Stop.
+
+# GNU Make 4.3
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Sun Jun 12 23:27:16 2022
+
+# Variables
+
+# environment
+GDK_BACKEND = x11
+# environment
+LC_ALL = C
+# environment
+GNOME_SHELL_SESSION_MODE = ubuntu
+# environment
+SSH_AGENT_LAUNCHER = gnome-keyring
+# environment
+SNAP_INSTANCE_KEY = 
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-1fbc052c-04ff-49f9-b965-bd9f62a7284c.sock
+# environment
+LC_NAME = fr_FR.UTF-8
+# environment
+LC_NUMERIC = fr_FR.UTF-8
+# environment
+VSCODE_CWD = /home/gameoverstation
+# environment
+LC_ADDRESS = fr_FR.UTF-8
+# default
+MAKE_COMMAND := make
+# environment
+QT_ACCESSIBILITY = 1
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+SNAP_INSTANCE_NAME = code
+# environment
+GDK_PIXBUF_MODULEDIR = /snap/code/97/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+PWD = /home/gameoverstation/Documents/Cursus42/Cursus42/so_long
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+VSCODE_LOG_STACK = false
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = /home/gameoverstation/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+# environment
+LANG = C
+# environment
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.U6TZN1
+# default
+.LOADED := 
+# default
+.INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
+# makefile
+MAKEFLAGS = pqrR
+# makefile
+CURDIR := /home/gameoverstation/Documents/Cursus42/Cursus42/so_long
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# makefile (from 'Makefile', line 15)
+SRCS = main.c srcs/get_next_line.c srcs/s_initialization.c srcs/get_next_line_utils.c srcs/debugger.c srcs/read_map.c srcs/new_window.c srcs/keys_event.c srcs/player_move.c srcs/player_position.c srcs/graphics_render.c srcs/enemy_move.c srcs/enemy_position.c srcs/count_coins.c srcs/exit_position.c srcs/finish_game.c srcs/check_enemy.c srcs/player2_move.c srcs/player2_position.c
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+MFLAGS = -pqrR
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# default
+.SHELLFLAGS := -c
+# environment
+WAYLAND_DISPLAY = wayland-0
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
+# environment
+SNAP_REEXEC = 
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_PID = 3807
+# environment
+XDG_SESSION_TYPE = wayland
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
+# environment
+SESSION_MANAGER = local/GameoverStation:@/tmp/.ICE-unix/1526,unix/GameoverStation:/tmp/.ICE-unix/1526
+# automatic
+*F = $(notdir $*)
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# makefile (from 'Makefile', line 21)
+OBJS = ${SRCS:.c=.o}
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# makefile
+SHELL = /bin/sh
+# default
+MAKECMDGOALS := all
+# environment
+XMODIFIERS = @im=ibus
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# environment
+SHLVL = 0
+# environment
+MAKELEVEL := 0
+# environment
+IM_CONFIG_CHECK_ENV = 1
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+SNAP_COOKIE = xnVtywYhVzLT5l3wcpMSoDl0XhgIJgpIxKPOfm_YdIO8IvxZwekZ
+# environment
+PATH = /home/gameoverstation/.local/bin:/home/gameoverstation/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+# default
+MAKEFILES := 
+# environment
+LC_MONETARY = fr_FR.UTF-8
+# automatic
+^F = $(notdir $^)
+# environment
+SNAP_USER_COMMON = /home/gameoverstation/snap/code/common
+# makefile (from 'Makefile', line 25)
+MLX_FLAGS = -lmlx -lXext -lX11
+# environment
+LC_TIME = fr_FR.UTF-8
+# environment
+SNAP = /snap/code/97
+# environment
+INVOCATION_ID = d12d645d8ec74c95843a9eaa94cf4548
+# environment
+SNAP_REVISION = 97
+# environment
+SNAP_REAL_HOME = /home/gameoverstation
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+USERNAME = gameoverstation
+# environment
+GNOME_SETUP_DISPLAY = :1
+# environment
+LC_TELEPHONE = fr_FR.UTF-8
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# automatic
+?F = $(notdir $?)
+# makefile (from 'Makefile', line 13)
+NAME = so_long
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# environment
+LS_COLORS = 
+# automatic
++F = $(notdir $+)
+# environment
+DESKTOP_SESSION = ubuntu
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+LOGNAME = gameoverstation
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /var/lib/snapd/desktop/applications/code_code.desktop
+# environment
+SNAP_ARCH = amd64
+# makefile
+.DEFAULT_GOAL := so_long
+# environment
+SYSTEMD_EXEC_PID = 1550
+# environment
+DISPLAY = :0
+# environment
+USER = gameoverstation
+# environment
+GTK_MODULES = gail:atk-bridge
+# default
+MAKE_VERSION := 4.3
+# environment
+DISABLE_WAYLAND = 1
+# environment
+SNAP_DATA = /var/snap/code/97
+# environment
+SNAP_CONTEXT = xnVtywYhVzLT5l3wcpMSoDl0XhgIJgpIxKPOfm_YdIO8IvxZwekZ
+# environment
+MANAGERPID = 1385
+# environment
+LC_MEASUREMENT = fr_FR.UTF-8
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 3759
+# environment
+_ = /snap/code/97/usr/share/code/code
+# environment
+LC_PAPER = fr_FR.UTF-8
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# makefile (from 'Makefile', line 32)
+CFLAGS = -Wall -Werror -Wextra -ggdb3
+# environment
+GDK_PIXBUF_MODULE_FILE = /home/gameoverstation/snap/code/common/.cache/gdk-pixbuf-loaders.cache
+# environment
+JOURNAL_STREAM = 8:31534
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/gameoverstation
+# environment
+QT_IM_MODULE = ibus
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-db09aeac-1.67.2-main.sock
+# environment
+SNAP_NAME = code
+# environment
+GSETTINGS_SCHEMA_DIR = /snap/code/97/usr/share/glib-2.0/schemas
+# makefile (from 'Makefile', line 28)
+LIBFT_FLAGS = -lft
+# environment
+IM_CONFIG_PHASE = 1
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# environment
+SNAP_VERSION = c3511e6c
+# default
+SUFFIXES := 
+# environment
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+SNAP_COMMON = /var/snap/code/common
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# makefile (from 'Makefile', line 30)
+CC = gcc -g
+# environment
+SNAP_USER_DATA = /home/gameoverstation/snap/code/97
+# environment
+XDG_MENU_PREFIX = gnome-
+# makefile (from 'Makefile', line 23)
+LD_FLAGS = -L libft -L mlx
+# environment
+GDMSESSION = ubuntu
+# environment
+LC_IDENTIFICATION = fr_FR.UTF-8
+# environment
+SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
+# variable set hash-table stats:
+ 
+# Load=139/1024=14%, Rehash=0, Collisions=9/173=5%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2050, inode 6422764): 14 files, no impossibilities.
+
+# 14 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+srcs/player2_move.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/graphics_render.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/new_window.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/player_move.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/s_initialization.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-12 19:49:06.567446035
+#  File has been updated.
+#  Successfully updated.
+
+so_long: main.o srcs/get_next_line.o srcs/s_initialization.o srcs/get_next_line_utils.o srcs/debugger.o srcs/read_map.o srcs/new_window.o srcs/keys_event.o srcs/player_move.o srcs/player_position.o srcs/graphics_render.o srcs/enemy_move.o srcs/enemy_position.o srcs/count_coins.o srcs/exit_position.o srcs/finish_game.o srcs/check_enemy.o srcs/player2_move.o srcs/player2_position.o
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 35):
+					make -C libft
+					# make -C minilibx-linux
+					${CC} ${CFLAGS} ${LD_FLAGS} ${OBJS} -o ${NAME} ${LIBFT_FLAGS} ${MLX_FLAGS}
+
+# Not a target:
+srcs/get_next_line_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 42):
+					make clean -C libft
+					# make clean -C minilibx-linux
+					rm -rf ${OBJS}
+
+# Not a target:
+srcs/player2_position.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/get_next_line.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+re: fclean all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+srcs/player_position.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/finish_game.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all: so_long
+#  Phony target (prerequisite of .PHONY).
+#  Command line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+fclean: clean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 47):
+					make fclean -C libft
+					rm -rf ${NAME}
+
+# Not a target:
+srcs/count_coins.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/keys_event.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/read_map.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+main.o:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+srcs/enemy_move.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/check_enemy.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/enemy_position.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/exit_position.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PHONY: all clean fclean re
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/debugger.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=28/1024=3%, Rehash=0, Collisions=0/66=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 43 / storage = 557 B / avg = 12 B
+# current buf: size = 8162 B / used = 557 B / count = 43 / avg = 12 B
+
+# strcache performance: lookups = 62 / hit rate = 30%
+# hash-table stats:
+# Load=43/8192=1%, Rehash=0, Collisions=0/62=0%
+# Finished Make data base on Sun Jun 12 23:27:16 2022
+
+ 

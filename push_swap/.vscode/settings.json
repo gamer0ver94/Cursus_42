@@ -1,0 +1,14 @@
+{
+    "makefile.extensionOutputFolder": "./.vscode",
+    "files.associations": {
+        "push_swap.h": "c",
+        "random": "c",
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "array": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "utility": "c",
+        "algorithm": "c"
+    }
+}

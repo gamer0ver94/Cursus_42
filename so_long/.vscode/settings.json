@@ -1,0 +1,14 @@
+{
+    "makefile.extensionOutputFolder": "./.vscode",
+    "files.associations": {
+		"so_long.h": "c",
+		"array": "c",
+		"string": "c",
+		"string_view": "c",
+		"random": "c",
+		"stdlib.h": "c",
+		"unistd.h": "c",
+		"iterator": "c",
+		"vector": "c"
+	}
+}
