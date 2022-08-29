@@ -53,6 +53,9 @@ clean:
 cleandep:
 	$(RM) $(DEP)
 
+fclean	:	clean
+
+re		:	clean all
 #################### Cleaning rules for Windows OS #####################
 # Cleans complete project
 .PHONY: cleanw

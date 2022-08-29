@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_prompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 09:42:11 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/28 01:40:34 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:15:58 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 //printout the logo
-char    *parse_prompt(char **envp)
+char	*parse_prompt(char **envp)
 {
-	char    *parser;
+	char	*parser;
+
 	parser = ft_strdup(BLACK_CLR);
 	parser = ft_strjoin(parser, getenv("USER"));
 	parser = ft_strjoin(parser, BOLD);
@@ -29,32 +30,26 @@ char    *parse_prompt(char **envp)
 	//memory leak
 }
 
-int parse_buffer(char *buffer, t_command **prompt)
+int	get_prompt(char **envp)
 {
-	if (!ft_strncmp(buffer, "echo",4))
-		(*prompt)->cmd = "echo";
-	return (0);
-}
-
-int get_prompt (char **envp)
-{
-	t_command   *prompt;
-	char    *buffer;
-	
+	t_command	*prompt;
+	char		*buffer;
+	int i = 0;
 	prompt = malloc(sizeof(t_command));
 	while (1)
 	{
 		buffer = readline(parse_prompt(envp));
 		add_history(buffer);
-		parse_buffer(buffer, &prompt);
-		if(!ft_strncmp(buffer, "exit",4))
-		{
-			printf("<%s>\n",prompt->cmd);
-			free(buffer);
-			free(prompt);
-			exit(0);
-		}
-		if(!ft_strncmp(prompt->cmd, "echo",4))
-			printf("u wrote echo right?\n");
+		// if(buffer[0] == '\n')
+		// {
+			parse_buffer(buffer, &prompt);
+			while(prompt->argv[i])
+			{
+				printf("%s", prompt->argv[i]);
+				i++;
+			}
+		// }
+		
 	}
+	return (0);
 }

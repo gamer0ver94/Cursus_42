@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 09:15:08 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/26 09:19:59 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/08/29 12:48:28 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv)
 {
-    return (0);
+	int	i;
+
+	i = 0;
+	while (argv[i])
+	{
+		printf("%s", argv[i]);
+		i++;
+	}
+	return (0);
 }
