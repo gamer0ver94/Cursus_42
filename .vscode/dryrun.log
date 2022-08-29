@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/gameover/Documents/Cursus_42'
+make: Leaving directory '/home/gameover/Documents/Cursus_42'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
