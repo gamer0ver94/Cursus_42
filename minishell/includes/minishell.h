@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 13:25:13 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/29 13:45:53 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/08/30 13:05:39 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,6 @@
 int get_prompt(char **envp);
 int logo(void);
 int	parse_buffer(char *buffer, t_command **prompt);
+void    print_struct(t_command  *prompt);
+void    exec_command(t_command *prompt);
 #endif
