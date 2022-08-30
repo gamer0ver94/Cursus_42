@@ -1,5 +1,5 @@
 #include "../includes/minishell.h"
-void	*buildin_path(char *cmd)
+char	*buildin_path(char *cmd)
 {
 	char *str;
 	char *tmp;
@@ -8,16 +8,43 @@ void	*buildin_path(char *cmd)
 	free(tmp);
 	return (str);
 }
-void    exec_command(t_command *prompt)
-{
-	char *path;
-	pid_t pid;
 
+char	*get_single_path(char *cmd, char *env_path)
+{
+	char *str;
+	char *tmp;
+	tmp = ft_strdup(env_path);
+	str = ft_strjoin(tmp,"/");
+	free(tmp);
+	tmp = ft_strjoin(str, cmd);
+	free(str);
+	return (tmp);
+}
+void    exec_command(t_command *prompt, char **envp)
+{
+	char 	*path;
+	char	**env_path;
+	pid_t 	pid;
+	int		i;
+
+	i = 0;
+	env_path = ft_split(getenv("PATH"),':');
 	path = buildin_path(prompt->cmd);
 	pid = fork();
 	if(pid == 0)
-		if(execv(path, prompt->argv) == -1)
-			printf("%s: command not found\n",prompt->cmd);
+	{
+		if(execve(path, prompt->argv, envp) == -1)
+		{
+			free(path);
+			while (env_path[i])
+			{
+				path = get_single_path(prompt->cmd, env_path[i]);
+				if (execve(path, prompt->argv, envp) == -1)
+					i++;
+				free(path);
+			}
+		}		
+	}
 	wait (&pid);
 	free(path);
 }

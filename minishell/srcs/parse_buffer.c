@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:34:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/30 13:32:02 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/08/31 00:13:42 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,12 @@ void	get_commands(char **split, t_command **prompt)
 	int	i;
 	int	j;
 
-	j = 0;
+	j = 1;
 	i = 1;
 	(*prompt)->cmd = ft_strdup(split[0]);
 	(*prompt)->argc = ft_array_size(split - 1);
-	(*prompt)->argv = malloc(sizeof(char *) * (*prompt)->argc + 1);
+	(*prompt)->argv = malloc(sizeof(char *) * (*prompt)->argc + 2);
+	(*prompt)->argv[0] = ft_strdup((*prompt)->cmd);
 	while (split && split[i])
 	{
 		(*prompt)->argv[j] = ft_strdup(split[i]);
@@ -62,6 +63,7 @@ int	parse_buffer(char *buffer, t_command **prompt)
 	if (is_pipe(buffer))
 	{
 		split = ft_split(buffer, '|');
+		return (1);
 	}
 	else
 	{

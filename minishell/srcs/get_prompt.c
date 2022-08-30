@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_prompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 09:42:11 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/30 16:09:34 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/08/31 00:39:47 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	get_prompt(char **envp)
 	t_command	*prompt;
 	char		*buffer;
 	int i = 0;
-	
+
 	prompt = malloc(sizeof(t_command));
 	
 	while (1)
@@ -71,8 +71,8 @@ int	get_prompt(char **envp)
 		add_history(buffer);
 		if(ft_strlen(buffer))
 		{
-			parse_buffer(buffer, &prompt);
-			exec_command(prompt);
+			if(!parse_buffer(buffer, &prompt))
+				exec_command(prompt, envp);
 			// print_struct(prompt);
 		}	
 		free_prompt(&prompt);

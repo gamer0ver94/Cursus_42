@@ -3,25 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/26 09:15:08 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/30 16:26:23 by dpaulino         ###   ########.fr       */
+/*   Created: 2022/08/31 00:30:56 by dpaulino          #+#    #+#             */
+/*   Updated: 2022/08/31 00:31:18 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	main(int argc, char **argv)
+int main (int argc, char **argv, char **envp)
 {
-	int	i;
-
-	i = 0;
-	while (argv[i])
-	{
-		printf("%s", argv[i]);
-		i++;
-	}
-	printf("\n");
-	return (0);
+    exit (0);
 }
