@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 12:07:26 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/29 13:24:39 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/08/31 16:27:21 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+//testing
+void sig_handler(int signal)
+{
+	if(signal == SIGINT)
+	{
+		logo("assets/exit_logo.txt");
+		printf("\n");
+		exit(0);
+	}
+}
 
 int	main (int argc, char **argv, char **envp)
 {
@@ -19,8 +29,8 @@ int	main (int argc, char **argv, char **envp)
 		printf("no need argv\n");
 		return (1);
 	}
-
-	logo();
+	signal(SIGINT, sig_handler);
+	logo("assets/logo.txt");
 	get_prompt(envp);
 	return (0);
 }

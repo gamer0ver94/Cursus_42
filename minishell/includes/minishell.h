@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 13:25:13 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/30 23:29:14 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/08/31 16:23:35 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 #define BOLD "\e[1m"
 #define RESET_ATT "\e[0m"
 int get_prompt(char **envp);
-int logo(void);
+int logo(char *path);
 int	parse_buffer(char *buffer, t_command **prompt);
 void    print_struct(t_command  *prompt);
 void    exec_command(t_command *prompt, char **envp);

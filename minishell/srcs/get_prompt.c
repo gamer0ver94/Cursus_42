@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 09:42:11 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/31 00:39:47 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/08/31 16:16:27 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*parse_prompt(char **envp)
 {
 	char	*parser;
-
+	char current_dir[1024];
 	parser = ft_strdup(BLACK_CLR);
 	parser = ft_strjoin(parser, getenv("USER"));
 	parser = ft_strjoin(parser, BOLD);
@@ -23,7 +23,7 @@ char	*parse_prompt(char **envp)
 	parser = ft_strjoin(parser, "@MINISHELL:");
 	parser = ft_strjoin(parser, MAGENTA_CLR);
 	parser = ft_strjoin(parser, "~");
-	parser = ft_strjoin(parser, getenv("PWD"));
+	parser = ft_strjoin(parser, getcwd(current_dir, 1024));
 	parser = ft_strjoin(parser, WHITE_CLR);
 	parser = ft_strjoin(parser, "$ ");
 	return (parser);
@@ -71,6 +71,14 @@ int	get_prompt(char **envp)
 		add_history(buffer);
 		if(ft_strlen(buffer))
 		{
+			// if (!ft_strncmp(buffer, "cd", 2))
+			// {
+			// 	char tmp[1024];
+			// 	printf("%s\n",getenv("PWD"));
+			// 	if(chdir("../") == -1)
+			// 		printf("notfound\n");
+			// 	printf("%s\n",getcwd(tmp,1024));
+			// }
 			if(!parse_buffer(buffer, &prompt))
 				exec_command(prompt, envp);
 			// print_struct(prompt);

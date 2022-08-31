@@ -5,14 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/31 00:30:56 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/31 00:31:18 by dpaulino         ###   ########.fr       */
+/*   Created: 2022/08/31 15:57:06 by dpaulino          #+#    #+#             */
+/*   Updated: 2022/08/31 15:57:57 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
-int main (int argc, char **argv, char **envp)
+int main(int argc, char **argv, char **envp)
 {
-    exit (0);
+    
+    return (0);
 }
