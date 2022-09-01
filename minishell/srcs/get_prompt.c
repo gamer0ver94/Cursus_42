@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_prompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 09:42:11 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/31 23:15:12 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/01 12:05:47 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ int	get_prompt(char **envp)
 		add_history(buffer);
 		if(ft_strlen(buffer))
 		{
-			parse_buffer(buffer, &prompt);
-			// if(!parse_buffer(buffer, &prompt))
-			// 	exec_command(prompt, envp);
-			print_struct(prompt);
+			// parse_buffer(buffer, &prompt);
+			if(!parse_buffer(buffer, &prompt))
+				exec_command(prompt, envp);
+			// print_struct(prompt);
 		}	
 		free_prompt(&prompt);
 	}

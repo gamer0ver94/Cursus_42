@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 23:47:33 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/24 09:47:21 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/01 16:03:42 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@
 # define ESC 53
 # define R 15
 # define L 37
-# define ENEMY_SPEED 40
+# define ENEMY_SPEED 15
 # define UP 126
 # define DOWN 125
 # define LEFT 123
@@ -73,7 +73,7 @@
 
 void	s_initialization(t_data *data);
 void	read_map(t_data *data, char *argv);
-void	new_window(t_data *data);
+void	new_window(t_data *data, int width, int height);
 void	debugger(t_data *data);
 void	keys_event(t_data *data);
 void	player_move(t_data *data, int key);
@@ -89,6 +89,7 @@ void	player2_move(t_data *data, int key);
 void	player2_position(t_data *data);
 void	menu_update(t_data *data, int key);
 void	map_update(t_data *data, int row, int col);
+void	map_update2(t_data *data, int row, int col);
 int		check_player(t_data *data);
 int		check_map(t_data *data);
 void	check_errors(t_data *data, int error);
@@ -97,5 +98,6 @@ void	check_exit(t_data *data);
 void	gameover(t_data *data);
 int		check_path(t_data *data, int col, int row);
 int		check_path_to_coins(t_data *data, int col, int row);
+void	generate_window(t_data *data);
 
 #endif

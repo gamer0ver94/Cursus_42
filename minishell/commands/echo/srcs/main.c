@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 09:15:08 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/31 16:16:55 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/01 11:51:37 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int argc, char **argv, char **envp)
 		printf("%s ", argv[i]);
 		i++;
 	}
+	printf("its my echo");
 	printf("\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 23:46:31 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/22 16:19:45 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/01 16:03:23 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 			check_errors(&data, 9);
 		if (check_enemy(&data) == 0)
 			enemy_position(&data);
-		new_window(&data);
+		generate_window(&data);
 		graphics_render(&data);
 		keys_event(&data);
 	}

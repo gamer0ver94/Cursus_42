@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_buffer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:34:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/31 23:38:33 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/01 11:56:14 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	get_commands(char **split, t_command **prompt)
 	(*prompt)->argv = malloc(sizeof(char *) * (*prompt)->argc + 1);
 	while (split && split[i])
 	{
-		if (split[i][0] == 34)
+		// if (split[i][0] == 34)
 		(*prompt)->argv[i] = ft_strdup(split[i]);
 		i++;
 	}

@@ -1,6 +1,6 @@
 CC = gcc
 CCFLAGS = -Wall -Wextra -Werror
-LDFLAGS = -lft -L ../../../libft
+LDFLAGS = -lft -L ../../libft
 APPNAME = env
 EXT = .c
 SRCDIR = srcs

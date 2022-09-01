@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 09:07:01 by gameoversta       #+#    #+#             */
-/*   Updated: 2022/08/19 10:21:59 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/01 16:16:19 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ void	map_constructor(t_data *data, int row, int col)
 		data->menu.status = WAIT;
 	}
 	if (data->menu.status == SELECTED)
-		map_update(data, row, col);
+	{
+		if (data->map.width > 34 || data->map.height > 27)
+			map_update2(data, row, col);
+		else
+			map_update(data, row, col);
+	}
 }
 
 int	time_out(int time, t_data *data)

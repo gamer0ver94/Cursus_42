@@ -15,22 +15,22 @@ DELOBJ = $(OBJ)
 all: $(APPNAME)
 
 $(APPNAME): $(OBJ)
+	make -C libft
 	make -C commands/echo
 	make -C commands/env
 	make -C commands/exit
 	make -C commands/pwd
-	make -C libft
 	$(CC) $(CCFLAGS) -o $@ $^ $(LDFLAGS) $(LIBFT)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%$(EXT)
 	$(CC) $(CXXFLAGS) -o $@ -c $<
 
 clean:
+	make fclean -C libft
 	make fclean -C commands/echo
 	make fclean -C commands/env
 	make fclean -C commands/exit
 	make fclean -C commands/pwd
-	make fclean -C libft
 	$(RM) $(DELOBJ) $(DEP) $(APPNAME)
 
 fclean	:	clean
