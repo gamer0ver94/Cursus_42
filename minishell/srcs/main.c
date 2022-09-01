@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 12:07:26 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/31 16:27:21 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/08/31 23:38:20 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int	main (int argc, char **argv, char **envp)
 	}
 	signal(SIGINT, sig_handler);
 	logo("assets/logo.txt");
-	get_prompt(envp);
+	// get_prompt(envp);
 	return (0);
 }

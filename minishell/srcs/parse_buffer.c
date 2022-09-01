@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:34:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/31 00:13:42 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/08/31 23:38:33 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,20 @@ int	ft_array_size(char **array)
 void	get_commands(char **split, t_command **prompt)
 {
 	int	i;
-	int	j;
+	char **tmp;
 
-	j = 1;
-	i = 1;
+	tmp = NULL;
+	i = 0;
 	(*prompt)->cmd = ft_strdup(split[0]);
-	(*prompt)->argc = ft_array_size(split - 1);
-	(*prompt)->argv = malloc(sizeof(char *) * (*prompt)->argc + 2);
-	(*prompt)->argv[0] = ft_strdup((*prompt)->cmd);
+	(*prompt)->argc = ft_array_size(split);
+	(*prompt)->argv = malloc(sizeof(char *) * (*prompt)->argc + 1);
 	while (split && split[i])
 	{
-		(*prompt)->argv[j] = ft_strdup(split[i]);
-		j++;
+		if (split[i][0] == 34)
+		(*prompt)->argv[i] = ft_strdup(split[i]);
 		i++;
 	}
-	(*prompt)->argv[j] = NULL;
+	(*prompt)->argv[i] = NULL;
 }
 //split and get struct with right values
 int	parse_buffer(char *buffer, t_command **prompt)
