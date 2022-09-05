@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_buffer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:34:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/09/01 11:56:14 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/02 17:00:32 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	get_commands(char **split, t_command **prompt)
 	}
 	(*prompt)->argv[i] = NULL;
 }
-//split and get struct with right values
+//split and get struct with right values and return 1 if there is pipe and zero if not
 int	parse_buffer(char *buffer, t_command **prompt)
 {
 	char **split;

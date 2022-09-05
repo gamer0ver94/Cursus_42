@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 00:31:50 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/08/31 15:15:50 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/02 18:06:32 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int main (int argc, char **argv, char **envp)
         printf("%s\n",envp[i]);
         i++;
     }
+    printf("my command :)\n");
     return (0);
 }
