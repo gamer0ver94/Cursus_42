@@ -1,9 +1,0 @@
-->int access(const char *pathname, int mode);
--access() checks whether the calling process can access the file pathname. If 
-       pathname is a symbolic link, it is dereferenced. 
-
-->int unlink(const char *pathname);
--unlink() deletes a name from the filesystem.  If that name was
-       the last link to a file and no processes have the file open, the
-       file is deleted and the space it was using is made available for
-       reuse.
