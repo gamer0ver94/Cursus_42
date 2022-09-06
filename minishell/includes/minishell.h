@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 13:25:13 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/09/05 14:56:56 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/05 23:22:13 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 #define RESET_ATT "\e[0m"
 int get_prompt(char **envp);
 int logo(char *path);
-int	parse_buffer(char *buffer, t_command **prompt);
+int	parse_buffer(char *buffer, t_command **prompt, char **enp);
 void    print_struct(t_command  *prompt);
 void    exec_command(t_command *prompt, char **envp);
 int cd_cmd(t_command *prompt, char **envp);
