@@ -23,7 +23,7 @@ $(APPNAME): $(OBJ)
 	$(CC) $(CCFLAGS) -o $@ $^ $(LDFLAGS) $(LIBFT)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%$(EXT)
-	$(CC) $(CXXFLAGS) -o $@ -c $<
+	$(CC) $(CCFLAGS) -o $@ -c $<
 
 clean:
 	make fclean -C libft

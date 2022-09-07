@@ -6,13 +6,13 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 09:42:11 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/09/06 22:54:25 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/07 11:01:06 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 //printout the logo
-char	*parse_prompt(char **envp)
+char	*parse_prompt(void)
 {
 	char	*parser;
 	char	*tmp;
@@ -73,22 +73,20 @@ int	get_prompt(char **envp)
 	t_command	*prompt;
 	char		*buffer;
 	char		*ptr;
-	int			i;
 
-	i = 0;
 	prompt = malloc(sizeof(t_command));
 	while (1)
 	{
-		ptr = parse_prompt(envp);
+		ptr = parse_prompt();
 		struct_init(&prompt);
 		buffer = readline(ptr);
 		add_history(buffer);
 		if (ft_strlen(buffer))
 		{
-			if (!parse_buffer(buffer, &prompt, envp))
+			if (!parse_buffer(buffer, &prompt))
 			{
 				print_struct(prompt);
-				// exec_command(prompt, envp);
+				exec_command(prompt, envp);
 			}
 		}
 		free(buffer);

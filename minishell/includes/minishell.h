@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 13:25:13 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/09/05 23:22:13 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/07 12:31:20 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,16 @@
 #define NORMAL_CLR "\e[21m"
 #define BOLD "\e[1m"
 #define RESET_ATT "\e[0m"
+//utils
+int	find_char(char *buffer, char c);
+void free_args(char **args);
+void init_parse_struct(t_parse *p);
+int	ft_array_size(char **array);
+//
 int get_prompt(char **envp);
 int logo(char *path);
-int	parse_buffer(char *buffer, t_command **prompt, char **enp);
+int	parse_buffer(char *buffer, t_command **prompt);
 void    print_struct(t_command  *prompt);
 void    exec_command(t_command *prompt, char **envp);
 int cd_cmd(t_command *prompt, char **envp);
-//utils
-int	find_char(char *buffer, char c);
-char **parsing_utils(char *buffer);
 #endif

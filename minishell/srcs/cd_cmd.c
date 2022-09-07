@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_cmd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:07:00 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/09/05 13:37:43 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/07 11:49:07 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	cd_cmd(t_command *prompt, char **envp)
 {
 	int		i;
-	char	*old_pwd;
+	// char	*old_pwd;
 	char	new_pwd[1000];
 
 	i = 0;
