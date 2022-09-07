@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 13:25:13 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/09/07 12:31:20 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:11:55 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ int	find_char(char *buffer, char c);
 void free_args(char **args);
 void init_parse_struct(t_parse *p);
 int	ft_array_size(char **array);
+void replace_dolar(char **args, char **envp);
 //
 int get_prompt(char **envp);
 int logo(char *path);
-int	parse_buffer(char *buffer, t_command **prompt);
+int	parse_buffer(char *buffer, t_command **prompt, char **envp);
 void    print_struct(t_command  *prompt);
 void    exec_command(t_command *prompt, char **envp);
 int cd_cmd(t_command *prompt, char **envp);

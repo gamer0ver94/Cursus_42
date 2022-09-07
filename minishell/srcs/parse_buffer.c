@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_buffer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:34:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/09/07 12:28:16 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:02:27 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,46 +31,62 @@ void	get_commands(char **split, t_command **prompt)
 	(*prompt)->argv[j] = NULL;
 }
 
-void split_buffer(char **args, char *buffer)
+int	split_buffer(char **args, char *buffer)
 {
-	t_parse p;
+	t_parse	p;
+	int code;
 
+	code = 0;
 	init_parse_struct(&p);
 	args[p.i] = ft_calloc(100, sizeof(char));
 	while (buffer[p.l])
 	{
-		if (buffer[p.l] == '\"' && p.lock != 2)//open first quote
+		if ((buffer[p.l] == '\"') && (p.lock_2 != 1) && (p.lock != 2))
 		{
 			p.lock++;
 			if (p.lock == 2)
 				p.lock = 0;
 		}
-		else if (buffer[p.l] == ' ' && p.lock != 1) // if no quotes or quotes are closed then takes word as next argv
+		else if ((buffer[p.l] == '\'') && (p.lock_2 != 2) && (p.lock != 1))
+		{
+			p.lock_2++;
+			if (p.lock_2 == 2)
+				p.lock_2 = 0;
+		}
+		else if ((buffer[p.l] == ' ') && (p.lock != 1 && p.lock_2 != 1))
 		{
 			p.i++;
 			p.j = 0;
 			args[p.i] = ft_calloc(100, sizeof(char));
-			while(buffer[p.l] && buffer[p.l + 1] == ' ')
+			while (buffer[p.l] && buffer[p.l + 1] == ' ')
 				p.l++;
 		}
-		else if (buffer[p.l] == ' ' && p.lock == 1) // if quotes are open take space for the same argv
+		else if ((buffer[p.l] == ' ') && (p.lock == 1 || p.lock_2 == 1))
+		{
 			args[p.i][p.j++] = buffer[p.l];
-		else // no quotes open
+			if (buffer[p.l] == '$' && p.lock_2 == 0)
+				code++;
+		}
+		else
+		{
 			args[p.i][p.j++] = buffer[p.l];
+			if (buffer[p.l] == '$' && p.lock_2 == 0)
+				code++;
+		}
 		p.l++;
 	}
+	return (code);
 }
 
-int	parse_buffer(char *buffer, t_command **prompt)
+int	parse_buffer(char *buffer, t_command **prompt, char **envp)
 {
-	char **args;
+	char	**args;
+	int		code;
 
+	code = 0;
 	args = ft_calloc(100, sizeof(char *));
 	if (!args)
-	{
-		free(args);
 		return (1);
-	}
 	if (find_char(buffer, '|'))
 	{
 		args = ft_split(buffer, '|');
@@ -78,7 +94,12 @@ int	parse_buffer(char *buffer, t_command **prompt)
 	}
 	else
 	{
-		split_buffer(args, buffer);
+		code = split_buffer(args, buffer);
+		if (find_char(buffer, '$'))
+		{
+			if (code > 0)
+				replace_dolar(args, envp);
+		}
 		get_commands(args, prompt);
 		free_args(args);
 	}

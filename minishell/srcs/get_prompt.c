@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   get_prompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 09:42:11 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/09/07 11:01:06 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:03:22 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-//printout the logo
+
 char	*parse_prompt(void)
 {
 	char	*parser;
 	char	*tmp;
 	char	current_dir[1024];
-	
+
 	parser = ft_strdup(BLACK_CLR);
 	tmp = ft_strdup(parser);
 	free(parser);
@@ -55,7 +55,7 @@ void	free_prompt(t_command **prompt)
 	int	i;
 
 	i = 0;
-	if((*prompt)->cmd)
+	if ((*prompt)->cmd)
 		free((*prompt)->cmd);
 	if ((*prompt)->argv)
 	{
@@ -83,7 +83,7 @@ int	get_prompt(char **envp)
 		add_history(buffer);
 		if (ft_strlen(buffer))
 		{
-			if (!parse_buffer(buffer, &prompt))
+			if (!parse_buffer(buffer, &prompt, envp))
 			{
 				print_struct(prompt);
 				exec_command(prompt, envp);

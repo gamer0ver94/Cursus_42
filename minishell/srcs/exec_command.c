@@ -1,20 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_command.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/07 15:18:48 by dpaulino          #+#    #+#             */
+/*   Updated: 2022/09/07 15:21:01 by dpaulino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
+
 char	*buildin_path(char *cmd)
 {
-	char *str;
-	char *tmp;
+	char	*str;
+	char	*tmp;
+
 	tmp = ft_strdup("builtin/");
-	str = ft_strjoin(tmp,cmd);
+	str = ft_strjoin(tmp, cmd);
 	free(tmp);
 	return (str);
 }
 
 char	*get_single_path(char *cmd, char *env_path)
 {
-	char *str;
-	char *tmp;
+	char	*str;
+	char	*tmp;
+
 	tmp = ft_strdup(env_path);
-	str = ft_strjoin(tmp,"/");
+	str = ft_strjoin(tmp, "/");
 	free(tmp);
 	tmp = ft_strjoin(str, cmd);
 	free(str);
@@ -23,26 +38,25 @@ char	*get_single_path(char *cmd, char *env_path)
 
 void    exec_command(t_command *prompt, char **envp)
 {
-	char 	*path;
+	char	*path;
 	char	**env_path;
-	pid_t 	pid;
+	pid_t	pid;
 	int		i;
 
-
 	i = 0;
-	env_path = ft_split(getenv("PATH"),':');
+	env_path = ft_split(getenv("PATH"), ':');
 	path = buildin_path(prompt->cmd);
-	if(!ft_strncmp(prompt->cmd, "cd", 2))
+	if (!ft_strncmp(prompt->cmd, "cd", 2))
 	{
 		cd_cmd(prompt, envp);
-		return;
+		return ;
 	}
-	if(!ft_strncmp(prompt->cmd, "exit", 4))
-		execve(path,prompt->argv, envp);
+	if (!ft_strncmp(prompt->cmd, "exit", 4))
+		execve(path, prompt->argv, envp);
 	pid = fork();
-	if(pid == 0)
+	if (pid == 0)
 	{
-		if(execve(path, prompt->argv, envp) == -1)
+		if (execve(path, prompt->argv, envp) == -1)
 		{
 			free(path);
 			while (env_path[i])

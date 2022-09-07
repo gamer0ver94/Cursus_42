@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 14:30:06 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/09/07 12:23:31 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:28:09 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,42 @@ void free_args(char **args)//2
 		i++;
 	}
 	free(args);
+}
+
+void replace_dolar(char **args, char **envp)
+{
+	int	i;
+	int	j;
+	int g;
+	int h;
+	char *tmp;
+
+	tmp = ft_calloc(50, sizeof(char));
+	g = 1;
+	(void)envp;
+	j = 0;
+	i = 0;
+	h = 0;
+	while (args[i])
+	{
+		while (args[i][j])
+		{
+			if (args[i][j] == '$')
+			{
+				while (args[i][j + g] && args[i][j + g] != ' ')
+				{
+					tmp[h] = args[i][j + g];
+					g++;
+					h++;
+				}
+				tmp[h] = '\0';
+				if (!ft_strncmp(tmp, "USER", ft_strlen(tmp)))
+					args[i] = ft_strdup("USER");
+				break ;
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
 }
