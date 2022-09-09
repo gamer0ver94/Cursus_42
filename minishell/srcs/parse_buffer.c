@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_buffer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:34:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/09/07 17:02:27 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/09/08 15:36:06 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int	parse_buffer(char *buffer, t_command **prompt, char **envp)
 {
 	char	**args;
 	int		code;
-
 	code = 0;
 	args = ft_calloc(100, sizeof(char *));
 	if (!args)
@@ -98,7 +97,7 @@ int	parse_buffer(char *buffer, t_command **prompt, char **envp)
 		if (find_char(buffer, '$'))
 		{
 			if (code > 0)
-				replace_dolar(args, envp);
+				replace_dolar(prompt, args, envp);
 		}
 		get_commands(args, prompt);
 		free_args(args);

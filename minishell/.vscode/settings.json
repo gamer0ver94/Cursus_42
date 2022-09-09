@@ -4,6 +4,7 @@
 		"readline.h": "c",
 		"stat.h": "c",
 		"minishell.h": "c",
-		"string": "c"
+		"string": "c",
+		"system_error": "c"
 	}
 }
