@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 11:49:25 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/09/29 21:58:26 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/13 10:03:22 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	philos_init(t_table *table, t_info *info)
 	while (i > 0)
 	{
 		tmp->philosopher = malloc(sizeof(t_philosopher));
+		tmp->timestamp = malloc(sizeof(long));
 		tmp->philosopher->n_diner = 0;
 		tmp->philosopher->philo_id = j;
 		tmp = tmp->right;
