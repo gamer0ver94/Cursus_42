@@ -6,27 +6,26 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 22:10:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/13 09:58:59 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/17 13:06:12 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-int	timestamp_init(t_timestamp *timestamp)
+long	get_time(void)
 {
 	struct timeval	current_time;
+	long			time;
 
 	gettimeofday(&current_time, NULL);
-	timestamp->initial_time = current_time.tv_sec;
-	timestamp->time = 0;
-	return (0);
+	time = (current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
+	return (time);
 }
 
-long	time_update(long initial_time)
+long	time_update(long starting_time)
 {
-	struct timeval	current_time;
-			
-	gettimeofday(&current_time, NULL);
-	initial_time = (current_time.tv_sec - initial_time) * 1000;
-	return (initial_time);
+	int	time;
+
+	time = get_time() - starting_time;
+	return (time);
 }

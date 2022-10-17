@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:07:59 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/13 10:06:06 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/17 14:00:47 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,37 +17,37 @@ void	*start(void *args)
 	t_table			*table;
 
 	table = (t_table *)(args);
-	eat(&table->left->philosopher->fork, &table->philosopher->fork, table);
+	eating_time(&table->left->philosopher->fork, &table->philosopher->fork, table, table->philosopher->info->starting_time);
 	return (NULL);
+}
+
+void	*controller(void *args)
+{
+	t_data	*data;
+	t_table	*tmp;
+	
+	data = (t_data *)(args);
+	data->info->starting_time = get_time();
+	threads_init(data);
+	tmp = data->table;
+	while (1)
+	{
+		if (time_update(data->info->starting_time) - tmp->philosopher->last_meal > data->info->time_to_die)
+		{
+			printf("death occured\n");
+			printf("philosopher %d died at %ld\n", tmp->philosopher->philo_id, time_update(data->info->starting_time));
+			exit(0);
+		}
+		tmp = tmp->right;
+	}
 }
 
 
 
-void	simulation(t_table *table, t_info *info)
+void	simulation(t_data *data)
 {
-	struct timeval	current_time;
-	long			initial_time;
-	long			updated_time;
-	int				i;
-	t_table			*tmp;
+	pthread_t	simulation;
 
-	i = info->n_philos;
-	gettimeofday(&current_time, NULL);
-	initial_time = current_time.tv_sec;
-	tmp = table;
-	mutex_init(table, info);
-	threads_init(table, info);
-	while (1)
-	{
-		while(i > 0)
-		{
-			updated_time = time_update(initial_time);
-			tmp->timestamp->time = updated_time;
-			sleep (1);
-			tmp = tmp->right;
-			i--;
-		}
-		i = info->n_philos;
-	}
-	// wait_threads(table, info);
+	pthread_create(&simulation, NULL, (void *)controller, (t_data *)(data));
+	pthread_join(simulation, NULL);
 }
