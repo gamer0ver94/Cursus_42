@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_stamp.c                                       :+:      :+:    :+:   */
+/*   print_message.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 22:10:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/22 03:18:06 by dpaulino         ###   ########.fr       */
+/*   Created: 2022/10/18 17:55:46 by dpaulino          #+#    #+#             */
+/*   Updated: 2022/10/18 21:31:34 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-long	get_time(void)
+void	print_message(long time, t_table *philo, char *message)
 {
-	struct timeval	current_time;
-
-	gettimeofday(&current_time, NULL);
-	return (current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
-}
-
-long	time_update(long starting_time)
-{
-	int	time;
-
-	time = get_time() - starting_time;
-	return (time);
+	printf("%ld ms <philo> %d %s\n", time, \
+	philo->philosopher->philo_id, message);
 }

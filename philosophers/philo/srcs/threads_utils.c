@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 21:59:06 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/17 13:16:18 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/22 12:02:13 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	mutex_init(t_table *table, t_info *info)
 	while (i > 0)
 	{
 		pthread_mutex_init(&tmp->philosopher->fork, NULL);
+		pthread_mutex_init(&tmp->philosopher->eating, NULL);
+		pthread_mutex_init(&tmp->philosopher->all_ate, NULL);
 		tmp = tmp->right;
 		i--;
 	}
@@ -51,6 +53,7 @@ int	threads_init(t_data *data)
 
 	tmp = data->table;
 	i = data->info->n_philos;
+	data->info->starting_time = get_time();
 	while (i > 0)
 	{
 		tmp->philosopher->info->starting_time = data->info->starting_time;
@@ -59,6 +62,7 @@ int	threads_init(t_data *data)
 			printf("error\n");
 		if(pthread_detach(tmp->philosopher->thread_id) != 0)
 			printf("error detaching\n");
+		tmp->philosopher->last_meal = time_update(data->info->starting_time);
 		tmp = tmp->right;
 		i--;
 	}

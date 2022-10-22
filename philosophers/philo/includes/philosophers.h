@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 00:44:19 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/17 13:06:49 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:16:18 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,14 @@ void		simulation(t_data *data);
 void		*start(void *args);
 int			threads_init(t_data *data);
 int			mutex_init(t_table *table, t_info *info);
-int	wait_threads(t_data *data);
-long	get_time(void);
-long	time_update(long starting_time);
-void eating_time(pthread_mutex_t *fork1, pthread_mutex_t *fork2, t_table *philo, long time);
-void    sleeping_time(t_table *philo, long time);
-void    thinking_time(t_table *philo, long time);
+int			wait_threads(t_data *data);
+long		get_time(void);
+long		time_update(long starting_time);
+void		eating_time(pthread_mutex_t *fork1, pthread_mutex_t *fork2, \
+t_table *philo, long time);
+void		sleeping_time(pthread_mutex_t *fork1, pthread_mutex_t *fork2, \
+t_table *philo, long time);
+void		thinking_time(pthread_mutex_t *fork1, pthread_mutex_t *fork2, \
+t_table *philo, long time);
+void	print_message(long time, t_table *philo, char *message);
 #endif
