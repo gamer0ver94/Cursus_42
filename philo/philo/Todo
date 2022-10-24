@@ -1,0 +1,5 @@
+Create a structer to simulate the table;
+The table have a X number of philo.
+Each philo has at his right his fork.
+
+Create a thread for each filo and protect the fork so he is not multiple
