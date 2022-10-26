@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 00:44:19 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/24 11:26:08 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/26 11:18:12 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ void		sleeping_time(t_table *philo, long time, \
 t_data *data);
 void		thinking_time(t_table *philo, long time, \
 t_data *data);
-void		print_message(long time, t_table *philo, char *message);
+void		print_message(long time, t_table *philo, char *message, t_data *data);
+void		free_data(t_data *data);
 #endif

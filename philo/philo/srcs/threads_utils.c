@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 21:59:06 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/24 11:53:39 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/26 11:19:14 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	mutex_init(t_table *table, t_info *info)
 	while (i > 0)
 	{
 		pthread_mutex_init(&tmp->philosopher->fork, NULL);
+		pthread_mutex_init(&tmp->philosopher->is_eating2, NULL);
 		tmp = tmp->right;
 		i--;
 	}
