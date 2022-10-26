@@ -3,30 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   threads_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 21:59:06 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/26 11:19:14 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:28:18 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-int	mutex_init(t_table *table, t_info *info)
+int	mutex_init(t_table *table)
 {
 	t_table	*tmp;
-	int		i;
 
 	tmp = table;
-	i = info->n_philos;
-	while (i > 0)
-	{
-		pthread_mutex_init(&tmp->philosopher->fork, NULL);
-		pthread_mutex_init(&tmp->philosopher->is_eating2, NULL);
-		tmp = tmp->right;
-		i--;
-	}
-	return (0);
+	tmp->philosopher->fork = malloc(sizeof(pthread_mutex_t));
+	if (!pthread_mutex_init(tmp->philosopher->fork, NULL))
+		return (0);
+	printf("error initializing mutex\n");
+	return (1);
 }
 
 int	threads_init(t_data *data)

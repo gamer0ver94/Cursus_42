@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 00:08:20 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/26 11:18:40 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:24:06 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ typedef struct s_philosopher
 {
 	pthread_t			thread_id;
 	int					philo_id;
-	pthread_mutex_t		fork;
-	pthread_mutex_t		is_eating2;
+	pthread_mutex_t		*fork;
 	int					n_diner;
 	long				last_meal;
 	int					is_eating;

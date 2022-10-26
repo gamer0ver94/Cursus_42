@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 00:44:19 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/26 11:18:12 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:27:39 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int			philos_init(t_data *data, t_table *table, t_info *info);
 void		simulation(t_data *data);
 void		*start(void *args);
 int			threads_init(t_data *data);
-int			mutex_init(t_table *table, t_info *info);
+int			mutex_init(t_table *table);
 int			wait_threads(t_data *data);
 long		get_time(void);
 long		time_update(long starting_time);
