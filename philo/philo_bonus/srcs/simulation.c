@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simulation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:07:59 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/27 14:37:23 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/28 12:39:27 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,16 @@ void	*start(void *args)
 	return (NULL);
 }
 
-t_table	*controller(void *args)
+int	*controller(void *args)
 {
 	t_data	*data;
 	t_table	*tmp;
 
 	data = (t_data *)(args);
 	data->is_dead = FALSE;
-	semaphore_init(data);
-	processes_init(data);
+
 	tmp = data->table;
-	usleep(1000);
-	while (!is_dead(tmp, data))
+	while (1)
 	{
 		sem_wait(data->output);
 		if (data->info->eat_time_rules == TRUE && \
@@ -45,24 +43,18 @@ t_table	*controller(void *args)
 		{
 			printf("%ld %d ate all\n", tmp->philosopher->finish_eat_time, \
 			tmp->philosopher->philo_id);
-			return ((void *)tmp);
+			return (0);
 		}
-		sem_post(data->output);
-		tmp = tmp->right;
+		return (0);
 	}
 	printf("%ld %d died\n", tmp->philosopher->death_time, \
 	tmp->philosopher->philo_id);
-	return ((void *)tmp);
+	return (0);
 }
 
 void	simulation(t_data *data)
 {
-	pthread_t	simulation;
-	t_table		*status;
-
-	pthread_create(&simulation, NULL, (void *)controller, (t_data *)(data));
-	pthread_join(simulation, (void *)&status);
-	sem_destroy(data->fork);
-	sem_destroy(data->output);
-	sem_destroy(data->s_status);
+	semaphore_init(data);
+	processes_init(data);
+	while (1);
 }

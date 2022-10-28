@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 00:44:19 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/27 14:16:29 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/28 12:30:24 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ void		print_message(long time, t_table *philo, char *message, \
 void		free_data(t_data *data);
 int			is_dead(t_table *philo, t_data *data);
 int			semaphore_init(t_data *data);
+int		*controller(void *args);
 #endif
