@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 00:44:19 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/27 11:02:50 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/27 14:16:29 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include "struct.h"
 # include <sys/time.h>
+# include <semaphore.h>
 # include <pthread.h>
 # include <unistd.h>
 # define TRUE 1
@@ -27,7 +28,7 @@ int			create_enviroment(t_table *table, t_info *info);
 int			philos_init(t_data *data, t_table *table, t_info *info);
 void		simulation(t_data *data);
 void		*start(void *args);
-int			threads_init(t_data *data);
+int			processes_init(t_data *data);
 int			mutex_init(t_table *table);
 int			wait_threads(t_data *data);
 long		get_time(void);
@@ -38,7 +39,9 @@ void		sleeping_time(t_table *philo, long time, \
 t_data *data);
 void		thinking_time(t_table *philo, long time, \
 t_data *data);
-void		print_message(long time, t_table *philo, char *message, t_data *data);
+void		print_message(long time, t_table *philo, char *message, \
+ t_data *data);
 void		free_data(t_data *data);
-int	is_dead(t_table *philo, t_data *data);
+int			is_dead(t_table *philo, t_data *data);
+int			semaphore_init(t_data *data);
 #endif

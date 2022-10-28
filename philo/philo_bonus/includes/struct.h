@@ -6,13 +6,13 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 00:08:20 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/27 11:29:46 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/27 14:15:09 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
-# include <pthread.h>
+# include <semaphore.h>
 
 typedef struct s_info
 {
@@ -27,9 +27,8 @@ typedef struct s_info
 
 typedef struct s_philosopher
 {
-	pthread_t			thread_id;
+	pid_t				process_id;
 	int					philo_id;
-	pthread_mutex_t		*fork;
 	int					n_diner;
 	long				last_meal;
 	int					is_eating;
@@ -49,8 +48,9 @@ typedef struct s_data
 {
 	struct s_table			*table;
 	struct s_info			*info;
-	pthread_mutex_t			*s_status;
-	pthread_mutex_t			*output;
+	sem_t					*output;
+	sem_t					*fork;
+	sem_t					*s_status;
 	int						is_dead;
 }	t_data;
 

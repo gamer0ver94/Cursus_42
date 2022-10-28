@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 00:22:11 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/27 12:41:33 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/27 14:33:44 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ int	main(int argc, char **argv)
 	if (check_invalid_args(argc, argv) == -1)
 		return (-1);
 	data = malloc(sizeof(t_data));
-	data->table = malloc(sizeof(t_table));
 	data->info = malloc(sizeof(t_info));
+	data->table = malloc(sizeof(t_table));
 	info_init(data->info, argv);
 	create_enviroment(data->table, data->info);
 	philos_init(data, data->table, data->info);
 	simulation(data);
-	free_data(data);
+	// free_data(data);
 	return (0);
 }
