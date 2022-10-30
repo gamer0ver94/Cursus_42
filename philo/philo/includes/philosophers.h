@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 00:44:19 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/27 11:02:50 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/30 13:40:54 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,15 @@ int			mutex_init(t_table *table);
 int			wait_threads(t_data *data);
 long		get_time(void);
 long		time_update(long starting_time);
-void		eating_time(t_table *philo, long time, \
-t_data *data);
+void		routine(t_table *philo, long time, t_data *data);
 void		sleeping_time(t_table *philo, long time, \
 t_data *data);
 void		thinking_time(t_table *philo, long time, \
 t_data *data);
-void		print_message(long time, t_table *philo, char *message, t_data *data);
+void		print_message(long time, t_table *philo, \
+char *message, t_data *data);
 void		free_data(t_data *data);
-int	is_dead(t_table *philo, t_data *data);
+int			is_dead(t_table *philo, t_data *data);
+int			take_forks(t_table *table, t_data *data);
+int			eat(t_table *table, t_data *data);
 #endif

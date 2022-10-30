@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 00:08:20 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/27 11:29:46 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/29 01:21:11 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct s_data
 	pthread_mutex_t			*s_status;
 	pthread_mutex_t			*output;
 	int						is_dead;
+	int						n_ate_all;
+	long						death_time;
 }	t_data;
 
 #endif
