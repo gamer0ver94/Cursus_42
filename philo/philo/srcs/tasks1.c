@@ -6,13 +6,13 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:15:25 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/30 17:27:10 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/30 19:12:08 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-int	take_forks(t_table *table ,t_data *data)
+int	take_forks(t_table *table, t_data *data)
 {
 	t_philosopher	*philo;
 	long			time;
@@ -28,7 +28,7 @@ int	take_forks(t_table *table ,t_data *data)
 	return (0);
 }
 
-int	realease_forks(t_table *table ,t_data *data)
+int	realease_forks(t_table *table, t_data *data)
 {
 	t_philosopher	*philo;
 

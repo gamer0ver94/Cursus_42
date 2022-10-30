@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:07:59 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/30 17:24:24 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/30 19:34:38 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,15 @@ int	*controller(void *args)
 	while (!data->is_dead)
 	{
 		if (is_dead(table, data))
+		{
+			printf("%ld %d died\n", data->death_time, \
+			data->is_dead);
 			break ;
+		}
 		else if (data->info->eat_time_rules == TRUE && data->n_ate_all == 0)
 			break ;
 		table = table->right;
 	}
-	printf("%ld %d died\n", data->death_time, \
-		data->is_dead);
 	return (0);
 }
 

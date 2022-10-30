@@ -11,8 +11,7 @@ APPNAME = philo
 EXT = .c
 SRCDIR = srcs/
 OBJDIR = objs/
-SANITIZER = -g3 
-# -fsanitize=address
+SANITIZER = -g3 -fsanitize=address
 SRC = $(wildcard $(SRCDIR)/*$(EXT))
 OBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
 RM = rm
