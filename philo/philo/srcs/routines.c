@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:49:16 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/31 14:48:05 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/31 17:41:58 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,18 @@ void	thinking_time(t_table *philo, long time, t_data *data)
 {
 	print_message(time_update(time), philo, "is thinking", data);
 	routine(philo, time, data);
+}
+
+void	ft_sleep(long ms)
+{
+	long	time;
+	
+	time = get_time();
+	usleep(ms * 1000 * 0.95);
+	while(1)
+	{
+		if (get_time() >= time + ms)
+			break ;
+		usleep(10);	
+	}
 }
