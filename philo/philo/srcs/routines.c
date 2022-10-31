@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   routines.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:49:16 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/31 17:41:58 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/31 23:56:07 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
+
+void	ft_sleep(long ms)
+{
+	long	time;
+
+	time = get_time();
+	usleep(ms * 1000 * 0.95);
+	while (1)
+	{
+		if (get_time() >= time + ms)
+			break ;
+		usleep(10);
+	}
+}
 
 int	is_dead(t_table *philo, t_data *data)
 {
@@ -40,7 +54,7 @@ void	routine(t_table *philo, long time, t_data *data)
 void	sleeping_time(t_table *philo, long time, t_data *data)
 {
 	print_message(time_update(time), philo, "is sleeping", data);
-	usleep(philo->philosopher->info->time_to_sleep * 1000);
+	ft_sleep(philo->philosopher->info->time_to_sleep);
 	thinking_time(philo, time, data);
 }
 
@@ -50,16 +64,3 @@ void	thinking_time(t_table *philo, long time, t_data *data)
 	routine(philo, time, data);
 }
 
-void	ft_sleep(long ms)
-{
-	long	time;
-	
-	time = get_time();
-	usleep(ms * 1000 * 0.95);
-	while(1)
-	{
-		if (get_time() >= time + ms)
-			break ;
-		usleep(10);	
-	}
-}

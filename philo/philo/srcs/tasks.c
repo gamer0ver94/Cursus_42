@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tasks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:15:25 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/31 14:54:57 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/31 23:40:51 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	eat(t_table *table, t_data *data)
 	print_message(time_update(philo->info->starting_time), \
 	table, "is eating", data);
 	philo->last_meal = time_update(data->info->starting_time);
-	usleep(philo->info->time_to_eat * 1000);
+	ft_sleep(philo->info->time_to_eat);
 	philo->n_diner--;
 	if (philo->info->eat_time_rules == TRUE \
 		&& philo->n_diner == 0)

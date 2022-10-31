@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 00:44:19 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/30 13:40:54 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/31 23:39:22 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,5 @@ void		free_data(t_data *data);
 int			is_dead(t_table *philo, t_data *data);
 int			take_forks(t_table *table, t_data *data);
 int			eat(t_table *table, t_data *data);
+void	ft_sleep(long ms);
 #endif

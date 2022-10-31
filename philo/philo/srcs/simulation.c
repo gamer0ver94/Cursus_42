@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simulation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:07:59 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/31 14:48:10 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/01 00:06:41 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	simulation(t_data *data)
 	pthread_mutex_init(data->output, NULL);
 	pthread_create(&simulation, NULL, (void *)controller, (t_data *)(data));
 	pthread_join(simulation, NULL);
-	pthread_mutex_unlock(data->output);
 	pthread_mutex_destroy(data->output);
 	pthread_mutex_destroy(data->s_status);
 }
