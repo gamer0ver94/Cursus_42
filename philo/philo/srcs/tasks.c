@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:15:25 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/31 14:47:45 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/31 14:54:57 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	eat(t_table *table, t_data *data)
 	t_philosopher	*philo;
 
 	philo = table->philosopher;
-
 	take_forks(table, data);
 	print_message(time_update(philo->info->starting_time), \
 	table, "is eating", data);
