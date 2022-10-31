@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tasks1.c                                           :+:      :+:    :+:   */
+/*   tasks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:15:25 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/30 19:12:08 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/31 14:47:45 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	take_forks(t_table *table, t_data *data)
 	if (pthread_mutex_lock(philo->fork) == 0 && \
 	pthread_mutex_lock(table->right->philosopher->fork) == 0)
 	{
-		print_message(time_update(time), table, "has taken a fork  🍴", data);
-		print_message(time_update(time), table, "has taken a fork  🍴", data);
+		print_message(time_update(time), table, "has taken a fork", data);
+		print_message(time_update(time), table, "has taken a fork", data);
 	}
 	return (0);
 }
@@ -47,7 +47,7 @@ int	eat(t_table *table, t_data *data)
 
 	take_forks(table, data);
 	print_message(time_update(philo->info->starting_time), \
-	table, "is eating 🍴", data);
+	table, "is eating", data);
 	philo->last_meal = time_update(data->info->starting_time);
 	usleep(philo->info->time_to_eat * 1000);
 	philo->n_diner--;

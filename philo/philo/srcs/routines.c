@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routines.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:49:16 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/30 17:19:36 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/10/31 14:48:05 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ void	routine(t_table *philo, long time, t_data *data)
 
 void	sleeping_time(t_table *philo, long time, t_data *data)
 {
-	print_message(time_update(time), philo, "is sleeping  😴", data);
+	print_message(time_update(time), philo, "is sleeping", data);
 	usleep(philo->philosopher->info->time_to_sleep * 1000);
 	thinking_time(philo, time, data);
 }
 
 void	thinking_time(t_table *philo, long time, t_data *data)
 {
-	print_message(time_update(time), philo, "is thinking  🤔", data);
+	print_message(time_update(time), philo, "is thinking", data);
 	routine(philo, time, data);
 }
