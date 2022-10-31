@@ -1,34 +1,35 @@
-########################################################################
-####################### Makefile Template ##############################
-########################################################################
+NAME			=	philo
 
-# Compiler settings - Can be customized.
-CC = gcc
-CXXFLAGS = -Wall -Werror -Wextra -g -pthread
-LDFLAGS = 
+SRCS			=	srcs/create_enviroment.c \
+					srcs/free_data.c \
+					srcs/info_init.c \
+					srcs/main.c \
+					srcs/philos_init.c \
+					srcs/print_message.c \
+					srcs/routines.c \
+					srcs/simulation.c \
+					srcs/tasks.c \
+					srcs/threads_utils.c \
+					srcs/time_stamp.c \
+					srcs/utils.c \
 
-APPNAME = philo
-EXT = .c
-SRCDIR = srcs/
-OBJDIR = objs/
-SANITIZER = -g3 -fsanitize=address
-SRC = $(wildcard $(SRCDIR)/*$(EXT))
-OBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
-RM = rm
-DELOBJ = $(OBJ)
+OBJS			=	${SRCS:.c=.o}
 
-all: $(APPNAME)
+CC				=	gcc -g
 
-$(APPNAME): $(OBJ)
-	$(CC) $(CXXFLAGS) -o $@ $^ $(LDFLAGS) $(SANITIZER)
+CFLAGS			=	-Wall -Werror -Wextra
 
-$(OBJDIR)/%.o: $(SRCDIR)/%$(EXT)
-	$(CC) $(CXXFLAGS) -o $@ -c $<
+$(NAME)			:	${OBJS}
+					${CC} ${CFLAGS} ${LD_FLAGS} ${OBJS} -o ${NAME}
 
-.PHONY: clean
-clean:
-	$(RM) $(DELOBJ) $(APPNAME)
+all				:	${NAME}
 
-fclean:	clean
+clean			:
+					rm -rf ${OBJS}
 
-re: fclean all
+fclean			:	clean
+					rm -rf ${NAME}
+
+re				:	fclean all
+
+.PHONY			:	all clean fclean re
