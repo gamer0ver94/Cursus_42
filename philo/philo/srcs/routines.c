@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   routines.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:49:16 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/10/31 23:56:07 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/03 10:44:34 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-void	ft_sleep(long ms)
+void	ft_sleep(long milisec)
 {
 	long	time;
 
 	time = get_time();
-	usleep(ms * 1000 * 0.95);
+	usleep(milisec * 1000 * 0.95);
 	while (1)
 	{
-		if (get_time() >= time + ms)
+		if (get_time() >= time + milisec)
 			break ;
 		usleep(10);
 	}
@@ -63,4 +63,3 @@ void	thinking_time(t_table *philo, long time, t_data *data)
 	print_message(time_update(time), philo, "is thinking", data);
 	routine(philo, time, data);
 }
-

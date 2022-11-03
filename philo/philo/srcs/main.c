@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 00:22:11 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/01 00:07:43 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/03 10:42:30 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	check_invalid_args(int argc, char **argv)
 		printf("Invalid arguments\n");
 		return (-1);
 	}
-	else if (argc > 5)
+	else if (argc > 6)
 	{
 		printf("Too many arguments\n");
 		return (-1);
