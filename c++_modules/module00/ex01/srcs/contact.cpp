@@ -1,30 +1,36 @@
 #include "../includes/contact.hpp"
-
-Contact::Contact()
-{
-
+#include "../includes/colors.hpp"
+Contact::Contact(){
 }
 
-Contact::Contact(std::string firstName, 	std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret)
-{
+Contact::Contact(std::string firstName, 	std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret){
 	this->firstName = firstName;
 	this->lastName = lastName;
 	this->nickName = nickName;
 	this->phoneNumber = phoneNumber;
 	this->darkestSecret = darkestSecret;
-	std::cout << "Contact created..." << std::endl;
+	std::cout << GREEN << "Contact created..." << WHITE << std::endl;
 }
-Contact::~Contact()
-{
-	std::cout << "Contact destroyed..." << std::endl;
+Contact::~Contact(){
+
 }
 
-void	getContactValues()
-{
-	this.first
-	// std::cout << "first name" << firstName << std::endl;
-	// std::cout << "last name" << lastName << std::endl;
-	// std::cout << "nick name" << nickName << std::endl;
-	// std::cout << "phone number" << phoneNumber << std::endl;
-	// std::cout << "secret" << darkestSecret<< std::endl;
+std::string Contact::getFirstName(){
+	return (firstName);
+}
+
+std::string Contact::getLastName(){
+	return (lastName);
+}
+
+std::string Contact::getNickName(){
+	return (nickName);
+}
+
+std::string Contact::getPhoneNumber(){
+	return (phoneNumber);
+}
+
+std::string Contact::getDarkestSecret(){
+	return (darkestSecret);
 }

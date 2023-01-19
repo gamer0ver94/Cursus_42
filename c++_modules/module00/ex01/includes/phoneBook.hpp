@@ -5,8 +5,9 @@ class	PhoneBook
 {
 	private:
 		Contact contact[8];
+		int		index;
 	public:
 		PhoneBook();
 		void addContact(Contact contact);
-		void getContactValues(Contact contact);
+		Contact getContactValues(int indexValue);
 };
