@@ -1,10 +1,10 @@
-NAME = PhoneBook
+NAME = BraiiiiiiinnnzzzZ
 
 CC = g++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = srcs/main.cpp srcs/Contact.cpp srcs/PhoneBook.cpp
+SRC = srcs/main.cpp srcs/Zombie.cpp srcs/newZombie.cpp srcs/randomChump.cpp
 
 OBJS = $(SRC:.c=.o)
 

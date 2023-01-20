@@ -1,4 +1,4 @@
-#include "../includes/contact.hpp"
+#include "../includes/Contact.hpp"
 #include "../includes/colors.hpp"
 Contact::Contact(){
 }
