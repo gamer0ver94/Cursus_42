@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstdio>
 #define WHITE "\033[0;37m"
 #define BLUE "\033[0;34m"
 #define GREEN "\033[0;32m"
@@ -14,7 +15,9 @@ int main(int argc ,char **argv){
     std::string line;
 	std::size_t found;
 	std::string fileToBeCreated;
+
 	int i = 0;
+
 	found = 0;
     if (argc < 4){
         std::cout << RED << "Not enought args to run the program ..." << WHITE << std::endl;
@@ -26,6 +29,7 @@ int main(int argc ,char **argv){
     inFile.open(argv[1]);
 	outFile.open(fileToBeCreated);
     if (!inFile.good()){
+		std::remove(fileToBeCreated.c_str());
         std::cout << RED << "File does not exist ..." << std::endl;
 		inFile.close();
 		outFile.close();
@@ -44,9 +48,7 @@ int main(int argc ,char **argv){
 		}
 		outFile << line << std::endl;
 	}
-	if (i > 0){
-		std::cout << CYAN << i << " word(s)replaced by " << argv[3] << WHITE << std::endl;
-	}
+	std::cout << CYAN << i << " word(s)replaced by [" << argv[3] << "]"<< WHITE << std::endl;
     inFile.close();
 	outFile.close();
 	std::cout << GREEN << "File closed with success" << WHITE << std::endl;
