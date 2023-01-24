@@ -14,15 +14,15 @@ void	addContact(PhoneBook *phoneBook)
 	system("clear");
 	std::cout << BLUE << "[ADD]" << WHITE << std::endl;
 	std::cout << YELLOW << "Please Enter Your First Name :" << WHITE << std::endl;
-	std::cin >> firstName;
+	std::getline(std::cin, firstName);
 	std::cout << YELLOW << "Please Enter Your Last Name :" << WHITE  << std::endl;
-	std::cin >> lastName;
+	std::getline(std::cin, lastName);
 	std::cout << YELLOW << "Please Enter Your Nickname :" << WHITE  << std::endl;
-	std::cin >> nickName;
+	std::getline(std::cin, nickName);
 	std::cout << YELLOW << "Please Enter Your Phone Number :" << WHITE  << std::endl;
-	std::cin >> phoneNumber;
+	std::getline(std::cin, phoneNumber);
 	std::cout << YELLOW << "Please Enter Your Darkest Secret :" << WHITE  << std::endl;
-	std::cin >> darkestSecret;
+	std::getline(std::cin, darkestSecret);
 	system("clear");
 	Contact contact(firstName, lastName, nickName, phoneNumber, darkestSecret);
 	phoneBook->addContact(contact);
@@ -78,7 +78,7 @@ void searchContact(PhoneBook *phoneBook){
 	end = NULL;
 	std::cout << "Please enter the contact index or type '0' to return:" << std::endl;
 	while (!strtod(index.c_str(), &end) || strtod(index.c_str(), &end) > 8){
-		std::cin >> index;
+		std::getline(std::cin, index);
 		if (!strtod(index.c_str(), &end)){
 			system("clear");
 			return;
@@ -116,13 +116,17 @@ int main(void)
 	while(option != "EXIT"){
 		std::cout << "Please enter one of the following options :" << std::endl;
 		std::cout << "\033[0;34m" << "[ADD] [SEARCH] [EXIT]" << "\033[0;37m" << std::endl;
-		std::cin >> option;
+		std::getline(std::cin, option);
 		if (option == "ADD"){
 			addContact(&phoneBook);
 		}
 		else if (option == "SEARCH"){
 			displayContacts(phoneBook);
 			searchContact(&phoneBook);
+		}
+		else if (option != "EXIT"){
+			system("clear");
+			std::cout << RED << "Invalid option ..." << WHITE << std::endl;
 		}
 	}
 	return (0);
