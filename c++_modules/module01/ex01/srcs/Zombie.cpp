@@ -2,25 +2,25 @@
 
 Zombie::Zombie(){
     this->name = "unknown";
-    std::cout << "Sir.. a Zombie with " << this->name << " name was created!" << std::endl;
+    std::cout << GREEN << "Sir.. a Zombie with " << this->name << " name was created!" << WHITE << std::endl;
 }
 
 Zombie::Zombie(std::string name){
    this->name = name;
-    std::cout << "Sir.. a Zombie named " << this->name << " was created!" << std::endl;
+    std::cout << BLUE << "Sir.. a Zombie named " << this->name << " was created!" << WHITE << std::endl;
 }
 
 Zombie::~Zombie()
 {
-    std::cout << "Sir.. i've destroyed this Zombie named " << this->name << "!" << std::endl;
+    std::cout << RED << "Sir.. i've destroyed this Zombie named " << this->name << "!" << WHITE << std::endl;
 }
 
 void Zombie::announce(void)
 {
-    std::cout << this->name << ":" << "  BraiiiiiiinnnzzzZ..." << std::endl;
+    std::cout << YELLOW << this->name << ":" << "  BraiiiiiiinnnzzzZ..." << WHITE << std::endl;
 }
 
 void Zombie::setName(std::string name){
     this->name = name;
-    std::cout << "Sir.. a Zombie just named himself " << this->name << "!" << std::endl;
+    std::cout << CYAN << "Sir.. a Zombie just named himself " << this->name << "!" << WHITE << std::endl;
 }

@@ -8,6 +8,9 @@ int main(void)
 
     n = 9;
     zombies = zombieHorde(n, "Ronaldo");
+	for(int i = 0; i < n; i++){
+		zombies[i].announce();
+	}
     delete[] zombies;
     return (0);
 }

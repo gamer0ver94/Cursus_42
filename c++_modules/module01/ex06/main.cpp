@@ -9,6 +9,7 @@ int main(int argc, char **argv){
 
     if (argc != 2){
         std::cout << "Please Enter one argument ..." << std::endl;
+		return (-1);
     }
     while (argv[1] != level[i] && i < 4)
         i++;
