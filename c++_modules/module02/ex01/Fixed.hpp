@@ -1,6 +1,7 @@
 #pragma once
 #ifndef FIXED_HPP
 #define FIXED_HPP
+#include <iostream>
 
 class Fixed{
 	private:
@@ -10,9 +11,8 @@ class Fixed{
 		Fixed();
 		Fixed(const int value);
 		Fixed(const float fixedPointValue);
-		Fixed();
 		Fixed(const Fixed& copy);
-		Fixed& operator=(Fixed &copy);
+		Fixed& operator=(const Fixed &copy);
 		~Fixed();
 
 		int getRawBits(void);
@@ -20,5 +20,5 @@ class Fixed{
 		float toFloat(void)const;
 		int toInt(void)const;
 };
-
+std::ostream& operator<<(std::ostream & output, Fixed const & object);
 #endif
