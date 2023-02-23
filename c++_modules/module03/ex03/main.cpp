@@ -1,11 +1,13 @@
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 #include <cstdlib>
 #include <unistd.h>
 #include <ctime>
 
 int main(void){
-	ClapTrap player1("Jacob");
-	ClapTrap player2("Phantom");
+	FragTrap player1("Jacob");
+	FragTrap player2("Phantom");
 	unsigned int random;
 	unsigned int round;
 	int			energyState[2];
@@ -17,9 +19,9 @@ int main(void){
 	std::cout << "LOADING..." << std::endl;
 	sleep(3);
 	while (player1.getHitPoints() > 0 && player2.getHitPoints() > 0){
-		random = std::rand() % 5;
+		random = std::rand() % 7;
 		system("clear");
-		std::cout << "Round " << round << std::endl;
+		std::cout << BLUE << "Round " << round << WHITE << std::endl;
 		round++;
 		switch(random){
 			case 0 :
@@ -51,10 +53,14 @@ int main(void){
 			case 5 :
 				player2.beRepaired(std::rand() % 10);
 				break;
+			case 6 : player1.highFiveGuys();
+				break;
+			case 7 : player2.highFiveGuys();
+
 		}
 		std::cout << "________________________________" << std::endl;
-		std::cout << "|  " << player1.getName() << " has " << player1.getHitPoints() << std::endl;
-		std::cout << "|  " << player2.getName() << " has " << player2.getHitPoints() << std::endl;
+		std::cout << "|  " << player1.getName() << " has " << CYAN << player1.getHitPoints() << WHITE << " hits points!" << std::endl;
+		std::cout << "|  " << player2.getName() << " has " << PURPLE << player2.getHitPoints() << WHITE << " hits points!" << std::endl;
 		sleep(2);
 	}
 	return 0;

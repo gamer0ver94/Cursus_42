@@ -63,30 +63,29 @@ bool Fixed::operator!=(const Fixed &other){
 }
 
 //Copy + operator overloading
-Fixed& Fixed::operator+(const Fixed& other){
+Fixed Fixed::operator+(const Fixed& other){
 	this->fixedPointValue += other.fixedPointValue;
 	return *this;
 }
 
 //Copy - operator overloading
-Fixed& Fixed::operator-(const Fixed& other){
+Fixed Fixed::operator-(const Fixed& other){
 	this->fixedPointValue -= other.fixedPointValue;
 	return *this;
 }
 
 //Copy * operator overloading
-Fixed& Fixed::operator*(const Fixed& other){
-	this->fixedPointValue *= other.fixedPointValue;
-	return *this;
+Fixed Fixed::operator*(const Fixed& other){
+	return Fixed(this->toFloat() * other.toFloat());
 }
 
 //Copy / operator overloading
-Fixed& Fixed::operator/(const Fixed& other){
+Fixed Fixed::operator/(const Fixed& other){
 	this->fixedPointValue /= other.fixedPointValue;
 	return *this;
 }
 
-Fixed& Fixed::operator++(void){
+Fixed Fixed::operator++(void){
 	this->fixedPointValue++;
 	return *this;
 }
@@ -99,7 +98,7 @@ Fixed Fixed::operator++(int){
 	return tmp;
 }
 
-Fixed& Fixed::operator--(void){
+Fixed Fixed::operator--(void){
 	this->fixedPointValue--;
 	return *this;
 }

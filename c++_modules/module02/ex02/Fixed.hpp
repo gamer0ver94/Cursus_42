@@ -20,13 +20,13 @@ class Fixed{
 		bool operator>=(const Fixed &copy);
 		bool operator==(const Fixed &copy);
 		bool operator!=(const Fixed &copy);
-		Fixed& operator+(const Fixed &copy);
-		Fixed& operator-(const Fixed &copy);
-		Fixed& operator*(const Fixed &copy);
-		Fixed& operator/(const Fixed &copy);
-		Fixed& operator++(void);
+		Fixed operator+(const Fixed &copy);
+		Fixed operator-(const Fixed &copy);
+		Fixed operator*(const Fixed &copy);
+		Fixed operator/(const Fixed &copy);
+		Fixed operator++(void);
 		Fixed operator++(int);
-		Fixed& operator--(void);
+		Fixed operator--(void);
 		Fixed operator--(int);
 
 		static Fixed& min(Fixed& first, Fixed& second);
