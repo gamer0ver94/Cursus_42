@@ -2,6 +2,9 @@
 
 FragTrap::FragTrap() : ClapTrap(){
     std::cout << GREEN << "Caracter " << this->getName() << " was created! (FragTrap default contructor)" << WHITE << std::endl;
+	this->setAttackDamage(30);
+    this->setEnergyPoints(100);
+    this->setHitPoints(100);
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name){

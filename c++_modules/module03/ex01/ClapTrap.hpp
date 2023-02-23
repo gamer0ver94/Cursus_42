@@ -37,6 +37,7 @@ class ClapTrap{
 		void setAttackDamage(unsigned int attackDamage);
 		void setHitPoints(unsigned int hitPoints);
 		void setEnergyPoints(unsigned int energyPoints);
+		void setName(std::string name);
 };
 
 #endif

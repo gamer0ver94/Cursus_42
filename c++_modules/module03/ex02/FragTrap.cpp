@@ -1,6 +1,10 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap() : ClapTrap(){
+FragTrap::FragTrap(){
+	this->setName("FragTrap");
+	this->setAttackDamage(30);
+    this->setEnergyPoints(100);
+    this->setHitPoints(100);
     std::cout << GREEN << "Caracter " << this->getName() << " was created! (FragTrap default contructor)" << WHITE << std::endl;
 }
 

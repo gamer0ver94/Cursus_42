@@ -12,7 +12,7 @@
 #define WHITE "\033[0;37m"
 
 class ClapTrap{
-	private:
+	public:
 		std::string name;
 		int hitPoints;
 		int energyPoints;
@@ -37,6 +37,7 @@ class ClapTrap{
 		void setAttackDamage(unsigned int attackDamage);
 		void setHitPoints(unsigned int hitPoints);
 		void setEnergyPoints(unsigned int energyPoints);
+		void setName(std::string name);
 };
 
 #endif

@@ -1,10 +1,10 @@
-NAME = DiamongTrap
+NAME = Polymorphism
 
 CC = g++
 
-CFLAGS = -Wall -Wextra -Werror -Wshadow -Wno-shadow -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp
 
 OBJS = $(SRC:.c=.o)
 

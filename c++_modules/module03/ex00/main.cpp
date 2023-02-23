@@ -4,12 +4,13 @@
 #include <ctime>
 
 int main(void){
-	ClapTrap player1("Jacob");
-	ClapTrap player2("Phantom");
+	ClapTrap player1;
+	ClapTrap player2;
 	unsigned int random;
 	unsigned int round;
 	int			energyState[2];
-
+	int randomOcurrence;
+	std::string ocurrences[5] = {" fall on the ground", " hited himself", " is sick", " tries to kill himself", " got stone droped in his head from the sky"};
 	energyState[0] = 1;
 	energyState[1] = 1;
 	std::srand(std::time(0));
@@ -18,6 +19,7 @@ int main(void){
 	sleep(3);
 	while (player1.getHitPoints() > 0 && player2.getHitPoints() > 0){
 		random = std::rand() % 5;
+		randomOcurrence = std::rand() % 4;
 		system("clear");
 		std::cout << "Round " << round << std::endl;
 		round++;
@@ -38,11 +40,11 @@ int main(void){
 				player1.takeDamage(player2.getAttackDamage());
 				break;
 			case 2 :
-				std::cout << player1.getName() << " gets bored ..." << std::endl;
+				std::cout << player1.getName() << ocurrences[randomOcurrence] << std::endl;
 				player1.takeDamage(rand() % 50);
 				break;
 			case 3 :
-				std::cout << player2.getName() << " gets bored ..." << std::endl;
+				std::cout << player2.getName() << ocurrences[randomOcurrence] << std::endl;
 				player2.takeDamage(std::rand() % 50);
 				break;
 			case 4 :

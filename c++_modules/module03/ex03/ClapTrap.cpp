@@ -122,3 +122,9 @@ void ClapTrap::setAttackDamage(unsigned int attackDamage){
 void ClapTrap::setEnergyPoints(unsigned int energyPoints){
 	this->energyPoints = energyPoints;
 }
+
+//______________SETTER NAME MEMBER FUNCTION_________________________
+
+void ClapTrap::setName(std::string name){
+	this->name = name;
+}

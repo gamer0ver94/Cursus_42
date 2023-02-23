@@ -1,10 +1,15 @@
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap() {
+	this->setName("ScavTrap");
+	this->setAttackDamage(20);
+    this->setEnergyPoints(50);
+    this->setHitPoints(100);
     std::cout << GREEN << "Caracter " << this->getName() << " was created! (SCAVTRAP default constructor)" << WHITE << std::endl; 
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name){
+ScavTrap::ScavTrap(std::string name){
+	this->setName(name);
     this->setAttackDamage(20);
     this->setEnergyPoints(50);
     this->setHitPoints(100);

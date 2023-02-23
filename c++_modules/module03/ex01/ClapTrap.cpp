@@ -3,7 +3,7 @@
 //_______________DEFAULT CONSTRUCTOR____________
 
 ClapTrap::ClapTrap(){
-	this->name = "unknown";
+	this->name = "ClapTrap";
 	this->hitPoints = 10;
 	this->energyPoints = 10;
 	this->attackDamage = 0;
@@ -121,4 +121,10 @@ void ClapTrap::setAttackDamage(unsigned int attackDamage){
 
 void ClapTrap::setEnergyPoints(unsigned int energyPoints){
 	this->energyPoints = energyPoints;
+}
+
+//______________SETTER NAME MEMBER FUNCTION_________________________
+
+void ClapTrap::setName(std::string name){
+	this->name = name;
 }
