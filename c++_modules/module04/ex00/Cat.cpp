@@ -12,13 +12,13 @@ Cat::~Cat(){
 }
 
 //______________Copy Constructor__________
-Cat::Cat(const Animal& copy){
+Cat::Cat(const Cat& copy) : Animal(){
 	this->type = copy.type;
 	std::cout << "Copy Constructor" << std::endl;
 }
 
 //______________Assignment___________________
-Cat& Cat::operator=(const Animal& copy){
+Cat& Cat::operator=(const Cat& copy){
 	if (this != &copy){
 		this->type = copy.type;
 	}
@@ -26,6 +26,6 @@ Cat& Cat::operator=(const Animal& copy){
 }
 
 //_____________Make Sound Member Function_______
-void Cat::makeSound(){
+void Cat::makeSound()const{
 	std::cout << "Miaw Miaw" << std::endl;
 }

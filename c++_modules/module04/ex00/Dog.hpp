@@ -12,7 +12,7 @@ class Dog : public Animal{
 		Dog(const Dog& copy);
 		Dog& operator=(const Dog& copy);
 
-		void makeSound();
+		void makeSound()const;
 };
 
 #endif

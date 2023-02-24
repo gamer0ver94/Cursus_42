@@ -22,7 +22,7 @@ DiamondTrap::~DiamondTrap(){
 	std::cout << RED << "Caracter " << this->name << " was dismissed! (DIAMONDTRAP destructor)" << WHITE << std::endl;
 }
 
- DiamondTrap::DiamondTrap(const DiamondTrap& copy){
+ DiamondTrap::DiamondTrap(const DiamondTrap& copy) : ClapTrap(), FragTrap(), ScavTrap(){
 	this->name = copy.name;
 	this->setAttackDamage(copy.attackDamage);
 	this->setEnergyPoints(copy.energyPoints);

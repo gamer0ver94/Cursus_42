@@ -12,13 +12,13 @@ Dog::~Dog(){
 }
 
 //______________Copy Constructor__________
-Dog::Dog(const Animal& copy){
+Dog::Dog(const Dog& copy) : Animal(){
 	this->type = copy.type;
 	std::cout << "Copy Constructor" << std::endl;
 }
 
 //______________Assignment___________________
-Dog& Dog::operator=(const Animal& copy){
+Dog& Dog::operator=(const Dog& copy){
 	if (this != &copy){
 		this->type = copy.type;
 	}
@@ -26,6 +26,6 @@ Dog& Dog::operator=(const Animal& copy){
 }
 
 //_____________Make Sound Member Function_______
-void Dog::makeSound(){
+void Dog::makeSound()const{
 	std::cout << "Woof Woof" << std::endl;
 }

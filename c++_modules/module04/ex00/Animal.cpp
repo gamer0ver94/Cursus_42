@@ -26,12 +26,12 @@ Animal& Animal::operator=(const Animal& copy){
 }
 
 //_____________Make Sound Member Function_______
-void Animal::makeSound(){
-	
+void Animal::makeSound()const{
+	std::cout << "..." << std::endl;
 }
 
 //_____________GETTER TYPE_________________
 
-const std::string Animal::getType(){
+std::string Animal::getType()const{
 	return (this->type);
 }
