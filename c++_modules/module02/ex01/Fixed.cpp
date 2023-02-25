@@ -8,49 +8,52 @@ const int Fixed::fractions_bit = 8;
 // Default Constructor
 Fixed::Fixed(){
 	this->fixedPointValue = 0;
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << GREEN << "Default constructor called" << WHITE << std::endl;
 }
 
 //Constructor with int
 Fixed::Fixed(int value){
-	std::cout << "Int constructor called" << std::endl;
+	std::cout << GREEN << "Int constructor called" << WHITE << std::endl;
 	this->fixedPointValue = value << this->fractions_bit;
 }
 
 //Constructor with float
 Fixed::Fixed(const float fixedPointValue){
-	std::cout << "Float constructor called" << std::endl;
+	std::cout << GREEN << "Float constructor called" << WHITE << std::endl;
 	this->fixedPointValue = roundf(fixedPointValue * (1 << this->fractions_bit));
 }
 
 // Destructor
 Fixed::~Fixed(){
-	std::cout << "Destructor" << std::endl;
+	std::cout << RED << "Destructor called" << WHITE << std::endl;
 }
 
 // Copy Constructor
-Fixed::Fixed(const Fixed&copy){
-	std::cout << "Copy constructor called" << std::endl;
-	*this = copy;
+Fixed::Fixed(const Fixed& copy){
+	std::cout << GREEN << "Copy constructor called" << WHITE << std::endl;
+	this->fixedPointValue = copy.getRawBits();
 }
 
 // Copy assignment operator overloading
 Fixed& Fixed::operator=(const Fixed& copy){
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << YELLOW << "Copy assignment operator called" << WHITE << std::endl;
 	if (this != &copy){
-		this->fixedPointValue = copy.fixedPointValue;
+		this->fixedPointValue = copy.getRawBits();
 	}
 	return (*this);
 }
 
-int Fixed::getRawBits(void){
-	std::cout << "getRawBits member function called" << std::endl;
+int Fixed::getRawBits(void) const{
+	std::cout << CYAN << "getRawBits member function called" << WHITE << std::endl;
 	return (this->fixedPointValue);
 }
 
 void Fixed::setRawBits(int const raw){
 	this->fixedPointValue = raw;
 }
+
+
+
 
 //convert from fixed point to float
 float Fixed::toFloat(void)const{
