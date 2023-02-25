@@ -104,7 +104,7 @@ Fixed Fixed::operator++(int){
 
 	std::cout << BLUE << "Overloading'++*' operator" << WHITE << std::endl;
 	tmp = *this;
-	++(*this);
+	this->fixedPointValue++;
 	return tmp;
 }
 
@@ -119,7 +119,7 @@ Fixed Fixed::operator--(int){
 
 	std::cout << BLUE << "Decrementation --*" << WHITE << std::endl;
 	tmp = *this;
-	--(*this);
+	this->fixedPointValue--;
 	return tmp;
 }
 
@@ -142,7 +142,6 @@ const Fixed& Fixed::max(const Fixed& first, const Fixed& second){
 
 int Fixed::getRawBits(void) const{
 	std::cout << CYAN << "getRawBits member function called" << WHITE << std::endl;
-	std::cout << BLUE << "" << WHITE << std::endl;
 	return (this->fixedPointValue);
 }
 
