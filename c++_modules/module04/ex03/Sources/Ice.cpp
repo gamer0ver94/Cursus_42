@@ -3,7 +3,7 @@
 //________Ice Constructor_________
 
 Ice::Ice(){
-    this->type = "ice";
+    this->type = (std::string)"ice";
     std::cout << GREEN << "Ice Constructor" << WHITE << std::endl;
 }
 
@@ -16,14 +16,24 @@ Ice::~Ice(){
 //________Copy Constructor_________
 
 Ice::Ice(const Ice& copy){
-    this->type = copy.type;
+    // this->type = copy.type;
     std::cout << CYAN << "Ice Copy Constructor" << WHITE << std::endl;
 }
 
 //_______Ice Copy Assignment___________
 Ice& Ice::operator=(const Ice& copy){
-    if (this != &copy){
-        this->type = copy.type;
-    }
+    // if (this != &copy){
+    //     this->type = copy.type;
+    // }
     return *this;
 }
+
+AMateria* AMateria::clone() const{
+	AMateria *c;
+	c->type = this->type;
+	return c;
+}
+
+void Ice::use(ICharacter& target){
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+ }

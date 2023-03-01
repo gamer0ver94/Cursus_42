@@ -3,9 +3,6 @@
 #include "AMateria.hpp"
 
 class Cure : AMateria{
-    private :
-        std::string type;
-    
     public :
         Cure();
         ~Cure();

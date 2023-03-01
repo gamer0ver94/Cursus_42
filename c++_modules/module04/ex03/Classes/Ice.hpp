@@ -3,16 +3,13 @@
 #include "AMateria.hpp"
 
 class Ice : AMateria{
-    private :
-        std::string type;
-    
     public :
         Ice();
         ~Ice();
         Ice(const Ice& copy);
         Ice& operator=(const Ice& copy);
 
-        AMateria* clone();
+        AMateria* clone() const;
         void use(ICharacter& target);
 };
 

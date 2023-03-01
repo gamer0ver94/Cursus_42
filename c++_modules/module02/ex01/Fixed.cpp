@@ -43,17 +43,18 @@ Fixed& Fixed::operator=(const Fixed& copy){
 	return (*this);
 }
 
+// Getter
+
 int Fixed::getRawBits(void) const{
 	std::cout << CYAN << "getRawBits member function called" << WHITE << std::endl;
 	return (this->fixedPointValue);
 }
 
+//Setter
+
 void Fixed::setRawBits(int const raw){
 	this->fixedPointValue = raw;
 }
-
-
-
 
 //convert from fixed point to float
 float Fixed::toFloat(void)const{
