@@ -3,18 +3,18 @@
 //_______________Default Constructor_____________
 WrongAnimal::WrongAnimal(){
 	this->type = "none";
-	std::cout << "Animal Default Constructor" << std::endl;
+	std::cout << GREEN << "Animal Default Constructor" << WHITE << std::endl;
 }
 
 //_______________Destructor____________________
 WrongAnimal::~WrongAnimal(){
-	std::cout << "Animal Destructor" << std::endl;
+	std::cout << RED << "Animal Destructor" << WHITE << std::endl;
 }
 
 //______________Copy Constructor__________
 WrongAnimal::WrongAnimal(const WrongAnimal& copy){
 	this->type = copy.type;
-	std::cout << "Copy Constructor" << std::endl;
+	std::cout << CYAN << "Copy Constructor" << WHITE << std::endl;
 }
 
 //______________Assignment___________________
@@ -22,12 +22,13 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal& copy){
 	if (this != &copy){
 		this->type = copy.type;
 	}
+	std::cout << BLUE << "WRONG ANIMAL Assigment Operator" << WHITE << std::endl;
 	return *this;
 }
 
 //_____________Make Sound Member Function_______
 void WrongAnimal::makeSound()const{
-	std::cout << "..." << std::endl;
+	std::cout << "Wrong Animal sound" << std::endl;
 }
 
 //_____________GETTER TYPE_________________

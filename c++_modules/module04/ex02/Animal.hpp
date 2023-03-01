@@ -1,6 +1,6 @@
 #pragma once
-#ifndef WRONGANIMAL_HPP
-#define WRONGANIMAL_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 #include <iostream>
 #define BLACK "\033[0;30m"
 #define RED "\033[0;31m"
@@ -11,17 +11,16 @@
 #define CYAN "\033[0;36m"
 #define WHITE "\033[0;37m"
 
-class WrongAnimal{
+class Animal{
 	protected :
 		std::string type;
 	public :
-		WrongAnimal();
-		~WrongAnimal();
-		WrongAnimal(const WrongAnimal& copy);
-		WrongAnimal& operator=(const WrongAnimal& copy);
+		Animal();
+		virtual ~Animal();
+		Animal(const Animal& copy);
+		Animal& operator=(const Animal& copy);
 
-		void makeSound()const;
+		virtual void makeSound()const = 0;
 		std::string getType()const;
 };
-
 #endif

@@ -1,10 +1,10 @@
-NAME = Polymorphism
+NAME = Interfaces
 
 CC = g++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
-SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+SRC = main.cpp 
 
 OBJS = $(SRC:.c=.o)
 
