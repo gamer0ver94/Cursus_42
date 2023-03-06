@@ -1,7 +1,7 @@
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap() {
-    this->name = "Unknown";
+    this->name = "DiamondTrap";
 	this->ClapTrap::setName(name + ' ' + this->ClapTrap::name); 
 	this->setAttackDamage(FragTrap::attackDamage);
 	this->setEnergyPoints(ScavTrap::energyPoints);

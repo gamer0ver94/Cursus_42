@@ -3,7 +3,7 @@
 //_______________DEFAULT CONSTRUCTOR____________
 
 ClapTrap::ClapTrap(){
-	this->name = "unknown";
+	this->name = "ClapTrap";
 	this->hitPoints = 10;
 	this->energyPoints = 10;
 	this->attackDamage = 0;

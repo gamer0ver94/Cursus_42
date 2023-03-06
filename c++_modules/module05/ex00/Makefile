@@ -1,10 +1,10 @@
-NAME = megaphone
+NAME = Bureaucrat
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS =  -std=c++98 -g
 
-SRC = megaphone.cpp
+SRC = main.cpp srcs/Bureaucrat.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
@@ -16,5 +16,5 @@ $(NAME) : $(OBJS)
 re :  fclean all
 
 clean :
-	rm -rf $(NAME)
+	rm -rf $(NAME) $(OBJS)
 fclean : clean

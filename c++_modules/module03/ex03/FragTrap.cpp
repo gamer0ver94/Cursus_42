@@ -28,5 +28,5 @@ FragTrap& FragTrap::operator=(const FragTrap& copy){
 }
 
 void FragTrap::highFiveGuys(void){
-    std::cout << this->getName() << "uses \'hi five guys\'" << WHITE << std::endl;
+    std::cout << this->getName() << " uses \'hi five guys\'" << WHITE << std::endl;
 }
