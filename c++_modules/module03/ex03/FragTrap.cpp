@@ -1,17 +1,24 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap() : ClapTrap(){
+FragTrap::FragTrap() : ClapTrap("FragTrap"){
+    this->attackDamage = 30;
+    this->energyPoints = 100;
+    this->hitPoints = 100;
     std::cout << GREEN << "Caracter " << this->getName() << " was created! (FragTrap default contructor)" << WHITE << std::endl;
-	this->setAttackDamage(30);
-    this->setEnergyPoints(100);
-    this->setHitPoints(100);
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name){
-    this->setAttackDamage(30);
-    this->setEnergyPoints(100);
-    this->setHitPoints(100);
+    this->attackDamage = 30;
+    this->energyPoints = 100;
+    this->hitPoints = 100;
     std::cout << GREEN << "Caracter " << this->getName() << " was created! (FragTrap contructor)" << WHITE << std::endl;
+}
+
+FragTrap::FragTrap(const FragTrap& copy) : ClapTrap(copy.name){
+    this->attackDamage = copy.attackDamage;
+    this->energyPoints = copy.energyPoints;
+    this->hitPoints = copy.hitPoints;
+
 }
 
 FragTrap::~FragTrap(){
@@ -28,5 +35,5 @@ FragTrap& FragTrap::operator=(const FragTrap& copy){
 }
 
 void FragTrap::highFiveGuys(void){
-    std::cout << this->getName() << " uses \'hi five guys\'" << WHITE << std::endl;
+    std::cout << this->getName() << "uses \'hi five guys\'" << WHITE << std::endl;
 }

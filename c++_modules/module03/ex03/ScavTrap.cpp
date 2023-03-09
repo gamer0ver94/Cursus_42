@@ -1,18 +1,25 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() {
-	this->setAttackDamage(20);
-    this->setEnergyPoints(50);
-    this->setHitPoints(100);
+ScavTrap::ScavTrap() : ClapTrap("ScavTrap") {
+	this->attackDamage = 20;
+    this->energyPoints = 50;
+    this->hitPoints = 100;
     std::cout << GREEN << "Caracter " << this->getName() << " was created! (SCAVTRAP default constructor)" << WHITE << std::endl; 
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name){
-    this->setAttackDamage(20);
-    this->setEnergyPoints(50);
-    this->setHitPoints(100);
+    this->attackDamage = 20;
+    this->energyPoints = 50;
+    this->hitPoints = 100;
     std::cout << GREEN << "Caracter " << this->getName() << " was created! (SCAVTRAP constructor)" << WHITE << std::endl; 
 }
+
+ScavTrap::ScavTrap(const ScavTrap& copy) : ClapTrap(copy.name){
+    this->attackDamage = copy.attackDamage;
+    this->energyPoints = copy.energyPoints;
+    this->hitPoints = copy.hitPoints;
+}
+
 ScavTrap::~ScavTrap(){
     std::cout << RED << "Caracter " << this->getName() << " was dismissed! (SCAVTRAP destructor)" << WHITE << std::endl;
 }
