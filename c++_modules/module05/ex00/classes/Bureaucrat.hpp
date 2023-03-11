@@ -20,11 +20,9 @@ class Bureaucrat{
 		void	decrementGrade();
 		void	incrementGrade();
 
-	class myError:public std::exception{
-
-		const char* what() const throw(){
-			
-			return "TooLowNumber";
-		}
+	class Errors : public std::exception{
+		public :
+		virtual const GradeTooHighException()const noexcept;
+		const char* GradeTooLowException()const noexcept;
 	};
 };

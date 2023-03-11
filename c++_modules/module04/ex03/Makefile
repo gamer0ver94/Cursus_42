@@ -2,11 +2,11 @@ NAME = Interfaces
 
 CC = g++
 
-CFLAGS =  -std=c++98 -g
+CFLAGS =  -std=c++98 -Wall -Wextra -Werror -lstdc++
 
-SRC = main.cpp Sources/Character.cpp Sources/AMateria.cpp Sources/Ice.cpp Sources/Cure.cpp
+SRC = main.cpp Sources/Character.cpp Sources/AMateria.cpp Sources/Ice.cpp Sources/Cure.cpp Sources/MateriaSource.cpp
 
-OBJS = $(SRC:.c=.o)
+OBJS = $(SRC:.cpp=.o)
 
 all : $(NAME)
 

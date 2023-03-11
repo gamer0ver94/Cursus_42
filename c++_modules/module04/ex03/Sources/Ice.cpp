@@ -17,6 +17,7 @@ Ice::~Ice(){
 
 Ice::Ice(const Ice& copy){
     // this->type = copy.type;
+    (void)copy;
     std::cout << CYAN << "Ice Copy Constructor" << WHITE << std::endl;
 }
 
@@ -25,13 +26,12 @@ Ice& Ice::operator=(const Ice& copy){
     // if (this != &copy){
     //     this->type = copy.type;
     // }
+    (void)copy;
     return *this;
 }
 
-AMateria* AMateria::clone() const{
-	AMateria *c;
-	c->type = this->type;
-	return c;
+Ice* Ice::clone() const{
+	return new Ice(*this);
 }
 
 void Ice::use(ICharacter& target){

@@ -18,6 +18,7 @@ AMateria::AMateria(const AMateria& copy){
 }
 
 AMateria& AMateria::operator=(const AMateria& copy){
+	(void)copy;
 	return *this;
 }
 
@@ -26,5 +27,11 @@ std::string const& AMateria::getType()const{
 }
 
 void AMateria::use(ICharacter& target){
-	
+	(void)target;
+}
+
+AMateria* AMateria::clone() const{
+	AMateria *c = 0;
+
+	return c;
 }

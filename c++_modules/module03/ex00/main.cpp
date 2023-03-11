@@ -4,8 +4,8 @@
 #include <ctime>
 
 int main(void){
-	ClapTrap player1;
-	ClapTrap player2;
+	ClapTrap player1("Jhon");
+	ClapTrap player2("Rain");
 	unsigned int random;
 	unsigned int round;
 	int			energyState[2];

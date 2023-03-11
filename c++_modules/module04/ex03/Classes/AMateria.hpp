@@ -18,14 +18,13 @@ class AMateria{
 		std::string type;
 		
     public :
-        AMateria(std::string const &type);
         AMateria();
-        ~AMateria();
+        AMateria(std::string const &type);
+        virtual ~AMateria();
         AMateria(const AMateria& copy);
         AMateria& operator=(const AMateria& copy);
 
-        std::string const& getType()const;
-
+        virtual std::string const& getType()const;
         virtual AMateria* clone() const = 0;
         virtual void use(ICharacter& target);
 };

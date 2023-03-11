@@ -3,7 +3,7 @@
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
 
-class Character : ICharacter{
+class Character : public ICharacter{
     private :
         std::string name;
         AMateria *slots[4];

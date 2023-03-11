@@ -1,7 +1,7 @@
 #include "Cat.hpp"
 
 //_______________Default Constructor_____________
-Cat::Cat(){
+Cat::Cat() : Animal(){
 	std::cout << GREEN << "Cat Default Constructor" << WHITE << std::endl;
 	this->type = "Cat";
 	this->brain = new Brain();
@@ -35,3 +35,8 @@ Cat& Cat::operator=(const Cat& copy){
 void Cat::makeSound()const{
 	std::cout << YELLOW << "Miaw Miaw" << WHITE << std::endl;
 }
+
+Brain* Cat::getBrain(){
+	return(brain);
+}
+

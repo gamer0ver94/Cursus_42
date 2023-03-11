@@ -16,5 +16,14 @@ int main(void){
 	for (int i = 0; i < 20; i++){
 		delete animals[i];
 	}
+	Cat *cat = new Cat();
+	cat->getBrain()->setIdeia(0, "I am cat");
+	std::cout << cat->getBrain()->getIdeia(0) << std::endl;
+	Cat *cat2 = new Cat(*cat);
+
+	std::cout << cat->getBrain() << std::endl;
+	std::cout << cat2->getBrain() << std::endl;
+	delete cat2;
+	delete cat;
 	return 0;
 }

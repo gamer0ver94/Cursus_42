@@ -3,14 +3,17 @@
 #include <iostream>
 #include "IMateriaSource.hpp"
 
-class MateriaSource : IMateriaSource{
+class MateriaSource : public IMateriaSource{
     public :
 		MateriaSource();
 		MateriaSource(const IMateriaSource& copy);
+		~MateriaSource();
 		MateriaSource& operator=(const IMateriaSource& copy);
-		~MateriaSource() {}
         void learnMateria(AMateria*);
         AMateria* createMateria(std::string const & type);
+	
+	private :
+		AMateria *(inventory[4]);
 };
 
 #endif

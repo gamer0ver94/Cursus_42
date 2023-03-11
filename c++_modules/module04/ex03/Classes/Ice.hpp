@@ -2,14 +2,14 @@
 #define ICE_HPP
 #include "AMateria.hpp"
 
-class Ice : AMateria{
+class Ice : public AMateria{
     public :
         Ice();
         ~Ice();
         Ice(const Ice& copy);
         Ice& operator=(const Ice& copy);
 
-        AMateria* clone() const;
+        Ice* clone() const;
         void use(ICharacter& target);
 };
 

@@ -25,13 +25,12 @@ Cure& Cure::operator=(const Cure& copy){
     if (this != &copy){
         this->type = copy.type;
     }
+    
     return *this;
 }
 
-AMateria* AMateria::clone() const{
-	AMateria *c;
-	c->type = this->type;
-	return c;
+Cure* Cure::clone()const{
+	return new Cure(*this);
 }
 
  void Cure::use(ICharacter& target){

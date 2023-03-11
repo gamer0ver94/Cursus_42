@@ -1,20 +1,18 @@
 #include "WrongAnimal.hpp"
 
 //_______________Default Constructor_____________
-WrongAnimal::WrongAnimal(){
-	this->type = "none";
-	std::cout << GREEN << "Animal Default Constructor" << WHITE << std::endl;
+WrongAnimal::WrongAnimal() : type("None"){
+	std::cout << GREEN << "Wrong Animal Default Constructor" << WHITE << std::endl;
 }
 
 //_______________Destructor____________________
 WrongAnimal::~WrongAnimal(){
-	std::cout << RED << "Animal Destructor" << WHITE << std::endl;
+	std::cout << RED << "Wrong Animal Destructor" << WHITE << std::endl;
 }
 
 //______________Copy Constructor__________
-WrongAnimal::WrongAnimal(const WrongAnimal& copy){
-	this->type = copy.type;
-	std::cout << CYAN << "Copy Constructor" << WHITE << std::endl;
+WrongAnimal::WrongAnimal(const WrongAnimal& copy) : type(copy.type){
+	std::cout << CYAN << "Wrong Animal Copy Constructor" << WHITE << std::endl;
 }
 
 //______________Assignment___________________

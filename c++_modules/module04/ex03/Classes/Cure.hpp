@@ -2,14 +2,14 @@
 #define CURE_HPP
 #include "AMateria.hpp"
 
-class Cure : AMateria{
+class Cure : public AMateria{
     public :
         Cure();
         ~Cure();
         Cure(const Cure& copy);
         Cure& operator=(const Cure& copy);
 
-        AMateria* clone();
+        Cure* clone() const;
         void use(ICharacter& target);
 };
 

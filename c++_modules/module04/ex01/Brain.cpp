@@ -31,3 +31,15 @@ Brain& Brain::operator=(const Brain& copy){
     std::cout << CYAN << "Brain Assigment Operator" << WHITE << std::endl;
     return *this;
 }
+
+std::string Brain::getIdeia(int index){
+    if (ideias[index].empty()){
+        std::cout << "Still no ideias on this part of the brain" << std::endl;
+        return (NULL);
+    }
+    return ideias[index];
+}
+
+void Brain::setIdeia(int index, std::string ideia){
+    this->ideias[index] = ideia;
+}

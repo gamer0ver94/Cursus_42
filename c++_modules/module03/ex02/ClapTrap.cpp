@@ -2,38 +2,29 @@
 
 //_______________DEFAULT CONSTRUCTOR____________
 
-ClapTrap::ClapTrap(){
-	this->name = "ClapTrap";
-	this->hitPoints = 10;
-	this->energyPoints = 10;
-	this->attackDamage = 0;
+ClapTrap::ClapTrap() : 
+	name("ClapTrap"), hitPoints(10), energyPoints(10), attackDamage(0){
 	std::cout << GREEN << "Caracter " << this->name << " was created! (CLAPTRAP default constructor)" << WHITE << std::endl; 
 }
 
 //_________________CONSTRUCTOR__________________
 
-ClapTrap::ClapTrap(std::string name){
-	this->name = name;
-	this->hitPoints = 10;
-	this->energyPoints = 10;
-	this->attackDamage = 0;
+ClapTrap::ClapTrap(std::string name) : 
+name(name), hitPoints(10), energyPoints(10), attackDamage(0){
 	std::cout << GREEN << "Caracter " << this->name << " was created! (CLAPTRAP constructor)" << WHITE << std::endl; 
 }
 
 //__________________DESTRUCTOR____________________
 
-ClapTrap::~ClapTrap()
-{
+ClapTrap::~ClapTrap(){
 	std::cout << RED << "Caracter " << this->name << " was dismissed! (CLAPTRAP destructor)" << WHITE << std::endl; 
 }
 
 //________________COPY CONSTRUCTOR__________________
 
-ClapTrap::ClapTrap(const ClapTrap& copy){
-	this->name = copy.name;
-	this->attackDamage = copy.attackDamage;
-	this->energyPoints = copy.energyPoints;
-	this->hitPoints = copy.hitPoints;
+ClapTrap::ClapTrap(const ClapTrap& copy)
+: name(copy.name), hitPoints(copy.hitPoints), energyPoints(copy.energyPoints), attackDamage(copy.attackDamage){
+	std::cout << GREEN << "Caracter " << this->name << " ClapTrap Copy Constructor" << WHITE << std::endl; 
 }
 
 //________________COPY ASSIGNMENT OPERATOR____________
@@ -121,10 +112,4 @@ void ClapTrap::setAttackDamage(unsigned int attackDamage){
 
 void ClapTrap::setEnergyPoints(unsigned int energyPoints){
 	this->energyPoints = energyPoints;
-}
-
-//______________SETTER NAME MEMBER FUNCTION_________________________
-
-void ClapTrap::setName(std::string name){
-	this->name = name;
 }

@@ -1,18 +1,24 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(){
-	this->setName("FragTrap");
-	this->setAttackDamage(30);
-    this->setEnergyPoints(100);
-    this->setHitPoints(100);
+FragTrap::FragTrap() : ClapTrap("FragTrap"){
+    this->attackDamage = 30;
+    this->energyPoints = 100;
+    this->hitPoints = 100;
     std::cout << GREEN << "Caracter " << this->getName() << " was created! (FragTrap default contructor)" << WHITE << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name){
-    this->setAttackDamage(30);
-    this->setEnergyPoints(100);
-    this->setHitPoints(100);
+    this->attackDamage = 30;
+    this->energyPoints = 100;
+    this->hitPoints = 100;
     std::cout << GREEN << "Caracter " << this->getName() << " was created! (FragTrap contructor)" << WHITE << std::endl;
+}
+
+FragTrap::FragTrap(const FragTrap& copy) : ClapTrap(copy.name){
+    this->attackDamage = copy.attackDamage;
+    this->energyPoints = copy.energyPoints;
+    this->hitPoints = copy.hitPoints;
+
 }
 
 FragTrap::~FragTrap(){

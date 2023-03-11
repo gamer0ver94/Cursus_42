@@ -1,8 +1,7 @@
 #include "Animal.hpp"
 
 //_______________Default Constructor_____________
-Animal::Animal(){
-	this->type = "none";
+Animal::Animal() : type("None"){
 	std::cout << GREEN << "Animal Default Constructor" << WHITE << std::endl;
 }
 
@@ -12,8 +11,7 @@ Animal::~Animal(){
 }
 
 //______________Copy Constructor__________
-Animal::Animal(const Animal& copy){
-	this->type = copy.type;
+Animal::Animal(const Animal& copy) : type(copy.type){
 	std::cout << CYAN << "Copy Constructor" << WHITE << std::endl;
 }
 
