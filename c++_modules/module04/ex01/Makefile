@@ -1,8 +1,8 @@
 NAME = Animals_with_Brain
 
-CC = g++
+CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CFLAGS = -Wall -Wextra -Werror
 
 SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
 

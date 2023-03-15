@@ -1,8 +1,8 @@
 NAME = Interfaces
 
-CC = g++
+CC = c++
 
-CFLAGS =  -std=c++98 -Wall -Wextra -Werror -lstdc++
+CFLAGS = -Wall -Wextra -Werror -lstdc++
 
 SRC = main.cpp Sources/Character.cpp Sources/AMateria.cpp Sources/Ice.cpp Sources/Cure.cpp Sources/MateriaSource.cpp
 
