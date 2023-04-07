@@ -3,7 +3,7 @@
 int main() {
 	try{
 		Bureaucrat test("Socrates", 150);
-		test.incrementGrade();
+		test.decrementGrade();
 		std::cout << test << std::endl;
 	}
 	catch(std::exception &exception){
