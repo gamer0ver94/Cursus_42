@@ -1,9 +1,10 @@
 #include "classes/Bureaucrat.hpp"
-#include "classes/Form.hpp"
+#include "classes/AForm.hpp"
+#include "classes/ShrubberyCreationForm.hpp"
 
 int main() {
 	try{
-		Form *form = new Form("Osland University", 50, 50);
+		AForm *form = new ShrubberyCreationForm("home");
 		Bureaucrat *test = new Bureaucrat("Socrates",151);
 		test->signedForm(*form);
 	}

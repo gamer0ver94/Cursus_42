@@ -1,5 +1,5 @@
 #include "../classes/Bureaucrat.hpp"
-#include "../classes/Form.hpp"
+#include "../classes/AForm.hpp"
 
 Bureaucrat::Bureaucrat(std::string setName, int setGrade)
 : name(setName), grade(setGrade){
@@ -52,7 +52,7 @@ void	Bureaucrat::decrementGrade(){
 	}
 }
 
-void	Bureaucrat::signedForm(Form &form){
+void	Bureaucrat::signedForm(AForm &form){
 	try{
 		form.beSigned(*this);
 		std::cout << getName() << " signed " << form.getName() << std::endl;

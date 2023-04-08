@@ -3,10 +3,10 @@
 Bureaucrat::Bureaucrat(std::string setName, int setGrade)
 : name(setName), grade(setGrade){
 	if (setGrade < 1){
-		throw GradeTooLowException();
+		throw GradeTooHighException();
 	}
 	else if (setGrade > 150){
-		throw GradeTooHighException();
+		throw GradeTooLowException();
 	}
 	else{
 		std::cout << GREEN << "Bureaucrat Constructor " << name << WHITE << std::endl;
@@ -34,21 +34,16 @@ const char* Bureaucrat::GradeTooLowException::what()const throw(){
 }
 
 void	Bureaucrat::incrementGrade(){
-	try{
-		if (grade >= 1 && grade <= 150){
-		grade--;
-		}
-		else{
-			throw GradeTooHighException();
-		}
+	if (grade - 1 >= 1 && grade - 1 <= 150){
+	grade--;
 	}
-	catch(std::exception &error){
-		std::cerr << "error " << error.what() << std::endl;
+	else{
+		throw GradeTooHighException();
 	}
 }
 
 void	Bureaucrat::decrementGrade(){
-	if (grade + 1 <= 150 && grade >= 1){
+	if (grade + 1 <= 150 && grade + 1 >= 1){
 	grade++;
 	}
 	else{
