@@ -1,8 +1,5 @@
 #include "../classes/AForm.hpp"
 
-// AForm::AForm() : gradeToExecute(5), gradeToSign(10), isSigned(0){
-// }
-
 AForm::AForm(std::string name, const int gradeToSign, const int gradeToExecute)
 : name(name), gradeToSign(gradeToSign), isSigned(0), gradeToExecute(gradeToExecute){
 }
