@@ -4,7 +4,7 @@ CC = c++
 
 CFLAGS =  -std=c++98 -g
 
-SRC = main.cpp srcs/Bureaucrat.cpp srcs/AForm.cpp srcs/ShrubberyCreationForm.cpp
+SRC = main.cpp srcs/Bureaucrat.cpp srcs/AForm.cpp srcs/ShrubberyCreationForm.cpp srcs/RobotomyRequestForm.cpp srcs/PresidentialPardonForm.cpp
 
 OBJS = $(SRC:.cpp=.o)
 

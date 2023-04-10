@@ -1,10 +1,12 @@
 #include "classes/Bureaucrat.hpp"
 #include "classes/AForm.hpp"
 #include "classes/ShrubberyCreationForm.hpp"
+#include "classes/RobotomyRequestForm.hpp"
+#include "classes/PresidentialPardonForm.hpp"
 
 int main() {
 	try{
-		AForm *form = new ShrubberyCreationForm("home");
+		AForm *form = new PresidentialPardonForm("home");
 		Bureaucrat *test = new Bureaucrat("Socrates",10);
 		test->signedForm(*form);
 		test->executeForm(*form);
