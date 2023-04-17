@@ -2,17 +2,19 @@
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :
-AForm(target, 145, 137){
+AForm("Shrubbery_Creation_Form", 145, 137), target(target){
+   std::cout << GREEN << "Shrubbery_Creation_Form contructor" << WHITE << std::endl;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){
-
+   std::cout << RED << "Shrubbery_Creation_Form destructor" << WHITE << std::endl;
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
 	if (executor.getGrade() <= getGradeToExecute())
 	{
-		std::ofstream fd(getName() + " _shrubbery");
+      std::cout << "ShrubberyCreationForm was a success .." << std::endl;
+		std::ofstream fd(target + " _shrubbery");
 		fd << "\033[32m               ,@@@@@@@,\n\
        ,,,.   ,@@@@@@/@@,  .oo8888o.\n\
     ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n\
@@ -24,4 +26,12 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
        |.|        | |         | |\n\
  \033[32m\\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_" << std::endl;
 	}
+   else{
+      if (this->getIsSigned() == 0){
+            std::cout << "error to execute : no contract signed" << std::endl;
+      }
+      else{
+         throw Bureaucrat::GradeTooLowException();
+      }
+   }
 }

@@ -15,6 +15,7 @@ class Bureaucrat{
 		const std::string name;
 		int grade;
 	public :
+		Bureaucrat();
 		Bureaucrat(std::string setName, int setGrade);
 		~Bureaucrat();
 		const std::string getName()const;

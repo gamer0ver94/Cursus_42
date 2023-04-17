@@ -2,10 +2,11 @@
 
 AForm::AForm(std::string name, const int gradeToSign, const int gradeToExecute)
 : name(name), gradeToSign(gradeToSign), isSigned(0), gradeToExecute(gradeToExecute){
+    std::cout << GREEN << "AForm constructor" << WHITE << std::endl;
 }
 
 AForm::~AForm(){
-    std::cout << RED << getName() << " was destructed!" << std::endl;
+    std::cout << RED << "AForm constructor" << WHITE << std::endl;
 }
 
 void AForm::beSigned(Bureaucrat &bureaucrat){

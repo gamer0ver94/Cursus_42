@@ -4,6 +4,8 @@
 class AForm;
 
 class PresidentialPardonForm : virtual public AForm{
+	private :
+		std::string target;
 	public :
 		PresidentialPardonForm(std::string target);
 		virtual ~PresidentialPardonForm();

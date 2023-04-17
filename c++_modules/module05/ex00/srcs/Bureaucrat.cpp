@@ -1,5 +1,10 @@
 #include "../classes/Bureaucrat.hpp"
 
+Bureaucrat::Bureaucrat() :
+name("undefined"), grade(rand() % 150) {
+	std::cout << GREEN << "Bureaucrat Default Constructor " << name << WHITE << std::endl;
+}
+
 Bureaucrat::Bureaucrat(std::string setName, int setGrade)
 : name(setName), grade(setGrade){
 	if (setGrade < 1){

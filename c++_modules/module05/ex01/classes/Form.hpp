@@ -13,7 +13,7 @@ class Form{
     
     public :
         Form();
-        Form(std::string name, const int gradeToSign, const int GradeToExecute);
+        Form(std::string name, const int gradeToSign, const int gradeToExecute);
         virtual ~Form();
         // Form(const Form &copy);
         // Form& operator=(const Form &Form);
