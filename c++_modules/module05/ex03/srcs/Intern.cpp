@@ -4,9 +4,20 @@
 #include "../classes/ShrubberyCreationForm.hpp"
 
 AForm* Intern::makeForm(std::string formName, std::string formTarget){
-	std::string a = "PresidentialPardonForm";
-	AForm *form = new RobotomyRequestForm(formTarget);
-	AForm *form2 = new PresidentialPardonForm(formTarget);
-	AForm *form3 = new ShrubberyCreationForm(formTarget);
-	return (formName == form->getName()) ? form : (formName == form2->getName() ? form2 : (formName == form3->getName() ? form3 : throw Bureaucrat::GradeTooHighException()));
+	AForm*form;
+	AForm*(*constructors[3])(std::string) = {
+		[](std::string formTarget) -> AForm*{return new RobotomyRequestForm(formTarget);},
+		[](std::string formTarget) -> AForm*{return new PresidentialPardonForm(formTarget);},
+		[](std::string formTarget) -> AForm*{return new ShrubberyCreationForm(formTarget);}
+	};
+	for(int i = 0; i < 3; i++){
+		form = constructors[i](formTarget);
+		if (form->getName() == formName){
+			std::cout << "The form " << form->getName() << " was createad sucefully!" << std::endl;
+			return (form);
+		}
+		delete form;
+	}
+	std::cout << "The form " << formName << " was not createad sucefully!" << std::endl;
+	return nullptr;
 }

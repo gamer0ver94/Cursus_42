@@ -10,8 +10,8 @@ int main() {
 	try{
 		Intern someRandomIntern;
 		AForm* rrf;
-		rrf = someRandomIntern.makeForm("Robotomy_Request_Form", "Bender");
-		std::cout << rrf->getName();
+		rrf = someRandomIntern.makeForm("Presidential_Pardon_Form", "Bender");
+		delete rrf;
 
 	}
 	catch(std::exception &e){
