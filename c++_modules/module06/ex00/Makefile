@@ -4,7 +4,7 @@ CC = c++
 
 CFLAGS =  -std=c++98 -g
 
-SRC = main.cpp 
+SRC = main.cpp srcs/ScalarConverter.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
