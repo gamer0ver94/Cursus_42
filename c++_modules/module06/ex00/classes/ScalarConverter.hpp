@@ -8,6 +8,11 @@ class ScalarConverter{
 		float floatType;
 		double doubleType;
 
+		bool isInt(std::string input)const;
+		bool isFloat(std::string input)const;
+		bool isDouble(std::string input)const;
+		std::string getType(std::string input)const;
+
 	public :
 		ScalarConverter();
 		ScalarConverter(ScalarConverter const &other);
