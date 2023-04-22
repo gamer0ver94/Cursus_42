@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <iomanip>
+#include <limits>
 
 class ScalarConverter{
 	private :
@@ -7,11 +9,14 @@ class ScalarConverter{
 		int intType;
 		float floatType;
 		double doubleType;
+		const std::string pseudoLiteral[8];
 
 		bool isInt(std::string input)const;
 		bool isFloat(std::string input)const;
 		bool isDouble(std::string input)const;
+		bool isChar(std::string input)const;
 		std::string getType(std::string input)const;
+		void printConvertedTypes(std::string input);
 
 	public :
 		ScalarConverter();
@@ -22,6 +27,11 @@ class ScalarConverter{
 		int	getIntType(void);
 		float getFloatType(void);
 		double getDoubleType(void);
+	class ConverterException : public std::exception{
+		const char * what() const noexcept{
+        return "This is not a Literal, so it cannot be converted";
+   	 }
+	};
 };
 
 std::ostream& operator<<(std::ostream& output, ScalarConverter &input);

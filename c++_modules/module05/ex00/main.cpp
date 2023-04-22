@@ -13,7 +13,7 @@ int main() {
 		std::getline(std::cin, grade);
 		system("clear");
 		try{
-			Bureaucrat bureaucrat();
+			Bureaucrat bureaucrat(name, std::stoi(grade));
 			
 			std::cout << "press + to increment grade or - to decrement grade ..." << std::endl;
 			std::getline(std::cin, method);
