@@ -2,7 +2,7 @@
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :
-AForm("Shrubbery_Creation_Form", 145, 137), target(target){
+AForm("shrubbery creation form", 145, 137), target(target){
    std::cout << GREEN << "Shrubbery_Creation_Form contructor" << WHITE << std::endl;
 }
 
@@ -14,7 +14,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
 	if (executor.getGrade() <= getGradeToExecute())
 	{
       std::cout << "ShrubberyCreationForm was a success .." << std::endl;
-		std::ofstream fd(target + " _shrubbery");
+		std::ofstream fd(target + "_shrubbery");
 		fd << "\033[32m               ,@@@@@@@,\n\
        ,,,.   ,@@@@@@/@@,  .oo8888o.\n\
     ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n\

@@ -2,7 +2,7 @@
 #include <ctime>
 #include <cstdlib>
 RobotomyRequestForm::RobotomyRequestForm(std::string target) :
-AForm("Robotomy_Request_Form", 72, 45), target(target){
+AForm("robotomy request form", 72, 45), target(target){
     std::cout << GREEN << "RobotomyRequestForm contructor" << WHITE << std::endl;
 }
 

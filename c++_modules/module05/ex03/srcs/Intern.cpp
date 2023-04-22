@@ -3,21 +3,43 @@
 #include "../classes/PresidentialPardonForm.hpp"
 #include "../classes/ShrubberyCreationForm.hpp"
 
+AForm* Intern::createRobotomyRequest(std::string target){
+	return new RobotomyRequestForm(target);
+}
+
+AForm* Intern::createShrubberyCreation(std::string target){
+	return new ShrubberyCreationForm(target);
+}
+
+AForm* Intern::createPresidentialPardon(std::string target){
+	return new PresidentialPardonForm(target);
+}
+
+const char * Intern::InternException::what() const throw(){
+	return "Could not make this form because it doesnt exist";
+}
+
 AForm* Intern::makeForm(std::string formName, std::string formTarget){
-	AForm*form;
-	AForm*(*constructors[3])(std::string) = {
-		[](std::string formTarget) -> AForm*{return new RobotomyRequestForm(formTarget);},
-		[](std::string formTarget) -> AForm*{return new PresidentialPardonForm(formTarget);},
-		[](std::string formTarget) -> AForm*{return new ShrubberyCreationForm(formTarget);}
-	};
-	for(int i = 0; i < 3; i++){
-		form = constructors[i](formTarget);
-		if (form->getName() == formName){
-			std::cout << "The form " << form->getName() << " was createad sucefully!" << std::endl;
-			return (form);
+	
+
+	typedef AForm* (Intern::*FormCreator)(std::string);
+	AForm* result;
+	FormCreator funcPtr[3] = {
+    &Intern::createPresidentialPardon,
+    &Intern::createRobotomyRequest,
+    &Intern::createShrubberyCreation
+};
+
+	for (int i = 0; i < 3; i++){
+		result = (this->*funcPtr[i])(formTarget);
+		if (result->getName() == formName){
+			std::cout << "successfull.." << std::endl;
+			return result;
 		}
-		delete form;
+		else{
+			delete result;
+		}
 	}
-	std::cout << "The form " << formName << " was not createad sucefully!" << std::endl;
+	throw Intern::InternException();
 	return nullptr;
 }

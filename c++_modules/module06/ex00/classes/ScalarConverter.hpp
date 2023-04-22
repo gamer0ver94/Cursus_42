@@ -9,7 +9,7 @@ class ScalarConverter{
 		int intType;
 		float floatType;
 		double doubleType;
-		const std::string pseudoLiteral[8];
+		const std::string pseudoLiteral[8] = {"nan", "nanf", "inf", "inff", "+inf", "-inf", "+inff", "-inff"};
 
 		bool isInt(std::string input)const;
 		bool isFloat(std::string input)const;
@@ -28,9 +28,7 @@ class ScalarConverter{
 		float getFloatType(void);
 		double getDoubleType(void);
 	class ConverterException : public std::exception{
-		const char * what() const noexcept{
-        return "This is not a Literal, so it cannot be converted";
-   	 }
+		const char * what() const throw();
 	};
 };
 

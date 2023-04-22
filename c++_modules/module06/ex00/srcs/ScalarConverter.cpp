@@ -2,7 +2,7 @@
 
 /******* Default Constructor ********/
 ScalarConverter::ScalarConverter():
-charType(0), intType(0), floatType(0), doubleType(0), pseudoLiteral{"nan", "nanf", "inf", "inff", "+inf", "-inf", "+inff", "-inff"}{	
+charType(0), intType(0), floatType(0), doubleType(0){	
 }
 /******* Copy Constructor ********/
 ScalarConverter::ScalarConverter(ScalarConverter const &other){
@@ -17,6 +17,12 @@ ScalarConverter& ScalarConverter::operator=(ScalarConverter const &other){
     }
     return (*this);
 }
+
+/*******Exception not literal**********/
+const char* ScalarConverter::ConverterException::what() const throw(){
+	return "This String is not a literal..";
+}
+
 
 /******* isFloat method ********/
 
