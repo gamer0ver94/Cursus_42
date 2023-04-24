@@ -9,6 +9,9 @@ SRC = main.cpp srcs/Bureaucrat.cpp srcs/AForm.cpp srcs/ShrubberyCreationForm.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
+.cpp.o:
+	${CC} ${CFLAGS} -c $< -o $@
+
 all : $(NAME)
 
 $(NAME) : $(OBJS)

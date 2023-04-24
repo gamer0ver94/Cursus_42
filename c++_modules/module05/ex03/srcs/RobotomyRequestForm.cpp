@@ -11,7 +11,7 @@ RobotomyRequestForm::~RobotomyRequestForm(){
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const{
-    srand(std::time(nullptr));
+    srand(std::time(NULL));
     int random = rand() % 2;
     if (executor.getGrade() <= this->getGradeToExecute()){
         if (random == 0){

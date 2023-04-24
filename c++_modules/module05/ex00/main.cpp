@@ -1,5 +1,7 @@
 #include "classes/Bureaucrat.hpp"
 #include <string>
+#include <cstdlib>
+
 int main() {
 	std::string status;
 	std::string name;
@@ -13,7 +15,7 @@ int main() {
 		std::getline(std::cin, grade);
 		system("clear");
 		try{
-			Bureaucrat bureaucrat(name, std::stoi(grade));
+			Bureaucrat bureaucrat(name, std::atoi(grade.c_str()));
 			
 			std::cout << "press + to increment grade or - to decrement grade ..." << std::endl;
 			std::getline(std::cin, method);

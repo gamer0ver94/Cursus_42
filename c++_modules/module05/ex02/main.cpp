@@ -4,6 +4,7 @@
 #include "classes/RobotomyRequestForm.hpp"
 #include "classes/PresidentialPardonForm.hpp"
 #include <string>
+#include <cstdlib>
 
 int main() {
 	std::string status;
@@ -24,8 +25,8 @@ int main() {
 		std::getline(std::cin, formTarget);
 		system("clear");
 		try{
-			Bureaucrat bureaucrat(name, std::stoi(grade));
-			switch (std::stoi(formNumber)){
+			Bureaucrat bureaucrat(name, std::atoi(grade.c_str()));
+			switch (std::atoi(formNumber.c_str())){
 				case 2 :{
 					PresidentialPardonForm form1(formTarget);
 					bureaucrat.signedForm(form1);

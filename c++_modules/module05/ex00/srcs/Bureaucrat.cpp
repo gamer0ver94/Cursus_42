@@ -26,7 +26,7 @@ const std::string Bureaucrat::getName()const{
 	return name;
 }
 
-const unsigned int Bureaucrat::getGrade()const{
+unsigned int Bureaucrat::getGrade()const{
 	return grade;
 }
 

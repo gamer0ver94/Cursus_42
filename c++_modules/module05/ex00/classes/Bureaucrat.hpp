@@ -1,6 +1,7 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 #include <iostream>
+#include <cstdlib>
 #define BLACK "\033[0;30m"
 #define RED "\033[0;31m"
 #define GREEN "\033[0;32m"
@@ -19,7 +20,7 @@ class Bureaucrat{
 		Bureaucrat(std::string setName, int setGrade);
 		~Bureaucrat();
 		const std::string getName()const;
-		const unsigned int getGrade()const;
+		unsigned int getGrade()const;
 		void	decrementGrade();
 		void	incrementGrade();
 

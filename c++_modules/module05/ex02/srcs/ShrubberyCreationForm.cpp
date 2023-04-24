@@ -14,7 +14,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
 	if (executor.getGrade() <= getGradeToExecute())
 	{
       std::cout << "ShrubberyCreationForm was a success .." << std::endl;
-		std::ofstream fd(target + " _shrubbery");
+		std::ofstream fd((target + " _shrubbery").c_str());
 		fd << "\033[32m               ,@@@@@@@,\n\
        ,,,.   ,@@@@@@/@@,  .oo8888o.\n\
     ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n\

@@ -41,5 +41,5 @@ AForm* Intern::makeForm(std::string formName, std::string formTarget){
 		}
 	}
 	throw Intern::InternException();
-	return nullptr;
+	return NULL;
 }

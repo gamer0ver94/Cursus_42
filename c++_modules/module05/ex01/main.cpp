@@ -2,6 +2,7 @@
 #include "classes/Form.hpp"
 #include "classes/Bureaucrat.hpp"
 #include <string>
+#include <cstdlib>
 
 int main() {
 	std::string status;
@@ -26,8 +27,8 @@ int main() {
 		std::getline(std::cin, gradeToExcute);
 		system("clear");
 		try{
-			Bureaucrat bureaucrat(name, std::stoi(grade));
-			Form form(formName,std::stoi(gradeToSign), std::stoi(gradeToExcute));
+			Bureaucrat bureaucrat(name, std::atoi(grade.c_str()));
+			Form form(formName,std::atoi(gradeToSign.c_str()), std::atoi(gradeToExcute.c_str()));
 			bureaucrat.signedForm(form);
 		}
 		catch (std::exception &exception){
