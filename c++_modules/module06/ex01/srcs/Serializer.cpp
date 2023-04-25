@@ -5,5 +5,8 @@ uintptr_t Serializer::serialize(Data* ptr){
 }
 
 Data* Serializer::deserialize(uintptr_t raw){
-	
+	Data *Data;
+
+	Data->value = static_cast<int>(raw);
+	return Data;
 }

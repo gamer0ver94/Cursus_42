@@ -29,6 +29,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy){
 	if (this != &copy){
 		grade = copy.grade;
 	}
+	std::cout << "overloading" << std::endl;
 	return *this;
 }
 
