@@ -3,6 +3,12 @@
 #include "../classes/PresidentialPardonForm.hpp"
 #include "../classes/ShrubberyCreationForm.hpp"
 
+Intern::Intern(){
+}
+
+Intern::~Intern(){
+}
+
 AForm* Intern::createRobotomyRequest(std::string target){
 	return new RobotomyRequestForm(target);
 }

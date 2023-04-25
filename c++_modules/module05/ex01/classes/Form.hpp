@@ -15,12 +15,12 @@ class Form{
         Form();
         Form(std::string name, const int gradeToSign, const int gradeToExecute);
         virtual ~Form();
-        // Form(const Form &copy);
-        // Form& operator=(const Form &Form);
+        Form(const Form &copy);
+        Form& operator=(const Form &copy);
 
         void beSigned(Bureaucrat &bureaucrat);
         const std::string getName()const;
         bool getIsSigned()const;
-        const int getGradeToSign()const;
-        const int getGradeToExecute()const;
+        int getGradeToSign()const;
+        int getGradeToExecute()const;
 };

@@ -1,6 +1,12 @@
 #include "../classes/RobotomyRequestForm.hpp"
 #include <ctime>
 #include <cstdlib>
+
+RobotomyRequestForm::RobotomyRequestForm() :
+AForm("Robotomy_Request_Form", 72, 45), target("default"){
+    std::cout << GREEN << "RobotomyRequestForm default contructor" << WHITE << std::endl;
+}
+
 RobotomyRequestForm::RobotomyRequestForm(std::string target) :
 AForm("robotomy request form", 72, 45), target(target){
     std::cout << GREEN << "RobotomyRequestForm contructor" << WHITE << std::endl;
@@ -8,6 +14,17 @@ AForm("robotomy request form", 72, 45), target(target){
 
 RobotomyRequestForm::~RobotomyRequestForm(){
     std::cout << RED << "RobotomyRequestForm destructor" << WHITE << std::endl;
+}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy) :
+AForm(copy), target(copy.target){
+}
+
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& copy){
+	if (this != &copy){
+		this->target = copy.target;
+	}
+	return *this;
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const{

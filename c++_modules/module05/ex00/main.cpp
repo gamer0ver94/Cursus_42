@@ -7,7 +7,7 @@ int main() {
 	std::string name;
 	std::string grade;
 	std::string method;
-	while(status != "exit"){
+	while(1){
 		system("clear");
 		std::cout << "Enter a name for the Bureaucrat :" << std::endl;
 		std::getline(std::cin, name);
@@ -33,6 +33,9 @@ int main() {
 		}
 		std::cout << std::endl << "Type something to CONTINUE ..." << std::endl << "Type EXIT to quit" << std::endl;
 		std::getline(std::cin, status);
+		if (status == "EXIT" || status == "exit"){
+			break;
+		}
 	}
     return 0;
 }

@@ -1,6 +1,11 @@
 #include "../classes/ShrubberyCreationForm.hpp"
 #include <fstream>
 
+ShrubberyCreationForm::ShrubberyCreationForm() :
+AForm("Shrubbery_Creation_Form", 145, 137), target("default"){
+   std::cout << GREEN << "default Shrubbery_Creation_Form contructor" << WHITE << std::endl;
+}
+
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :
 AForm("shrubbery creation form", 145, 137), target(target){
    std::cout << GREEN << "Shrubbery_Creation_Form contructor" << WHITE << std::endl;
@@ -8,6 +13,17 @@ AForm("shrubbery creation form", 145, 137), target(target){
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){
    std::cout << RED << "Shrubbery_Creation_Form destructor" << WHITE << std::endl;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy) :
+AForm(copy), target(copy.target){
+}
+
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& copy){
+	if (this != &copy){
+		this->target = copy.target;
+	}
+	return *this;
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const{

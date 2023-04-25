@@ -1,12 +1,28 @@
 #include "../classes/AForm.hpp"
 
+AForm::AForm() :
+name("default"), isSigned(0), gradeToSign(100), gradeToExecute(100){
+}
+
 AForm::AForm(std::string name, const int gradeToSign, const int gradeToExecute)
-: name(name), gradeToSign(gradeToSign), isSigned(0), gradeToExecute(gradeToExecute){
+: name(name), isSigned(0), gradeToSign(gradeToSign), gradeToExecute(gradeToExecute){
     std::cout << GREEN << "AForm constructor" << WHITE << std::endl;
 }
 
 AForm::~AForm(){
     std::cout << RED << "AForm constructor" << WHITE << std::endl;
+}
+
+AForm::AForm(const AForm &copy) : 
+name(copy.name), isSigned(copy.isSigned), gradeToSign(copy.gradeToSign),gradeToExecute(copy.gradeToExecute){
+	std::cout << GREEN << "copy contructor" << std::endl;
+}
+
+AForm& AForm::operator=(const AForm &copy){
+	if (this != &copy){
+		this->isSigned = copy.isSigned;
+	}
+	return *this;
 }
 
 void AForm::beSigned(Bureaucrat &bureaucrat){
@@ -26,11 +42,11 @@ bool AForm::getIsSigned()const{
     return isSigned;
 }
 
-const int AForm::getGradeToSign()const{
+int AForm::getGradeToSign()const{
     return gradeToSign;
 }
 
-const int AForm::getGradeToExecute()const{
+int AForm::getGradeToExecute()const{
     return gradeToExecute;
 }
 

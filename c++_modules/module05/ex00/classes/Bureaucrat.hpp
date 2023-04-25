@@ -19,6 +19,8 @@ class Bureaucrat{
 		Bureaucrat();
 		Bureaucrat(std::string setName, int setGrade);
 		~Bureaucrat();
+		Bureaucrat(const Bureaucrat& copy);
+		Bureaucrat& operator=(const Bureaucrat& copy);
 		const std::string getName()const;
 		unsigned int getGrade()const;
 		void	decrementGrade();

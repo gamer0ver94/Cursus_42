@@ -1,6 +1,11 @@
 #include "../classes/Bureaucrat.hpp"
 #include "../classes/Form.hpp"
 
+Bureaucrat::Bureaucrat() :
+name("undefined"), grade(rand() % 150) {
+	std::cout << GREEN << "Bureaucrat Default Constructor " << name << WHITE << std::endl;
+}
+
 Bureaucrat::Bureaucrat(std::string setName, int setGrade)
 : name(setName), grade(setGrade){
 	if (setGrade < 1){
@@ -18,11 +23,22 @@ Bureaucrat::~Bureaucrat(){
 	std::cout << RED <<getName()<< " was destructed!" << WHITE << std::endl;
 }
 
+Bureaucrat::Bureaucrat(const Bureaucrat& copy) : name(copy.name), grade(copy.grade){
+	std::cout << GREEN << "copy constructor" << WHITE << std::endl;
+}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy){
+	if (this != &copy){
+		grade = copy.grade;
+	}
+	return *this;
+}
+
 const std::string Bureaucrat::getName()const{
 	return name;
 }
 
-const unsigned int Bureaucrat::getGrade()const{
+int Bureaucrat::getGrade()const{
 	return grade;
 }
 

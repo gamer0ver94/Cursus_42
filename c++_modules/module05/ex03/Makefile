@@ -2,7 +2,7 @@ NAME = Bureaucrat
 
 CC = c++
 
-CFLAGS =  -std=c++98 -g
+CFLAGS =  -Wall -Werror -Wextra -std=c++98 -g
 
 SRC = main.cpp srcs/Bureaucrat.cpp srcs/AForm.cpp srcs/ShrubberyCreationForm.cpp srcs/RobotomyRequestForm.cpp \
 	srcs/PresidentialPardonForm.cpp srcs/Intern.cpp

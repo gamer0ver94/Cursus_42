@@ -18,10 +18,13 @@ class Bureaucrat{
 		const std::string name;
 		int grade;
 	public :
+		Bureaucrat();
 		Bureaucrat(std::string setName, int setGrade);
 		~Bureaucrat();
+		Bureaucrat(const Bureaucrat& copy);
+		Bureaucrat& operator=(const Bureaucrat& copy);
 		const std::string getName()const;
-		const unsigned int getGrade()const;
+		int getGrade()const;
 		void	decrementGrade();
 		void	incrementGrade();
 		void	signedForm(AForm &form);

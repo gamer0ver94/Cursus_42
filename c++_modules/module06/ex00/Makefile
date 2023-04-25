@@ -2,11 +2,14 @@ NAME = Conversion_of_scalar_types
 
 CC = c++
 
-CFLAGS =  -std=c++98 -g
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 SRC = main.cpp srcs/ScalarConverter.cpp
 
 OBJS = $(SRC:.cpp=.o)
+
+# .cpp :
+# 	${CC} ${CFLAGS} -c $< -o $@
 
 all : $(NAME)
 

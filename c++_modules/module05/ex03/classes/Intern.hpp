@@ -6,6 +6,8 @@ class Intern{
 		AForm* createShrubberyCreation(std::string target);
 		AForm* createPresidentialPardon(std::string target);
 	public :
+		Intern();
+		~Intern();
 		AForm* makeForm(std::string formName, std::string formTarget);
 
 	class InternException : public std::exception{

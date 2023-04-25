@@ -12,17 +12,18 @@ class AForm{
         const int gradeToExecute;
     
     public :
+		AForm();
         AForm(std::string name, const int gradeToSign, const int GradeToExecute);
         virtual ~AForm();
-        // Form(const Form &copy);
-        // Form& operator=(const Form &Form);
+       AForm(const AForm &copy);
+        AForm& operator=(const AForm &copy);
 
         void beSigned(Bureaucrat &bureaucrat);
 		virtual void execute(Bureaucrat const & executor) const = 0;
         const std::string getName()const;
         bool getIsSigned()const;
-        const int getGradeToSign()const;
-        const int getGradeToExecute()const;
+        int getGradeToSign()const;
+        int getGradeToExecute()const;
 		class noContractSign : public std::exception{
 			public :
 				virtual const char* what()const throw();
