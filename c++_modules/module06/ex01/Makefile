@@ -19,5 +19,5 @@ $(NAME) : $(OBJS)
 re :  fclean all
 
 clean :
-	rm -rf $(NAME) $(OBJS)
+	rm -rf $(NAME) $(OBJS) data.bin
 fclean : clean

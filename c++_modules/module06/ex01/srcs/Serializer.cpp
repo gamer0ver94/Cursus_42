@@ -1,12 +1,11 @@
 #include "../classes/Serializer.hpp"
 
 uintptr_t Serializer::serialize(Data* ptr){
-	return static_cast<uintptr_t>(ptr->value);
+	std::cout << "Serializing ..." << std::endl;
+	return reinterpret_cast<uintptr_t>(ptr);
 }
 
 Data* Serializer::deserialize(uintptr_t raw){
-	Data *Data;
-
-	Data->value = static_cast<int>(raw);
-	return Data;
+	std::cout << "Deserializing ..." << std::endl;
+	return reinterpret_cast<Data*>(raw);
 }
