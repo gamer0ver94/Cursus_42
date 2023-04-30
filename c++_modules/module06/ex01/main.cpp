@@ -3,57 +3,51 @@
 #include <fstream>
 
 int main(void){
-	uintptr_t ptr;
-	std::string fileName = "data.bin";
-	std::ifstream fileIn(fileName, std::ios::binary);
-	Data *deserializedData;
-	if (fileIn.good()){
-		Data newData;
-		std::cout << "File " << fileName << " exists" << std::endl;
-		std::cout << "Reading from " << fileName << std::endl;
-		fileIn.read(reinterpret_cast<char*>(&newData), sizeof(Data));
-		std::cout << "Deserializing success." << std::endl;
-		newData.getData();
-		fileIn.close();
-		ptr = Serializer::serialize(&newData);
-		deserializedData = Serializer::deserialize(ptr);
-		if ((deserializedData) == &newData){
-			std::cout << "Pointer is the same" << std::endl;
-			std::cout << deserializedData << std::endl << &newData << std::endl;
+	std::string firstName;
+	std::string lastName;
+	std::string age;
+	std::string address;
+	std::string description;
+	uintptr_t tmp = 0;
+	std::cout << "First name: " << std::endl;
+	std::getline(std::cin, firstName);
+	std::cout << "Last name: " << std::endl;
+	std::getline(std::cin, lastName);
+	std::cout << "age: " << std::endl;
+	std::getline(std::cin, age);
+	std::cout << "Address: " << std::endl;
+	std::getline(std::cin, address);
+	std::cout << "Description: " << std::endl;
+	std::getline(std::cin, description);
+	system("clear");
+	try{
+		Data* data = new Data(firstName, lastName, std::stoi(age), address, description);
+		if (data){
+		std::cout << "\033[32m" << "Data object created." << "\033[37m" << std::endl;
+		data->getData();
 		}
 		else{
-			std::cout << "Pointer is not the same" << std::endl;
+			std::cout << "\033[0m" << "Data object failed to be created." << "\033[37m" << std::endl;
 		}
+		tmp = Serializer::serialize(data);
+		if (tmp){
+			std::cout << "\033[32m" << "Serialization sucessfull" << "\033[37m" <<std::endl;
+		}
+		else{
+			std::cout << "\033[0m" << "Serialization unsuccefull" << "\033[37m" << std::endl;
+		}
+		Data *newData = Serializer::deserialize(tmp);
+		if (newData){
+			std::cout << "\033[32m" << "Deserialization sucessfull" << "\033[37m" << std::endl;
+		}
+		else{
+			std::cout << "\033[0m" << "Deserialization unsuccefull" << "\033[37m" << std::endl;
+		}
+		newData->getData();
+		std::cout << "data address " << data << std::endl << "new data address " << newData << std::endl;
+		delete data;
 	}
-	else{
-		fileIn.close();
-		std::string firstName;
-		std::string lastName;
-		std::string age;
-		std::string address;
-		std::string description;
-		std::getline(std::cin, firstName);
-		std::getline(std::cin, lastName);
-		std::getline(std::cin, age);
-		std::getline(std::cin, address);
-		std::getline(std::cin, description);
-		Data data(firstName, lastName, std::stoi(age), address, description);
-		ptr = Serializer::serialize(&data);
-		std::cout << "Serializing success." << std::endl;
-		std::cout << "Opening " << fileName << std::endl;
-		std::ofstream fileOut(fileName, std::ios::binary);
-		std::cout << "Writing into " << fileName << std::endl;
-		fileOut.write(reinterpret_cast<char*>(&data), sizeof(data));
-		std::cout << "Writing success. " << std::endl;
-		fileOut.close();
-		ptr = Serializer::serialize(&data);
-		deserializedData = Serializer::deserialize(ptr);
-		if ((deserializedData) == &data){
-			std::cout << "Pointer is the same" << std::endl;
-			std::cout << deserializedData << std::endl << &data << std::endl;
-		}
-		else{
-			std::cout << "Pointer is not the same" << std::endl;
-		}
+	catch(std::exception&e){
+		std::cout << e.what() << " could not convert a string please write age as a int." << std::endl;
 	}
 }
