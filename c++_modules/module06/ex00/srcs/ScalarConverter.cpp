@@ -27,30 +27,39 @@ const char* ScalarConverter::ConverterException::what() const throw(){
 /******* isFloat method ********/
 
 bool ScalarConverter::isFloat(std::string input)const{
+	int dot = 0;
 	for(int i = 0; i < 8; i++){
 		if (input == pseudoLiteral[i]){
 			return 0;
 		}
 	}
-	try{
-        float value = std::stof(input);
-		return input.back() == 'f' && std::abs(value) > 0.0f;
+	for(int i = 0; i < input.length(); i++){
+		if (input[i] == '.'){
+				dot++;
+				if (dot > 1){
+					return false;
+				}
+			}
+		if(input[i] == 'f' && input[i - 1] != 'f'){
+			if (input[i - 1] && input[i + 1] == '\0'){
+				return true;
+			}
+		}
 	}
-	catch (std::exception &e){
-        return 0;
-	}
+	return false;
 }
 
 bool ScalarConverter::isInt(std::string input)const{
 	try {
         size_t pos;
         int intNb = std::stoi(input, &pos);
-        if (pos != input.length())
-            return false;
-        return (intNb >= std::numeric_limits<int>::min() && intNb <= std::numeric_limits<int>::max());
+        return pos == input.size();
     }
-    catch (...) {
-        return false;
+	catch(std::invalid_argument &e){
+		return 0;
+	}
+    catch (std::out_of_range &e) {
+        return true;
     }
 }
 
@@ -60,12 +69,38 @@ bool ScalarConverter::isChar(std::string input)const{
 
 bool ScalarConverter::isDouble(std::string input)const{
 	size_t size;
+	int dot = 0;
 	size = input.find('.');
-	if (std::string::npos != size && input.back() != 'f'){
+	if (std::string::npos != size){
 		try{
+				size_t size;
+			try{
+				for(int i = 0; i < input.length();i++){
+					if (input[i] == '.'){
+						dot++;
+						if (!input[i + 1]){
+							return false;
+						}
+						else if (dot > 1){
+							return false;
+						}
+					}
+					if ((input[i] >= 'a' && input[i] <= 'z') || (input[i] >= 'A' && input[i] <= 'Z') || (!isprint(input[i]) && input[i] != '.')){
+						return false;
+					}
+					if ((input[i] <= 47) && (input[i] >= 33) && (input[i] != '.')){
+						return false;
+					}
+				}
+				return std::stod(input);
+			}
+			catch(std::out_of_range &e){
+				std::cout << e.what() << std::endl;
+    		    return false;
+			}
 			return std::stod(input);
 		}
-		catch(std::exception &e){
+		catch(...){
             return 0;
 		}
 	}
@@ -77,7 +112,6 @@ char ScalarConverter::getCharType(void){
 }
 
 void ScalarConverter::printConvertedTypes(std::string input){
-	std::cout << input << std::endl;
 	for (int i = 0; i < 8; i++){
 			if (input == pseudoLiteral[i]){
 				std::cout << "char: Impossible" << std::endl;
@@ -96,7 +130,12 @@ void ScalarConverter::printConvertedTypes(std::string input){
 	else{
 		std::cout << "char: Impossible" << std::endl;
 	}
-    std::cout << "int: " << intType << std::endl;
+	if (intType != static_cast<int>(floatType)){
+		std::cout << "int: impossible" << std::endl;
+	}
+	else{
+    	std::cout << "int: " << intType << std::endl;
+	}
 	if (floatType == intType){
 		std::cout << std::fixed << std::setprecision(1) << "float: " << floatType << "f" << std::endl;
 		std::cout << std::fixed << std::setprecision(1) << "float: " << doubleType<< std::endl;
@@ -136,13 +175,15 @@ void ScalarConverter::convert(std::string input){
 			doubleType = static_cast<double>(charType);
 			floatType = static_cast<float>(charType);
 		}
+		else if(type == "oor"){
+			doubleType = std::stod(input);
+			floatType = static_cast<float>(doubleType);
+			charType = static_cast<char>(intType);
+		}
 		printConvertedTypes(type);
-			// isFloat(input) ? std::cout << "its a float" << std::endl : std::cout << "not a float" << std::endl;
-			// isDouble(input) ? std::cout << "its a Double" << std::endl : std::cout << "not a double" << std::endl;
-			// isInt(input) ? std::cout << "its a Int" << std::endl : std::cout << "not a Int" << std::endl;
 	}
-	catch(std::exception &e){
-		std::cout << e.what() << std::endl;
+	catch(...){
+		std::cout << "Invalid Input" << std::endl;
 	}
 }
 
@@ -154,6 +195,12 @@ std::string ScalarConverter::getType(std::string input)const{
 		return "double";
 	}
 	else if (isInt(input)){
+		try {
+			std::stoi(input);
+		}
+		catch(std::out_of_range &e){
+			return "oor";
+		}
 		return "int";
 	}
 	else if (input.size() > 1){

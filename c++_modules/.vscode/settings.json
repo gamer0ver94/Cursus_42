@@ -69,6 +69,7 @@
 		"iomanip": "cpp",
 		"__split_buffer": "cpp",
 		"stack": "cpp",
-		"filesystem": "cpp"
+		"filesystem": "cpp",
+		"cinttypes": "cpp"
 	}
 }
