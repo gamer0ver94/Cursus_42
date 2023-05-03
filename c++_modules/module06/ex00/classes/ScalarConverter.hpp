@@ -9,7 +9,7 @@ class ScalarConverter{
 		int intType;
 		float floatType;
 		double doubleType;
-		const std::string pseudoLiteral[8] = {"nan", "nanf", "inf", "inff", "+inf", "-inf", "+inff", "-inff"};
+		static const std::string pseudoLiteral[8];
 
 		bool isInt(std::string input)const;
 		bool isFloat(std::string input)const;
