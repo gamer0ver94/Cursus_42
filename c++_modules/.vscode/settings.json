@@ -70,6 +70,7 @@
 		"__split_buffer": "cpp",
 		"stack": "cpp",
 		"filesystem": "cpp",
-		"cinttypes": "cpp"
+		"cinttypes": "cpp",
+		"list": "cpp"
 	}
 }

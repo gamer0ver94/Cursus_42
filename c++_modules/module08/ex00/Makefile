@@ -1,4 +1,4 @@
-NAME = Iter
+NAME = EasyFind
 
 CC = c++
 
@@ -20,5 +20,4 @@ re :  fclean all
 
 clean :
 	rm -rf $(NAME) $(OBJS)
-
 fclean : clean
