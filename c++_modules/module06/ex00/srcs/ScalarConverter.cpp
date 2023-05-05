@@ -1,6 +1,6 @@
 #include "../classes/ScalarConverter.hpp"
 
-const std::string ScalarConverter::pseudoLiteral[8] = {"nan", "nanf", "inf", "inff", "+inf", "-inf", "+inff", "-inff"};
+const std::string ScalarConverter::pseudoLiteral[10] = {"nan", "nanf", "inf", "inff", "+inf", "-inf", "+inff", "-inff", "+nanf", "-nanf"};
 
 /******* Default Constructor ********/
 ScalarConverter::ScalarConverter():
@@ -30,7 +30,7 @@ const char* ScalarConverter::ConverterException::what() const throw(){
 
 bool ScalarConverter::isFloat(std::string input)const{
 	int dot = 0;
-	for(int i = 0; i < 8; i++){
+	for(int i = 0; i < 10; i++){
 		if (input == pseudoLiteral[i]){
 			return 0;
 		}
@@ -66,7 +66,7 @@ bool ScalarConverter::isInt(std::string input)const{
 }
 
 bool ScalarConverter::isChar(std::string input)const{
-    return input.size() == 1 && ((input[0] >= 'a' && input[0] <= 'z') || (input[0] >= 'A' && input[0] <= 'Z'));
+    return input.size() == 1 && ((input[0] >= 0 && 127));
 }
 
 bool ScalarConverter::isDouble(std::string input)const{
@@ -114,7 +114,7 @@ char ScalarConverter::getCharType(void){
 }
 
 void ScalarConverter::printConvertedTypes(std::string input){
-	for (int i = 0; i < 8; i++){
+	for (int i = 0; i < 10; i++){
 			if (input == pseudoLiteral[i]){
 				std::cout << "char: Impossible" << std::endl;
 				std::cout << "int: Impossible" << std::endl;
@@ -126,13 +126,13 @@ void ScalarConverter::printConvertedTypes(std::string input){
 	if (intType >= 32 && intType <= 126 ){
     	std::cout << "char: " << charType << std::endl;
 	}
-	else if(intType >= 0 && intType <= 32 || intType == 127){
+	else if(intType >= 0 && (intType <= 32 || intType == 127) && doubleType < INT_MAX && doubleType > INT_MIN){
 		std::cout << "char: Non displayable"<< std::endl;
 	}
 	else{
 		std::cout << "char: Impossible" << std::endl;
 	}
-	if (intType != static_cast<int>(floatType)){
+	if (intType != static_cast<int>(floatType) || (doubleType > INT_MAX || doubleType < INT_MIN)){
 		std::cout << "int: impossible" << std::endl;
 	}
 	else{
@@ -152,6 +152,7 @@ void ScalarConverter::printConvertedTypes(std::string input){
 void ScalarConverter::convert(std::string input){
 	try{
 		std::string type = getType(input);
+		std::cout << type;
 		if (type == "float"){
 		
 			floatType = std::stof(input);
@@ -178,10 +179,6 @@ void ScalarConverter::convert(std::string input){
 			floatType = static_cast<float>(charType);
 		}
 		else if(type == "oor"){
-			for (int i = 0; i < input.length(); i++){
-				if ((!isnumber(input[i]) && input[i] != 'f') || (input[i] == 'f' && input[i + 1] != '\0'))
-					throw "error";
-			}
 			doubleType = std::stod(input);
 			floatType = static_cast<float>(doubleType);
 			charType = static_cast<char>(intType);
@@ -189,7 +186,7 @@ void ScalarConverter::convert(std::string input){
 		printConvertedTypes(type);
 	}
 	catch(std::exception &e){
-		std::cout << e.what() << ". Invalid Input." << std::endl;
+		std::cout << "Invalid Input." << std::endl;
 	}
 }
 
@@ -224,7 +221,8 @@ std::string ScalarConverter::getType(std::string input)const{
 		return "char";
 	}
 	else{
-		return "impossible";
+		std::cout << "la";
+		throw ScalarConverter::ConverterException();
 	}
 }
 
