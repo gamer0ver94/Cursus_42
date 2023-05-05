@@ -71,6 +71,10 @@
 		"stack": "cpp",
 		"filesystem": "cpp",
 		"cinttypes": "cpp",
-		"list": "cpp"
+		"list": "cpp",
+		"__hash_table": "cpp",
+		"__node_handle": "cpp",
+		"complex": "cpp",
+		"optional": "cpp"
 	}
 }
