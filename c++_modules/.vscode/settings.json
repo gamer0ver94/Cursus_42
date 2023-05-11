@@ -75,6 +75,7 @@
 		"__hash_table": "cpp",
 		"__node_handle": "cpp",
 		"complex": "cpp",
-		"optional": "cpp"
+		"optional": "cpp",
+		"map": "cpp"
 	}
 }

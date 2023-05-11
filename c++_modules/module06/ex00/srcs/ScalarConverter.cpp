@@ -2,9 +2,13 @@
 
 const std::string ScalarConverter::pseudoLiteral[10] = {"nan", "nanf", "inf", "inff", "+inf", "-inf", "+inff", "-inff", "+nanf", "-nanf"};
 
+char ScalarConverter::charType = 0;
+int ScalarConverter::intType = 0;
+float ScalarConverter::floatType = 0;
+double ScalarConverter::doubleType = 0;
+
 /******* Default Constructor ********/
-ScalarConverter::ScalarConverter():
-charType(0), intType(0), floatType(0), doubleType(0){	
+ScalarConverter::ScalarConverter(){	
 }
 /******* Copy Constructor ********/
 ScalarConverter::ScalarConverter(ScalarConverter const &other){
@@ -28,7 +32,7 @@ const char* ScalarConverter::ConverterException::what() const throw(){
 
 /******* isFloat method ********/
 
-bool ScalarConverter::isFloat(std::string input)const{
+bool ScalarConverter::isFloat(std::string input){
 	int dot = 0;
 	for(int i = 0; i < 10; i++){
 		if (input == pseudoLiteral[i]){
@@ -51,7 +55,7 @@ bool ScalarConverter::isFloat(std::string input)const{
 	return false;
 }
 
-bool ScalarConverter::isInt(std::string input)const{
+bool ScalarConverter::isInt(std::string input){
 	try {
         size_t pos;
         int intNb = std::stoi(input, &pos);
@@ -65,11 +69,11 @@ bool ScalarConverter::isInt(std::string input)const{
     }
 }
 
-bool ScalarConverter::isChar(std::string input)const{
+bool ScalarConverter::isChar(std::string input){
     return input.size() == 1 && ((input[0] >= 0 && 127));
 }
 
-bool ScalarConverter::isDouble(std::string input)const{
+bool ScalarConverter::isDouble(std::string input){
 	size_t size;
 	int dot = 0;
 	size = input.find('.');
@@ -190,7 +194,7 @@ void ScalarConverter::convert(std::string input){
 	}
 }
 
-std::string ScalarConverter::getType(std::string input)const{
+std::string ScalarConverter::getType(std::string input){
 	if (isFloat(input)){
 		return "float";
 	}
@@ -236,9 +240,4 @@ float ScalarConverter::getFloatType(void){
 
 double ScalarConverter::getDoubleType(void){
     return doubleType;
-}
-
-std::ostream& operator<<(std::ostream& output, ScalarConverter &input){
-    output << input.getCharType() << std::endl << input.getIntType() << std::endl << input.getFloatType() << std::endl << input.getDoubleType();
-    return output;
 }
