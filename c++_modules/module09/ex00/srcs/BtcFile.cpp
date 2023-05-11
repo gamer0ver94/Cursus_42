@@ -8,6 +8,7 @@ BtcFile::BtcFile(const char *fileName, const char *fileName2){
     std::string line;
     internalDataBase.open(fileName);
     externalDataBase.open(fileName2);
+	std::getline(internalDataBase, line);
     if (!internalDataBase || !externalDataBase){
         std::cout << "failed to open file" << std::endl;
     }
@@ -21,16 +22,6 @@ BtcFile::BtcFile(const char *fileName, const char *fileName2){
             }
             catch(...){std::cout << "error" << value << std::endl;};
         }
-         while (std::getline(externalDataBase, line)) {
-            std::istringstream iss(line);
-            std::getline(iss, key, '|');
-            std::getline(iss, value);
-            std::cout << "key" << key << "value" << value << std::endl;
-            try{
-                db2[key] = std::stof(value);
-            }
-            catch(...){std::cout << "error" << value << std::endl;};
-        }
         std::cout << "File Constructor" << std::endl;
     }
 }
@@ -40,13 +31,23 @@ BtcFile::~BtcFile(){
 };
 
 void BtcFile::outputFile(){
-    // for (std::map<std::string, float>::iterator it = db.begin();it != db.end(); ++it){
-    //     std::cout << std::fixed << std::setprecision(2) << it->second << std::endl;
-    //     // std::cout << it->second << std::endl;
-    // }
-    // for (std::map<std::string, float>::iterator it = db2.begin();it != db2.end(); ++it){
-    //     std::cout  << it->second << std::endl;
-    // std::cout << db2["2011-01-03"] << std::endl;
-    // }
+	std::string line;
+	std::string key;
+	std::string value;
+    while (std::getline(externalDataBase, line)) {
+        std::istringstream iss(line);
+        std::getline(iss, key, '|');
+        std::getline(iss, value);
+		key[key.size() - 1] = '\0';
+        try{
+			if (db[key]){
+           		std::cout << key << " => " << value << " = " << std::endl;
+			}
+			else{
+				std::cout << "Error: bad input => " << key << std::endl;
+			}
+        }
+        catch(...){std::cout << "error" << value << std::endl;};
+    }
     
 }

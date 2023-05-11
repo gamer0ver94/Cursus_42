@@ -8,7 +8,7 @@ SRC = main.cpp srcs/ScalarConverter.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
-.cpp :
+.cpp.o :
 	${CC} ${CFLAGS} -c $< -o $@
 
 all : $(NAME)

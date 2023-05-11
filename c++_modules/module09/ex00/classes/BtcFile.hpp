@@ -12,5 +12,4 @@ class BtcFile{
         std::ifstream internalDataBase;
         std::ifstream externalDataBase;
         std::map<std::string, float> db;
-        std::map<std::string, float> db2;
 };

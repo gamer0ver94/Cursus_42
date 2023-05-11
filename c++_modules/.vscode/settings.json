@@ -76,6 +76,7 @@
 		"__node_handle": "cpp",
 		"complex": "cpp",
 		"optional": "cpp",
-		"map": "cpp"
+		"map": "cpp",
+		"__tree": "cpp"
 	}
 }

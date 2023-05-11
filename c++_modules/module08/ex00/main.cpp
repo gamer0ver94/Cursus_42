@@ -14,8 +14,18 @@ typename T::iterator easyfind(T& container, int value) {
 }
 
 int main() {
-    std::vector<int> vec = {1, 2, 3, 4, 5};
-    std::list<int> lst = {10, 20, 30, 40, 50};
+    std::vector<int> vec;
+    std::list<int> lst;
+	vec.push_back(1);
+	vec.push_back(2);
+	vec.push_back(3);
+	vec.push_back(4);
+	vec.push_back(5);
+	lst.push_back(10);
+	lst.push_back(20);
+	lst.push_back(30);
+	lst.push_back(40);
+	lst.push_back(50);
 
     try {
         std::vector<int>::iterator it_vec = easyfind(vec, 3);

@@ -9,8 +9,7 @@ class Array{
         Array() : array(NULL), _size(0){
         }
         Array(unsigned int n) : array(new T[n]), _size(n){
-            for (int i = 0; i < n; i++){
-
+            for (int i = 0; i < static_cast<int>(n); i++){
                 array[i] = T();
             }
         }
@@ -18,7 +17,7 @@ class Array{
         }
 
         Array(const Array &copy) : array(new T[copy._size]), _size(copy._size){
-            for(int i = 0; i < copy._size; i++){
+            for(int i = 0; i < static_cast<int>(copy._size); i++){
                 this->array[i] = copy.array[i];
             }
         }

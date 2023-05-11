@@ -39,7 +39,7 @@ bool ScalarConverter::isFloat(std::string input){
 			return 0;
 		}
 	}
-	for(int i = 0; i < input.length(); i++){
+	for(int i = 0; i < static_cast<int>(input.length()); i++){
 		if (input[i] == '.'){
 				dot++;
 				if (dot > 1){
@@ -58,7 +58,7 @@ bool ScalarConverter::isFloat(std::string input){
 bool ScalarConverter::isInt(std::string input){
 	try {
         size_t pos;
-        int intNb = std::stoi(input, &pos);
+		std::stoi(input, &pos);
         return pos == input.size();
     }
 	catch(std::invalid_argument &e){
@@ -79,9 +79,8 @@ bool ScalarConverter::isDouble(std::string input){
 	size = input.find('.');
 	if (std::string::npos != size){
 		try{
-				size_t size;
 			try{
-				for(int i = 0; i < input.length();i++){
+				for(int i = 0; i < static_cast<int>(input.length());i++){
 					if (input[i] == '.'){
 						dot++;
 						if (!input[i + 1]){
@@ -113,17 +112,19 @@ bool ScalarConverter::isDouble(std::string input){
 	return 0;
 }
 
-char ScalarConverter::getCharType(void){
-	return getCharType();
-}
-
 void ScalarConverter::printConvertedTypes(std::string input){
 	for (int i = 0; i < 10; i++){
 			if (input == pseudoLiteral[i]){
 				std::cout << "char: Impossible" << std::endl;
 				std::cout << "int: Impossible" << std::endl;
-				std::cout << "float:" << input + "f" << std::endl;
-				std::cout << "double:" << input << std::endl;
+				if (input == "nanf"){
+					std::cout << "float:" << input << std::endl;
+					std::cout << "double:" << "nan" << std::endl;
+				}
+				else{
+					std::cout << "float:" << input + "f" << std::endl;
+					std::cout << "double:" << input << std::endl;
+				}
 				return;
 			}
 		}
@@ -154,6 +155,7 @@ void ScalarConverter::printConvertedTypes(std::string input){
 
 /******* Convert Method ********/
 void ScalarConverter::convert(std::string input){
+		std::cout << getType(input) << std::endl;
 	try{
 		std::string type = getType(input);
 		std::cout << type;
