@@ -8,7 +8,7 @@ SRC = main.cpp srcs/A.cpp srcs/B.cpp srcs/C.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
-.cpp :
+.cpp.o :
 	${CC} ${CFLAGS} -c $< -o $@
 
 all : $(NAME)

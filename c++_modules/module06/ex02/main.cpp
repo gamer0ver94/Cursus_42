@@ -38,19 +38,19 @@ void identify(Base *p){
 void identify(Base &p){
     try{
         A &base = dynamic_cast<A&>(p);
-        std::cout << "I am an objet of Type A." << std::endl;
+        std::cout << "I am an objet of Type A. " << &base << std::endl;
     }
     catch(std::bad_cast &){
     }
      try{
         B &base = dynamic_cast<B&>(p);
-        std::cout << "I am an objet of Type B." << std::endl;
+        std::cout << "I am an objet of Type B. " << &base << std::endl;
     }
     catch(std::bad_cast &){
     }
      try{
         C &base = dynamic_cast<C&>(p);
-        std::cout << "I am an objet of Type C." << std::endl;
+        std::cout << "I am an objet of Type C. " << &base << std::endl;
     }
     catch(std::bad_cast &){
     }
