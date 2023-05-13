@@ -145,7 +145,7 @@ void ScalarConverter::printConvertedTypes(std::string input){
 	}
 	if (floatType == intType){
 		std::cout << std::fixed << std::setprecision(1) << "float: " << floatType << "f" << std::endl;
-		std::cout << std::fixed << std::setprecision(1) << "float: " << doubleType<< std::endl;
+		std::cout << std::fixed << std::setprecision(1) << "double: " << doubleType<< std::endl;
 	}
 	else{
 		std::cout << "float: " << floatType << "f" << std::endl;
@@ -155,10 +155,8 @@ void ScalarConverter::printConvertedTypes(std::string input){
 
 /******* Convert Method ********/
 void ScalarConverter::convert(std::string input){
-		std::cout << getType(input) << std::endl;
 	try{
 		std::string type = getType(input);
-		std::cout << type;
 		if (type == "float"){
 		
 			floatType = std::stof(input);
