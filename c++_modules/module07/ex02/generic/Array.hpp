@@ -14,6 +14,7 @@ class Array{
             }
         }
         virtual ~Array(){
+			delete array;
         }
 
         Array(const Array &copy) : array(new T[copy._size]), _size(copy._size){

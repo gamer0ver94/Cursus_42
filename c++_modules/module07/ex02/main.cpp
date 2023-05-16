@@ -2,19 +2,18 @@
 #include "generic/Array.hpp"
 
 #define MAX_VAL 750
-int main(int, char**)
+int main()
 {
     Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
+    int* copy = new int[MAX_VAL];
     srand(time(NULL));
     for (int i = 0; i < MAX_VAL; i++)
     {
         const int value = rand() % 100;
         std::cout << value << std::endl;
         numbers[i] = value;
-        mirror[i] = value;
+        copy[i] = value;
     }
-    //SCOPE
     {
         Array<int> tmp = numbers;
         Array<int> test(tmp);
@@ -22,7 +21,7 @@ int main(int, char**)
 
     for (int i = 0; i < MAX_VAL; i++)
     {
-        if (mirror[i] != numbers[i])
+        if (copy[i] != numbers[i])
         {
             std::cerr << "didn't save the same value!!" << std::endl;
             return 1;
@@ -52,6 +51,6 @@ int main(int, char**)
     for(int i= 0; i < MAX_VAL; i++){
         std::cout << numbers[i] << std::endl;
     }
-    delete [] mirror;//
+    delete [] copy;
     return 0;
 }

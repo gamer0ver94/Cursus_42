@@ -2,6 +2,8 @@
 #include <string>
 #include <sstream>
 #include <iomanip>
+#include <iterator>
+#include <map>
 BtcFile::BtcFile(const char *fileName, const char *fileName2){
     std::string value;
     std::string key;
@@ -38,16 +40,29 @@ void BtcFile::outputFile(){
         std::istringstream iss(line);
         std::getline(iss, key, '|');
         std::getline(iss, value);
-		key[key.size() - 1] = '\0';
+		char *test = new char[key.size() - 1];
+		for (int i = 0; i < static_cast<int>(key.size() - 1); i++){
+			test[i] = key[i];
+		}
+		test[key.size() - 1] = 0;
         try{
-			if (db[key]){
-           		std::cout << key << " => " << value << " = " << std::endl;
+			for (std::map<std::string, float>::iterator it = db.begin(); it != db.end(); ++it){
+				if (it->first == test){
+					if (std::stof(value) * it->second < 0){
+						std::cout << "Error: not a positive number" << std::endl;
+					}
+					else if (std::stof(value) > MAXFLOAT){
+						std::cout << "Error: too large" << std::endl;
+					}
+					else{
+						std::cout << it->first << " => " << it->second << " = " << (std::stof(value) * it->second) << std::endl;
+					}
+					break;
+				}
 			}
-			else{
-				std::cout << "Error: bad input => " << key << std::endl;
-			}
+
         }
-        catch(...){std::cout << "error" << value << std::endl;};
+        catch(...){std::cout << "another error" << value << std::endl;};
+		delete[] test;
     }
-    
 }
