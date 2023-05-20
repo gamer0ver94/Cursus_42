@@ -4,15 +4,8 @@
 #include <algorithm>
 #include <stdexcept>
 
-template<typename T>
-typename T::iterator easyfind(T& container, int value) {
-    typename T::iterator it = std::find(container.begin(), container.end(), value);
-    if (it == container.end()) {
-        throw std::runtime_error("Value not found in container");
-    }
-    return it;
-}
 
+#include "generic/easyfind.hpp"
 int main() {
     std::vector<int> vec;
     std::list<int> lst;
@@ -34,7 +27,6 @@ int main() {
     catch (std::exception& e) {
         std::cout << e.what() << std::endl;
     }
-
     try {
         std::list<int>::iterator it_lst = easyfind(lst, 50);
         std::cout << "Value found in list at position " << std::distance(lst.begin(), it_lst) << std::endl;
@@ -45,3 +37,13 @@ int main() {
 
     return 0;
 }
+
+
+// template<typename T>
+// typename T::iterator easyfind(T& container, int value) {
+//     typename T::iterator it = std::find(container.begin(), container.end(), value);
+//     if (it == container.end()) {
+//         throw std::runtime_error("Value not found in container");
+//     }
+//     return it;
+// }

@@ -1,10 +1,10 @@
-NAME = Mutant_abomination
+NAME = Span
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
-SRC = main.cpp
+SRC = main.cpp srcs/Span.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
@@ -20,5 +20,4 @@ re :  fclean all
 
 clean :
 	rm -rf $(NAME) $(OBJS)
-
 fclean : clean

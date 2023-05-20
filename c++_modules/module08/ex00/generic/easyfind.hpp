@@ -1,15 +1,13 @@
 #pragma once
 #include <iostream>
-template <typename T>
+#include <iterator>
+#include <stdexcept>
 
-int easyfind(T container, int value){
-    int i = 0;
-    // while (container[i])
-    // {
-    //     if (container[i] == value){
-    //         return value;
-    //     }
-    //     i++;
-    // }
-    throw std::exception << "error" << std::endl;
+template<typename T>
+typename T::iterator easyfind(T& container, int value) {
+    typename T::iterator it = std::find(container.begin(), container.end(), value);
+    if (it == container.end()) {
+        throw std::runtime_error("Value not found in container");
+    }
+    return it;
 }
