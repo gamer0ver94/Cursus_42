@@ -3,37 +3,39 @@
 #include <list>
 #include <algorithm>
 #include <stdexcept>
-
+#include <string>
 
 #include "generic/easyfind.hpp"
 int main() {
-    std::vector<int> vec;
-    std::list<int> lst;
-	vec.push_back(1);
-	vec.push_back(2);
-	vec.push_back(3);
-	vec.push_back(4);
-	vec.push_back(5);
-	lst.push_back(10);
-	lst.push_back(20);
-	lst.push_back(30);
-	lst.push_back(40);
-	lst.push_back(50);
-
-    try {
-        std::vector<int>::iterator it_vec = easyfind(vec, 3);
-        std::cout << "Value found in vector at index " << it_vec - vec.begin() << std::endl;
-    }
-    catch (std::exception& e) {
-        std::cout << e.what() << std::endl;
-    }
-    try {
-        std::list<int>::iterator it_lst = easyfind(lst, 50);
-        std::cout << "Value found in list at position " << std::distance(lst.begin(), it_lst) << std::endl;
-    }
-    catch (std::exception& e) {
-        std::cout << e.what() << std::endl;
-    }
-
+	std::string line;
+    std::vector<int> test;
+	std::string elem;
+	system("clear");
+	while (1){
+		std::cout << " PLEASE ENTER ONE ELEMENT AT A TIME // TYPE <DONE> WHEN IT FINISHED" << std::endl;
+		std::getline(std::cin,  line);
+		if (line == "DONE"){
+			break;
+		}
+		try{
+			test.push_back(std::stoi(line));
+		}
+		catch(...){
+		}
+		system("clear");
+	}
+	while (1)
+	{
+		std::cout << "TYPE A ELEMENT VALUE TO SEARCH" << std::endl;
+		std::getline(std::cin, elem);
+		 try {
+       		 std::vector<int>::iterator it = easyfind(test, std::stoi(elem));
+       		 std::cout << "Value found in vector at index " << it - test.begin() << std::endl;
+    	}
+   		 catch (std::exception& e) {
+       		 std::cout << e.what() << std::endl;
+   	 }
+	}
+   
     return 0;
 }
