@@ -14,7 +14,7 @@ void Span::addNumber(int value){
     }
 }
 
-void Span::addNumber(const std::vector<int>& numbers){
+void Span::addNumbers(const std::vector<int>& numbers){
     if (numbers.size() + array.size() > max){
         throw std::overflow_error("Reached already max size of container");
     }

@@ -27,7 +27,7 @@ int main(void){
         for(int i = 0; i < 10000000; i++){
         test.push_back(i);
         }
-        spTmp.addNumber(test);
+        spTmp.addNumbers(test);
         std::cout << spTmp.shortestSpan() << std::endl;
         std::cout << spTmp.longestSpan() << std::endl;
     }

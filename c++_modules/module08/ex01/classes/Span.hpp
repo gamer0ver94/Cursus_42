@@ -7,7 +7,7 @@ class Span{
     public :
         Span(unsigned int max);
         void addNumber(int value);
-        void addNumber(const std::vector<int>& numbers);
+        void addNumbers(const std::vector<int>& numbers);
         int shortestSpan(void);
         int longestSpan(void);
 };
