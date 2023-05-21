@@ -6,12 +6,19 @@ Span::Span(unsigned int max) : max(max){
 
 void Span::addNumber(int value){
     if(array.size() == max){
-        throw std::runtime_error("error");
+        throw std::runtime_error("Reached already max size of container");
     }
     else{
         std::vector<int>::iterator it = std::lower_bound(array.begin(),array.end(), value);
         array.insert(it, value);    
     }
+}
+
+void Span::addNumber(const std::vector<int>& numbers){
+    if (numbers.size() + array.size() > max){
+        throw std::overflow_error("Reached already max size of container");
+    }
+    array.insert(array.end(), numbers.begin(), numbers.end());
 }
 
 int Span::shortestSpan(void){
