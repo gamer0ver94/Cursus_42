@@ -1,4 +1,4 @@
-#include "../classes/BtcFile.hpp"
+#include "../classes/BitcoinExchange.hpp"
 #include <sstream>
 #include <iomanip>
 #include <iterator>
@@ -6,7 +6,8 @@
 #include <cstdlib>
 #include <cfloat>
 #include <ctime>
-BtcFile::BtcFile(const char *fileName, const char *fileName2){
+
+BitcoinExchange::BitcoinExchange(const char *fileName, const char *fileName2){
     std::string value;
     std::string key;
     std::string line;
@@ -24,20 +25,38 @@ BtcFile::BtcFile(const char *fileName, const char *fileName2){
             try{
                 db[key] = std::atof(value.c_str());
             }
-            catch(...){std::cout << "error" << value << std::endl;};
+            catch(std::exception &e){
+				std::cout << "error : " << value << std::endl;
+				std::cout << e.what() << std::endl;
+			};
         }
-        std::cout << "File Constructor" << std::endl;
     }
 }
-BtcFile::~BtcFile(){
+BitcoinExchange::~BitcoinExchange(){
     internalDataBase.close();
     externalDataBase.close();
 };
 
-void BtcFile::outputFile(){
+ BitcoinExchange::BitcoinExchange(const BitcoinExchange& copy){
+	if (this != &copy){
+		for(std::map<std::string, float>::const_iterator it = copy.db.begin(); it != copy.db.end(); ++it){
+			db.insert(*it);
+		}
+	}
+ }
+
+ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& copy){
+	if (this != &copy){
+		db = copy.db;
+	}
+	return *this;
+ }
+
+void BitcoinExchange::outputFile(){
 	std::string line;
 	std::string key;
 	std::string value;
+	bool formatCheck = false;
     while (std::getline(externalDataBase, line)) {
         std::istringstream iss(line);
         std::getline(iss, key, '|');
@@ -52,6 +71,14 @@ void BtcFile::outputFile(){
             break;
         }
         try{
+			if (!formatCheck && value != " value" && key != "date "){
+				std::cerr << "Input File first line does not cointain the format or the right one ..." << std::endl;
+				return;
+			}
+			if (!formatCheck && value == " value" && key == "date "){
+				formatCheck = true;
+				continue;
+			}
             std::map<std::string, float>::iterator it;
 			for (it = db.begin(); it != db.end(); ++it){
                 if (!isValidLineFormat(line) || !isValidDateFormat(key)  || !isNumber(value)){
@@ -78,14 +105,13 @@ void BtcFile::outputFile(){
                  std::cout << la->first << " => " << la->second << " = " << (std::atof(value.c_str()) * la->second) << std::endl;
 
             }
-//fasd
         }
         catch(...){std::cout << "Error : exception found" << value << std::endl;};
 		delete[] test;
     }
 }
 
-bool BtcFile::isValidDateFormat(std::string date){
+bool BitcoinExchange::isValidDateFormat(std::string date){
  std::istringstream ss(date);
     std::string yearStr, monthStr, dayStr;
 
@@ -107,7 +133,7 @@ bool BtcFile::isValidDateFormat(std::string date){
     return true;
 }
 
-std::map<std::string, float>::const_iterator BtcFile::getClosestDate(const std::map<std::string, float>& datesMap, const std::string& inputDate) {
+std::map<std::string, float>::const_iterator BitcoinExchange::getClosestDate(const std::map<std::string, float>& datesMap, const std::string& inputDate) {
     std::tm timeinfo = {};
     std::istringstream iss(inputDate);
     int year, month, day;
@@ -143,7 +169,7 @@ std::map<std::string, float>::const_iterator BtcFile::getClosestDate(const std::
 
 
 
-bool BtcFile::isValidLineFormat(const std::string& line) {
+bool BitcoinExchange::isValidLineFormat(const std::string& line) {
    // Find the position of " | "
     size_t found = line.find(" | ");
 
@@ -151,7 +177,7 @@ bool BtcFile::isValidLineFormat(const std::string& line) {
     return found != std::string::npos;
 }
 
-bool BtcFile::isNumber(const std::string str) {
+bool BitcoinExchange::isNumber(const std::string str) {
     std::istringstream iss(str);
     double num;
     return (iss >> num) && (iss.eof());

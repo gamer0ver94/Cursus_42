@@ -3,13 +3,15 @@
 #include <iostream>
 #include <string>
 #include <map>
-class BtcFile{
+class BitcoinExchange{
     public :
-       BtcFile(const char* fileName, const char *fileName2);
-       ~BtcFile();
+       BitcoinExchange(const char* fileName, const char *fileName2);
+       ~BitcoinExchange();
+	   BitcoinExchange(const BitcoinExchange& copy);
+	   BitcoinExchange& operator=(const BitcoinExchange& copy);
        void outputFile();
-
     private :
+		BitcoinExchange();
         std::ifstream internalDataBase;
         std::ifstream externalDataBase;
         std::map<std::string, float> db;

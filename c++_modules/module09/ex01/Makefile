@@ -1,10 +1,10 @@
-NAME = btc
+NAME = RNP
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
-SRC = main.cpp srcs/BitcoinExchange.cpp
+SRC = main.cpp srcs/RPN.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
