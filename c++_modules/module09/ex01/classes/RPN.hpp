@@ -13,5 +13,8 @@ class RPN{
 		RPN();
 		std::vector<char> container;
 		void inputParser(std::string input);
-
+	class OverNineException : public std::exception{
+		public :
+			const char* what()const throw();
+	};
 };

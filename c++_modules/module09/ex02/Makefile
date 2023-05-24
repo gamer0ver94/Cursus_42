@@ -1,4 +1,4 @@
-NAME = RPN
+NAME = RNP
 
 CC = c++
 

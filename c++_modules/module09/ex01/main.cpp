@@ -5,8 +5,14 @@ int main(int argc, char **argv){
 		std::cerr << "Multiple arguments detected, insert only one!" << std::endl;
 		return -1;
 	}
-	RPN *rpn = new RPN(argv[1]);
-	rpn->output();
-	delete rpn;
+	try{
+		RPN *rpn = new RPN(argv[1]);
+		rpn->output();
+		delete rpn;
+	}
+	catch(std::exception &e){
+		std::cout << "ERROR: " << e.what() << std::endl;
+	}
+	
 	return 0;
 }

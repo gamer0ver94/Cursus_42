@@ -23,31 +23,47 @@ RPN& RPN::operator=(const RPN& copy){
 
 void RPN::output(){
 	std::vector<char>tmp;
-	int value = 0;
+	int res = static_cast<int>(container[0] - '0');
+	int status = false;
 //push values into a temporary container until it found a operator
-	for (std::vector<char>::const_iterator it = container.begin(); it !=container.end(); ++it){
-		if (*it != '+' || *it != '-' || *it != '/' || *it != '*'){
+	for (std::vector<char>::const_iterator it = container.begin(); it != container.end(); ++it){
+		if (*it != '+' && *it != '-' && *it != '/' && *it != '*'){
 			tmp.push_back(*it);
-			container.erase(container.begin());
 		}
 		else{
 			//using the operator it
-			for (std::vector<char>::const_iterator iter = container.begin(); iter !=container.end(); ++iter){
-				switch (*container.begin()){
+			for (std::vector<char>::const_iterator iter = tmp.begin(); iter != tmp.end(); ++iter){
+				if (status == 0){
+					status = true;
+					continue;
+				}
+				switch (*it){
 					case '*' :
-						value *= static_cast<int>(*tmp.begin());
+						std::cout << res << *it << *iter << " = ";
+						res *= static_cast<int>(*iter) - '0';
+						std::cout << res <<std:: endl;
+						break;
 					case '/' :
-						value /= static_cast<int>(*tmp.begin());
+						std::cout << res << *it << *iter << " = ";
+						res /= static_cast<int>(*iter) - '0';
+						std::cout << res <<std:: endl;
+						break;
 					case '+' :
-						value += static_cast<int>(*tmp.begin());
+						std::cout << res << *it << *iter << " = ";
+						res += static_cast<int>(*iter) - '0';
+						std::cout << res <<std:: endl;
+						break;
 					case '-' :
-						value -= static_cast<int>(*tmp.begin());
+						std::cout << res << *it << *iter << " = ";
+						res -= static_cast<int>(*iter) - '0';
+						std::cout << res <<std:: endl;
+						break;
 				}
 			}
-			value = 0;
-			container.insert(container.begin(), static_cast<char>(value));
+			tmp.clear();
 		}
 	}
+	std::cout << "the result is "<< res << std::endl;
 }
 
 void RPN::inputParser(std::string input){
@@ -55,7 +71,14 @@ void RPN::inputParser(std::string input){
 
 	for (size_t i = 0; i < str.size(); i++){
 		if (str[i] != ' '){
+			if (str[i + 1] && str[i + 1] != ' '){
+				throw OverNineException();
+			}
 			container.push_back(str[i]);
 		}
 	}
+}
+
+const char* RPN::OverNineException::what()const throw(){
+	return "Input detected number over nine.";
 }
