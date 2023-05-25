@@ -3,7 +3,19 @@
 RPN::RPN(){}
 
 RPN::RPN(std::string input){
-	inputParser(input);
+	std::string str(input);
+	expression = str;
+	for (size_t i = 0; i < str.size(); i++){
+		if (str[i] != ' '){
+			if (str[i + 1] && str[i + 1] != ' '){
+				throw OverNineException();
+			}
+		}
+	}
+}
+
+const char* RPN::OverNineException::what()const throw(){
+	return "Input detected number over nine.";
 }
 
 RPN::~RPN(){}
@@ -21,64 +33,46 @@ RPN& RPN::operator=(const RPN& copy){
 	return *this;
 }
 
+// void RPN::operate(std::stack<int> &operation, char op){
+
+// }
+
 void RPN::output(){
-	std::vector<char>tmp;
-	int res = static_cast<int>(container[0] - '0');
-	int status = false;
-//push values into a temporary container until it found a operator
-	for (std::vector<char>::const_iterator it = container.begin(); it != container.end(); ++it){
-		if (*it != '+' && *it != '-' && *it != '/' && *it != '*'){
-			tmp.push_back(*it);
+	std::stack<int>container;
+
+	for(size_t i = 0; i < expression.size(); i++){
+		if (expression[i] == ' '){
+			continue;
+		}
+		if (expression[i] != '+' && expression[i] != '-' && expression[i] != '/' && expression[i] != '*'){
+			container.push(static_cast<int>(expression[i] - '0'));
 		}
 		else{
-			//using the operator it
-			for (std::vector<char>::const_iterator iter = tmp.begin(); iter != tmp.end(); ++iter){
-				if (status == 0){
-					status = true;
-					continue;
-				}
-				switch (*it){
-					case '*' :
-						std::cout << res << *it << *iter << " = ";
-						res *= static_cast<int>(*iter) - '0';
-						std::cout << res <<std:: endl;
-						break;
-					case '/' :
-						std::cout << res << *it << *iter << " = ";
-						res /= static_cast<int>(*iter) - '0';
-						std::cout << res <<std:: endl;
-						break;
-					case '+' :
-						std::cout << res << *it << *iter << " = ";
-						res += static_cast<int>(*iter) - '0';
-						std::cout << res <<std:: endl;
-						break;
-					case '-' :
-						std::cout << res << *it << *iter << " = ";
-						res -= static_cast<int>(*iter) - '0';
-						std::cout << res <<std:: endl;
-						break;
-				}
-			}
-			tmp.clear();
-		}
-	}
-	std::cout << "the result is "<< res << std::endl;
-}
-
-void RPN::inputParser(std::string input){
-	std::string str(input);
-
-	for (size_t i = 0; i < str.size(); i++){
-		if (str[i] != ' '){
-			if (str[i + 1] && str[i + 1] != ' '){
+			if (container.size() > 2){
 				throw OverNineException();
 			}
-			container.push_back(str[i]);
-		}
+			int y = container.top();
+			container.pop();
+			int x = container.top();
+			container.pop();
+			int result = 0;
+			switch(expression[i])
+			{
+				case '+' :
+					result = x + y;
+					break;
+				case '/' :
+					result = x / y;
+					break;
+				case '*' :
+					result = x * y;
+					break;
+				case '-' :
+					result = x - y;
+					break;
+			}
+			container.push(result);
+		}		
 	}
-}
-
-const char* RPN::OverNineException::what()const throw(){
-	return "Input detected number over nine.";
+	std::cout << container.top() << std::endl;
 }

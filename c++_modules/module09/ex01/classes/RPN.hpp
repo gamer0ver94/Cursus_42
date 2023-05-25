@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include <vector>
+#include <stack>
 
 class RPN{
 	public :
@@ -11,8 +11,8 @@ class RPN{
 		void output();
 	private :
 		RPN();
-		std::vector<char> container;
-		void inputParser(std::string input);
+		// void operate(std::stack<int>& operation, char op);
+	std::string expression;
 	class OverNineException : public std::exception{
 		public :
 			const char* what()const throw();
