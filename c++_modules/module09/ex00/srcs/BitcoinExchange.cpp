@@ -7,6 +7,7 @@
 #include <cfloat>
 #include <ctime>
 
+// Constructor takes the databasefile and input file and save db data in a map
 BitcoinExchange::BitcoinExchange(const char *fileName, const char *fileName2){
     std::string value;
     std::string key;
@@ -15,7 +16,7 @@ BitcoinExchange::BitcoinExchange(const char *fileName, const char *fileName2){
     externalDataBase.open(fileName2);
 	std::getline(internalDataBase, line);
     if (!internalDataBase || !externalDataBase){
-        std::cout << "failed to open file" << std::endl;
+        std::cout << RED << "failed to open file" << RESET <<std::endl;
     }
     else{
         while (std::getline(internalDataBase, line)) {
@@ -26,12 +27,14 @@ BitcoinExchange::BitcoinExchange(const char *fileName, const char *fileName2){
                 db[key] = std::atof(value.c_str());
             }
             catch(std::exception &e){
-				std::cout << "error : " << value << std::endl;
+				std::cout << RED << "error : " << value << RESET <<std::endl;
 				std::cout << e.what() << std::endl;
 			};
         }
     }
 }
+
+// Destructor closes files
 BitcoinExchange::~BitcoinExchange(){
     internalDataBase.close();
     externalDataBase.close();
@@ -52,6 +55,7 @@ BitcoinExchange::~BitcoinExchange(){
 	return *this;
  }
 
+// output new information
 void BitcoinExchange::outputFile(){
 	std::string line;
 	std::string key;
@@ -61,18 +65,18 @@ void BitcoinExchange::outputFile(){
         std::istringstream iss(line);
         std::getline(iss, key, '|');
         std::getline(iss, value);
-		char *test = new char[key.size() - 1];
-		for (int i = 0; i < static_cast<int>(key.size() - 1); i++){
-			test[i] = key[i];
+		char *tmpStr = new char[key.size() + 1];
+		for (int i = 0; i < static_cast<int>(key.size()); i++){
+			tmpStr[i] = key[i];
 		}
-		test[key.size() - 1] = 0;
+		tmpStr[key.size()] = '\0';
         if (std::atof(value.c_str()) > 1000){
-            std::cout << "Error: too large a number" << std::endl;
+            std::cout << RED << "Error: too large a number" << RESET << std::endl;
             break;
         }
         try{
 			if (!formatCheck && value != " value" && key != "date "){
-				std::cerr << "Input File first line does not cointain the format or the right one ..." << std::endl;
+				std::cerr << YELLOW << "Input File first line does not cointain the format or the right one ..." << RESET << std::endl;
 				return;
 			}
 			if (!formatCheck && value == " value" && key == "date "){
@@ -82,15 +86,17 @@ void BitcoinExchange::outputFile(){
             std::map<std::string, float>::iterator it;
 			for (it = db.begin(); it != db.end(); ++it){
                 if (!isValidLineFormat(line) || !isValidDateFormat(key)  || !isNumber(value)){
-                    std::cout << "Error: bad input => " << line << std::endl;
+                    if (!line.empty()){
+                        std::cout << RED << "Error: bad input => " << line << RESET << std::endl;
+                    }
                     break;
                 }
-				if (it->first == test){
+				if (it->first == tmpStr){
                     if (std::atof(value.c_str()) * it->second < 0){
-						std::cout << "Error: not a positive number." << std::endl;
+						std::cout << RED << "Error: not a positive number." << RESET << std::endl;
 					}
 					else if (std::atof(value.c_str()) > FLT_MAX){
-						std::cout << "Error: too large." << std::endl;
+						std::cout << RED << "Error: too large." << RESET << std::endl;
 					}
 					else{
 						std::cout << it->first << " => " << it->second << " = " << (std::atof(value.c_str()) * it->second) << std::endl;
@@ -98,16 +104,22 @@ void BitcoinExchange::outputFile(){
 					break;
 				}
 			}
-            if (isValidDateFormat(test) && it == db.end())
+            if (isValidDateFormat(tmpStr) && it == db.end())
             {
-                std::map<std::string, float>::const_iterator la = getClosestDate(db, test);
-
-                 std::cout << la->first << " => " << la->second << " = " << (std::atof(value.c_str()) * la->second) << std::endl;
+                std::map<std::string, float>::const_iterator iter = getClosestDate(db, tmpStr);
+                if (iter->first.empty()){
+                    std::cout << RED << "Error : There is no closest date in db before date in input => " << tmpStr <<  RESET << std::endl;
+                }
+                else{
+                    std::cout << iter->first << " => " << iter->second << " = " << (std::atof(value.c_str()) * iter->second) << std::endl;
+                }
 
             }
         }
-        catch(...){std::cout << "Error : exception found" << value << std::endl;};
-		delete[] test;
+        catch(...){
+            std::cout << RED << "Error : exception found" << value << RESET <<std::endl;
+        }
+		delete[] tmpStr;
     }
 }
 
@@ -156,24 +168,20 @@ std::map<std::string, float>::const_iterator BitcoinExchange::getClosestDate(con
         dateInfo.tm_mday = day;
         std::time_t dateDateTime = std::mktime(&dateInfo);
 
-        int difference = static_cast<int>(inputDateTime - dateDateTime);  // Compare inputDateTime with dateDateTime
+        int difference = static_cast<int>(inputDateTime - dateDateTime);
 
-        if (difference >= 0 && difference < minDifference) {  // Change the condition to include equal values
+        if (difference >= 0 && difference < minDifference) {
             minDifference = difference;
             closestDateIterator = it;
         }
     }
-
     return closestDateIterator;
 }
 
 
 
 bool BitcoinExchange::isValidLineFormat(const std::string& line) {
-   // Find the position of " | "
     size_t found = line.find(" | ");
-
-    // Check if the format is present
     return found != std::string::npos;
 }
 

@@ -73,7 +73,8 @@
 		"memory_resource": "cpp",
 		"numeric": "cpp",
 		"random": "cpp",
-		"numbers": "cpp"
+		"numbers": "cpp",
+		"list": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

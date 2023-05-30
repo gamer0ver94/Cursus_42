@@ -15,7 +15,7 @@ RPN::RPN(std::string input){
 }
 
 const char* RPN::OverNineException::what()const throw(){
-	return "Input detected number over nine.";
+	return "Invalid Input";
 }
 
 RPN::~RPN(){}
@@ -48,7 +48,7 @@ void RPN::output(){
 			container.push(static_cast<int>(expression[i] - '0'));
 		}
 		else{
-			if (container.size() > 2){
+			if (container.size() < 2){
 				throw OverNineException();
 			}
 			int y = container.top();

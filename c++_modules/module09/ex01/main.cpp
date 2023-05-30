@@ -2,7 +2,7 @@
 #include "classes/RPN.hpp"
 int main(int argc, char **argv){
 	if (argc != 2){
-		std::cerr << "Multiple arguments detected, insert only one!" << std::endl;
+		std::cerr << YELLOW << "Multiple arguments detected, insert only one!" << RESET << std::endl;
 		return -1;
 	}
 	try{
@@ -11,7 +11,7 @@ int main(int argc, char **argv){
 		delete rpn;
 	}
 	catch(std::exception &e){
-		std::cout << "ERROR: " << e.what() << std::endl;
+		std::cout << RED << "ERROR: " << e.what() << RESET << std::endl;
 	}
 	
 	return 0;
