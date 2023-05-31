@@ -19,10 +19,9 @@ class RPN{
 		void output();
 	private :
 		RPN();
-		// void operate(std::stack<int>& operation, char op);
-	std::string expression;
-	class OverNineException : public std::exception{
-		public :
-			const char* what()const throw();
-	};
+		std::string expression;
+		class OverNineException : public std::exception{
+			public :
+				const char* what()const throw();
+		};
 };

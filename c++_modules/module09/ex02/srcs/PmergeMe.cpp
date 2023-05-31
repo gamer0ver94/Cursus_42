@@ -1,24 +1,58 @@
 #include "../classes/PmergeMe.hpp"
 
-PmergeMe::PmergeMe(char **unsortedStr){
+PmergeMe::PmergeMe(int argc, char **unsortedStr){
     int n;
     int i = 0;
-    while (unsortedStr[i]){
-        std::string str(unsortedStr[i]);
-        std::istringstream iss(str);
-        if (iss >> n){
-             if (n < 0){
-                std::cout << "error" << std::endl;
+    if (argc -1 > 1){
+        while (unsortedStr[i]){
+            std::string str(unsortedStr[i]);
+            std::istringstream iss(str);
+            if (iss >> n){
+                 if (n < 0){
+                    throw ErrorHandler();
+                }
+                unsortedVector.push_back(n);
+                unsortedDeque.push_back(n);
             }
-            unsortedArray.push_back(n);
+            i++;
+        }
+    }
+    else{
+        std::string str(*unsortedStr);
+        std::istringstream iss(str);
+        while (iss >> n){
+            if (n < 0){
+                    throw ErrorHandler();
+            }
+            unsortedVector.push_back(n);
             unsortedDeque.push_back(n);
         }
-        i++;
     }
-    arraySize = this->unsortedArray.size();
+    arraySize = this->unsortedVector.size();
 }
 
 PmergeMe::~PmergeMe(){
+}
+
+PmergeMe::PmergeMe(const PmergeMe& copy){
+    unsortedVector = copy.unsortedVector;
+    unsortedDeque = copy.unsortedDeque;
+    arraySize = copy.arraySize;
+}
+
+PmergeMe& PmergeMe::operator=(const PmergeMe& copy){
+    if (this != &copy){
+        unsortedVector = copy.unsortedVector;
+        unsortedDeque = copy.unsortedDeque;
+        arraySize = copy.arraySize;
+    }
+    return *this;
+}
+
+// Exception error handler
+
+const char* PmergeMe::ErrorHandler::what()const throw(){
+    return "Invalid Input";
 }
 
 // Merge sort algorithm
@@ -134,24 +168,23 @@ void PmergeMe::mergeInsertionSort(std::deque<int>& deque, int threshold) {
     endDeque = clock();
 }
 void PmergeMe::operate(){
-    mergeInsertionSort(unsortedArray, 5);
+    mergeInsertionSort(unsortedVector, 5);
     mergeInsertionSort(unsortedDeque, 5);
 }
 
 // Print the array
-
 void PmergeMe::printDequeTime() {
-    std::cout <<  std::fixed << std::setprecision(5) << GREEN << "Time to process a range of " << unsortedArray.size() <<" elements with std::deque : " << BLUE << getMicroSeconds(startDeque, endDeque)<< " us" << RESET << std::endl;
+    std::cout <<  std::fixed << std::setprecision(5) << GREEN << "Time to process a range of " << unsortedVector.size() <<" elements with std::deque : " << BLUE << getMicroSeconds(startDeque, endDeque)<< " us" << RESET << std::endl;
 }
 
 void PmergeMe::printVectorTime() {
-     std::cout << std::fixed << std::setprecision(5) << GREEN << "Time to process a range of " << unsortedArray.size() <<" elements with std::vector : " << BLUE << getMicroSeconds(startVector, endVector) << " us" << RESET << std::endl;
+     std::cout << std::fixed << std::setprecision(5) << GREEN << "Time to process a range of " << unsortedVector.size() <<" elements with std::vector : " << BLUE << getMicroSeconds(startVector, endVector) << " us" << RESET << std::endl;
 }
 
 void PmergeMe::printVector(std::string msg){
     std::cout << msg; 
-      for (size_t i = 0; i < unsortedArray.size(); i++) {
-        std::cout << unsortedArray[i] << " ";
+      for (size_t i = 0; i < unsortedVector.size(); i++) {
+        std::cout << unsortedVector[i] << " ";
     }
     std::cout << std::endl;
 }
