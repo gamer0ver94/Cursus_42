@@ -28,11 +28,11 @@ class PmergeMe{
     private :
         PmergeMe();
         void mergeInsertionSort(std::vector<int>& vector, int threshold);
-        void merge(std::vector<int>& vector, int left, int mid, int right);
-        void insertionSort(std::vector<int>& vector, int left, int right);
         void mergeInsertionSort(std::deque<int>& deque, int threshold);
-        void insertionSort(std::deque<int>& deque, int left, int right);
+        void merge(std::vector<int>& vector, int left, int mid, int right);
         void merge(std::deque<int>& dq, int left, int mid, int right);
+        void insertionSort(std::vector<int>& vector, int left, int right);
+        void insertionSort(std::deque<int>& deque, int left, int right);
         std::vector<int> unsortedVector;
         std::deque<int> unsortedDeque;
         int arraySize;

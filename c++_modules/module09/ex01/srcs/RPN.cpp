@@ -10,6 +10,12 @@ RPN::RPN(std::string input){
 			if (str[i + 1] && str[i + 1] != ' '){
 				throw OverNineException();
 			}
+			else if (str[i] == '-' || str[i] == '+' || str[i] == '/' || str[i] == '*'){
+				continue;
+			}
+			else if (str[i] < 48 || str[i] > 57){
+				throw OverNineException();
+			}
 		}
 	}
 }
@@ -22,20 +28,16 @@ RPN::~RPN(){}
 
 RPN::RPN(const RPN& copy){
 	if (this != &copy){
-
+		expression = copy.expression;
 	}
 }
 
 RPN& RPN::operator=(const RPN& copy){
 	if (this != &copy){
-		
+		expression = copy.expression;
 	}
 	return *this;
 }
-
-// void RPN::operate(std::stack<int> &operation, char op){
-
-// }
 
 void RPN::output(){
 	std::stack<int>container;

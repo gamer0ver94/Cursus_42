@@ -1,8 +1,12 @@
 #include <iostream>
 #include "classes/RPN.hpp"
 int main(int argc, char **argv){
-	if (argc != 2){
+	if (argc > 2){
 		std::cerr << YELLOW << "Multiple arguments detected, insert only one!" << RESET << std::endl;
+		return -1;
+	}
+	else if (argc < 2){
+		std::cerr << YELLOW << "No arguments, insert only one!" << RESET << std::endl;
 		return -1;
 	}
 	try{

@@ -75,10 +75,10 @@ void BitcoinExchange::outputFile(){
             break;
         }
         try{
-			if (!formatCheck && value != " value" && key != "date "){
-				std::cerr << YELLOW << "Input File first line does not cointain the format or the right one ..." << RESET << std::endl;
-				return;
-			}
+			// if (!formatCheck && value != " value" && key != "date "){
+			// 	std::cerr << YELLOW << "Input File first line does not cointain the format or the right one ..." << RESET << std::endl;
+			// 	return;
+			// }
 			if (!formatCheck && value == " value" && key == "date "){
 				formatCheck = true;
 				continue;
