@@ -154,7 +154,6 @@ void PmergeMe::insertionSort(std::deque<int>& deque, int left, int right) {
 
 void PmergeMe::mergeInsertionSort(std::deque<int>& deque, int threshold) {
     int size = deque.size();
-   
     for (int i = threshold; i < size; i *= 2) {
         for (int left = 0; left < size - i; left += 2 * i) {
             int mid = left + i - 1;
@@ -163,30 +162,24 @@ void PmergeMe::mergeInsertionSort(std::deque<int>& deque, int threshold) {
         }
     }
     insertionSort(deque, 0, size - 1);
-    
 }
 void PmergeMe::operate(){
-	startVector = clock();
+    startVector = clock();
     mergeInsertionSort(unsortedVector, 5);
-	endVector = clock();
-	startDeque = clock();
+    endVector = clock();
+    startDeque = clock();
     mergeInsertionSort(unsortedDeque, 5);
-	endDeque = clock();
+    endDeque = clock();
 }
 
 // Print the array
 void PmergeMe::printDequeTime() {
-    double time = getMicroSeconds(startDeque, endDeque);
-    std::cout << GREEN << "Time to process a range of " << unsortedVector.size() << " elements with std::deque: ";
-    std::cout << BLUE << std::fixed << std::setprecision(5) << time << " us" << RESET << std::endl;
+    std::cout <<  std::fixed << std::setprecision(5) << GREEN << "Time to process a range of " << unsortedVector.size() <<" elements with std::deque : " << BLUE << getMicroSeconds(startDeque, endDeque)<< " us" << RESET << std::endl;
 }
 
 void PmergeMe::printVectorTime() {
-    double time = getMicroSeconds(startVector, endVector);
-    std::cout << GREEN << "Time to process a range of " << unsortedVector.size() << " elements with std::vector: ";
-    std::cout << BLUE << std::fixed << std::setprecision(5) << time << " us" << RESET << std::endl;
+     std::cout << std::fixed << std::setprecision(5) << GREEN << "Time to process a range of " << unsortedVector.size() <<" elements with std::vector : " << BLUE << getMicroSeconds(startVector, endVector) << " us" << RESET << std::endl;
 }
-
 
 void PmergeMe::printVector(std::string msg){
     std::cout << msg; 
@@ -196,6 +189,6 @@ void PmergeMe::printVector(std::string msg){
     std::cout << std::endl;
 }
 
-double PmergeMe::getMicroSeconds(clock_t& start, clock_t& end) {
-    return (end - start) * static_cast<double>(1e6) / CLOCKS_PER_SEC;
+double PmergeMe::getMicroSeconds(clock_t& start, clock_t& end){
+    return (static_cast<double>((end - start)) / static_cast<double>(CLOCKS_PER_SEC)) * static_cast<double>(1000);
 }
